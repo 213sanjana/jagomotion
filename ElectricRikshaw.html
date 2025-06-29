@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product Details - Jago Motion Technologies</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Add jsPDF library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body class="bg-gray-50 font-sans min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <div id="navbar-placeholder" class="w-full"></div>
+  <script>
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar-placeholder").innerHTML = data;
+      });
+  </script>
+
+  <!-- Hero Section -->
+  <section class="bg-blue-600 text-white py-8 md:py-5">
+    <div class="container mx-auto px-4 text-center">
+      <h4 class="text-xl md:text-3xl font-bold mb-4">Electric Rickshaw</h4>
+      <button onclick="generateBrochure()" class="bg-white text-blue-700 font-semibold px-4 py-1 rounded-lg hover:bg-blue-50 transition duration-300 mr-2">Brochure</button>
+      <a href="contacts.html" class="bg-white text-blue-700 font-semibold px-4 py-1 rounded-lg hover:bg-blue-50 transition duration-300">Enquire</a>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="flex-grow container mx-auto p-4">
+    <div class="flex flex-wrap gap-4">
+      <!-- Information -->
+      <section class="flex-1 min-w-[220px] bg-white p-6 rounded shadow-md">
+        <p>This electric rickshaw is designed for easy mobility with a lightweight, foldable frame. Perfect for short-distance travel with a 20-mile battery range. The vehicle features advanced battery technology, ergonomic seating, and eco-friendly operation with zero emissions. Ideal for urban transportation needs, it combines comfort with sustainability.</p>
+      </section>
+
+      <!-- Features -->
+      <section class="flex-1 min-w-[220px] bg-white p-6 rounded shadow-md">
+        <h3 class="font-bold text-lg mb-3 text-blue-600">Key Features</h3>
+        <ul class="list-disc list-inside space-y-2 text-gray-700">
+          <li>Lightweight & foldable aluminum alloy frame</li>
+          <li>20-mile range on a single charge</li>
+          <li>Fast charging (0-100% in 4 hours)</li>
+          <li>Ergonomic handle with anti-slip grip</li>
+          <li>Digital display with battery indicator</li>
+          <li>Durable and weather-resistant materials</li>
+          <li>LED headlights and taillights</li>
+          <li>Comfortable seating for 2 passengers</li>
+          <li>Rear storage compartment</li>
+          <li>Regenerative braking system</li>
+        </ul>
+      </section>
+
+      <!-- Images -->
+      <section class="flex-1 min-w-[220px] bg-white p-6 rounded shadow-md">
+        <img src="images/mini.png" alt="Electric Rickshaw" class="rounded shadow-md object-contain w-full h-48" />
+        <img src="images/tricycle.png" alt="Mobility Vehicle" class="rounded shadow-md object-contain w-full h-48 mt-4" />
+      </section>
+
+      <!-- Video -->
+      <section class="flex-1 min-w-[220px] bg-white p-6 rounded shadow-md">
+        <video controls class="w-full rounded shadow-md h-48 object-contain">
+          <source src="images/rikshaw.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer-placeholder" class="w-full mt-8"></div>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+    
+    // PDF Generation Function
+    function generateBrochure() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      
+      // Set document properties
+      doc.setProperties({
+        title: 'Jago Motion - Electric Rickshaw Brochure',
+        subject: 'Product Information',
+        author: 'Jago Motion Technologies',
+        keywords: 'electric, rickshaw, eco-friendly, transportation',
+        creator: 'Jago Motion Technologies'
+      });
+      
+      // Add header
+      doc.setFontSize(20);
+      doc.setTextColor(13, 71, 161); // Dark blue
+      doc.setFont('helvetica', 'bold');
+      doc.text('JAGO MOTION TECHNOLOGIES', 105, 20, { align: 'center' });
+      
+      doc.setFontSize(16);
+      doc.setTextColor(0, 0, 0);
+      doc.text('Electric Rickshaw - Product Brochure', 105, 30, { align: 'center' });
+      
+      // Add divider line
+      doc.setDrawColor(13, 71, 161);
+      doc.setLineWidth(0.5);
+      doc.line(20, 35, 190, 35);
+      
+      // Product overview
+      doc.setFontSize(12);
+      doc.setFont('helvetica', 'normal');
+      doc.text('Product Overview:', 20, 45);
+      const description = [
+        "The Jago Motion Electric Rickshaw revolutionizes urban mobility with its eco-friendly design",
+        "and advanced features. Designed for both personal and commercial use, it offers a",
+        "comfortable, economical, and sustainable transportation solution."
+      ];
+      doc.text(description, 20, 55, { maxWidth: 170 });
+      
+      // Key specifications table
+      doc.autoTable({
+        startY: 80,
+        head: [['Specification', 'Details']],
+        body: [
+          ['Model', 'JM-ER2023'],
+          ['Battery Type', 'Lithium-ion 48V 30Ah'],
+          ['Range', '20-25 miles per charge'],
+          ['Max Speed', '25 km/h'],
+          ['Charging Time', '4-6 hours'],
+          ['Motor Power', '1000W Brushless DC'],
+          ['Weight Capacity', '300 kg (including passengers)'],
+          ['Frame Material', 'Aircraft-grade aluminum alloy'],
+          ['Brakes', 'Front and rear drum brakes + regenerative'],
+          ['Suspension', 'Front hydraulic, rear spring'],
+          ['Wheels', '16-inch puncture-resistant tires'],
+          ['Lighting', 'LED headlight and taillights'],
+          ['Dimensions (LxWxH)', '2.4m x 1.2m x 1.8m'],
+          ['Weight', '95 kg (without battery)']
+        ],
+        theme: 'grid',
+        headStyles: {
+          fillColor: [13, 71, 161],
+          textColor: [255, 255, 255],
+          fontStyle: 'bold'
+        },
+        alternateRowStyles: {
+          fillColor: [240, 240, 240]
+        },
+        margin: { top: 10 }
+      });
+      
+      // Features section
+      doc.setFontSize(14);
+      doc.setTextColor(13, 71, 161);
+      doc.text('Key Features & Benefits:', 20, doc.lastAutoTable.finalY + 15);
+      
+      doc.setFontSize(10);
+      doc.setTextColor(0, 0, 0);
+      const features = [
+        { icon: '✓', text: 'Zero emissions - Environmentally friendly transportation solution' },
+        { icon: '✓', text: 'Low operating cost - Saves up to 70% compared to petrol vehicles' },
+        { icon: '✓', text: 'Quiet operation - Reduced noise pollution in urban areas' },
+        { icon: '✓', text: 'Easy maintenance - Fewer moving parts than conventional rickshaws' },
+        { icon: '✓', text: 'Comfortable ride - Ergonomic seating and smooth suspension' },
+        { icon: '✓', text: 'Safety features - Includes headlights, taillights, and reflectors' },
+        { icon: '✓', text: 'Weather protection - Optional canopy available' },
+        { icon: '✓', text: 'Smart charging - Battery management system for longer life' }
+      ];
+      
+      let y = doc.lastAutoTable.finalY + 25;
+      features.forEach(feature => {
+        doc.setFont('zapfdingbats');
+        doc.text(feature.icon, 20, y);
+        doc.setFont('helvetica');
+        doc.text(feature.text, 25, y, { maxWidth: 165 });
+        y += 7;
+      });
+      
+      // Add footer
+      doc.setFontSize(10);
+      doc.setTextColor(100, 100, 100);
+      doc.text('For more information, please contact:', 20, 270);
+      doc.setTextColor(13, 71, 161);
+      doc.text('Email: info@jagomotion.com | Phone: +91 9876543210', 20, 275);
+      doc.text('Website: www.jagomotion.com | Address: 123 Tech Park, Bangalore, India', 20, 280);
+      
+      // Add page border
+      doc.setDrawColor(200, 200, 200);
+      doc.rect(5, 5, 200, 287);
+      
+      // Save the PDF
+      doc.save('Jago_Electric_Rickshaw_Brochure.pdf');
+      
+      // Optional: Open PDF in new tab for printing
+      // window.open(doc.output('bloburl'), '_blank');
+    }
+  </script>
+</body>
+</html>

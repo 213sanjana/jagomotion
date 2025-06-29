@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jago Motion Technologies - Product Carousel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <style>
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .carousel-slide {
+      flex: 0 0 100%;
+      display: flex;
+      gap: 1rem;
+      padding: 0 1rem;
+      box-sizing: border-box;
+    }
+    .product-card {
+      flex: 0 0 calc(33.333% - 1rem);
+    }
+
+    @media (max-width: 768px) {
+      .carousel-slide {
+        gap: 0.5rem;
+        padding: 0 0.5rem;
+      }
+      .product-card {
+        flex: 0 0 100%;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .product-card {
+        flex: 0 0 calc(50% - 1rem);
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans">
+
+  <!-- Hero Section -->
+  <section class="bg-blue-600 text-white py-8">
+    <div class="container mx-auto text-center">
+      <h3 class="text-3xl font-bold mb-4">Enhancing Mobility & Independence</h3>
+      <p class="text-lg mb-6 max-w-2xl mx-auto">Quality healthcare and disability products to improve your quality of life</p>
+    </div>
+  </section>
+
+  <!-- Product Carousel -->
+  <section class="py-8 bg-white relative">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Featured Products</h2>
+
+      <div class="carousel-container relative overflow-hidden">
+        <!-- Arrows -->
+        <button id="prevBtn" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 z-10">
+          <i class="fas fa-chevron-left text-gray-700"></i>
+        </button>
+        <button id="nextBtn" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 z-10">
+          <i class="fas fa-chevron-right text-gray-700"></i>
+        </button>
+
+        <!-- Carousel Track -->
+        <div class="carousel-track" id="carousel">
+          <!-- Slide 1 -->
+          <div class="carousel-slide">
+            <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px]">
+              <div class="h-64 bg-gray-200 flex items-center justify-center">
+                <img src="images/cutout.jpg" alt="Electric Rikshaw" class="w-60 h-60 object-contain" />
+              </div>
+              <div class="p-4">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Electric Rikshaw</h3>
+                <p class="text-gray-600 text-sm">Lightweight, foldable electric rickshaw for short-distance mobility.</p>
+              </div>
+            </div>
+            <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px]">
+              <div class="h-64 bg-gray-200 flex items-center justify-center">
+                <img src="images/tricycle.png" alt="Mobility Tricycle" class="w-60 h-60 object-contain" />
+              </div>
+              <div class="p-4">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Mobility Tricycle</h3>
+                <p class="text-gray-600 text-sm">Designed for comfortable travel with stability and ease.</p>
+              </div>
+            </div>
+            <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px]">
+              <div class="h-64 bg-gray-200 flex items-center justify-center">
+                <img src="images/wheelchair.png" alt="Wheelchair" class="w-60 h-60 object-contain" />
+              </div>
+              <div class="p-4">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Smart Wheelchair</h3>
+                <p class="text-gray-600 text-sm">Motorized wheelchair with smart features for disabled users.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 (clone or more products) -->
+          <div class="carousel-slide">
+            <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px]">
+              <div class="h-64 bg-gray-200 flex items-center justify-center">
+                <img src="images/product1.jpg" alt="Product 4" class="w-60 h-60 object-contain" />
+              </div>
+              <div class="p-4">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Portable Walker</h3>
+                <p class="text-gray-600 text-sm">Foldable walker for assisted walking with ergonomic grip.</p>
+              </div>
+            </div>
+            <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px]">
+              <div class="h-64 bg-gray-200 flex items-center justify-center">
+                <img src="images/product2.jpg" alt="Product 5" class="w-60 h-60 object-contain" />
+              </div>
+              <div class="p-4">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Assistive Crutches</h3>
+                <p class="text-gray-600 text-sm">Durable and lightweight crutches for mobility assistance.</p>
+              </div>
+            </div>
+            <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px]">
+              <div class="h-64 bg-gray-200 flex items-center justify-center">
+                <img src="images/product3.jpg" alt="Product 6" class="w-60 h-60 object-contain" />
+              </div>
+              <div class="p-4">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Reclining Chair</h3>
+                <p class="text-gray-600 text-sm">Adjustable recliner for home or clinical care comfort.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Carousel Script -->
+  <script>
+    const track = document.getElementById("carousel");
+    const slides = document.querySelectorAll(".carousel-slide");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    let currentSlide = 0;
+
+    function updateCarousel() {
+      const slideWidth = slides[0].offsetWidth;
+      track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+    }
+
+    nextBtn.addEventListener("click", () => {
+      if (currentSlide < slides.length - 1) {
+        currentSlide++;
+        updateCarousel();
+      }
+    });
+
+    prevBtn.addEventListener("click", () => {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateCarousel();
+      }
+    });
+
+    // Responsive fix on window resize
+    window.addEventListener("resize", updateCarousel);
+  </script>
+</body>
+</html>
