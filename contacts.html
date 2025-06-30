@@ -12,26 +12,265 @@
   <script src="https://cdn.jsdelivr.net/npm/justgage@1.4.0/justgage.min.js"></script>
 
   <style>
-    /* Touch-friendly form elements */
-    .touch-input {
-      min-height: 44px;
-      padding: 12px 16px;
-    }
-    
-    .touch-button {
-      min-height: 48px;
-      min-width: 48px;
+    /* Mobile-first contact page styles */
+    .contact-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
     }
 
-    /* Improved focus states */
-    .focus-visible:focus {
-      outline: 2px solid #3b82f6;
-      outline-offset: 2px;
+    @media (min-width: 640px) {
+      .contact-container {
+        padding: 0 1.5rem;
+      }
     }
 
-    /* Smooth transitions */
-    .transition-all {
-      transition: all 0.3s ease;
+    @media (min-width: 1024px) {
+      .contact-container {
+        padding: 0 2rem;
+      }
+    }
+
+    .contact-section {
+      padding: 2rem 0;
+    }
+
+    @media (min-width: 768px) {
+      .contact-section {
+        padding: 3rem 0;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .contact-section {
+        padding: 4rem 0;
+      }
+    }
+
+    .contact-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .contact-title {
+        font-size: 2.25rem;
+        margin-bottom: 2rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .contact-title {
+        font-size: 2.5rem;
+        margin-bottom: 2.5rem;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    .form-label {
+      display: block;
+      color: #374151;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+    }
+
+    @media (min-width: 768px) {
+      .form-label {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+      }
+    }
+
+    .form-input {
+      width: 100%;
+      border: 2px solid #d1d5db;
+      border-radius: 8px;
+      padding: 0.75rem;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+      background: white;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    @media (min-width: 768px) {
+      .form-input {
+        padding: 1rem;
+        font-size: 1.125rem;
+      }
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    @media (min-width: 768px) {
+      .form-textarea {
+        min-height: 120px;
+      }
+    }
+
+    .submit-btn {
+      background: #2563eb;
+      color: white;
+      padding: 0.875rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    @media (min-width: 768px) {
+      .submit-btn {
+        width: auto;
+        padding: 1rem 2.5rem;
+        font-size: 1.125rem;
+      }
+    }
+
+    .map-container {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .map-container {
+        margin-bottom: 2.5rem;
+      }
+    }
+
+    .map-iframe {
+      width: 100%;
+      height: 250px;
+      border: none;
+    }
+
+    @media (min-width: 768px) {
+      .map-iframe {
+        height: 300px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .map-iframe {
+        height: 320px;
+      }
+    }
+
+    .gauges-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .gauges-container {
+        flex-direction: row;
+        justify-content: center;
+        gap: 3rem;
+      }
+    }
+
+    .gauge-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .gauge-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 0.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .gauge-title {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+      }
+    }
+
+    .gauge-container {
+      width: 120px;
+      height: 100px;
+      margin-bottom: 0.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .gauge-container {
+        width: 140px;
+        height: 120px;
+        margin-bottom: 0.75rem;
+      }
+    }
+
+    .gauge-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+    }
+
+    @media (min-width: 768px) {
+      .gauge-label {
+        font-size: 0.875rem;
+      }
+    }
+
+    /* Layout responsive */
+    .contact-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    @media (min-width: 1024px) {
+      .contact-layout {
+        flex-direction: row;
+        gap: 4rem;
+        align-items: flex-start;
+      }
+    }
+
+    .contact-form-section {
+      flex: 1;
+    }
+
+    .contact-info-section {
+      flex: 1;
     }
   </style>
 </head>
@@ -42,158 +281,78 @@
 
   <!-- Main content -->
   <main class="flex-grow">
-    <!-- Hero Section -->
-    <section class="bg-blue-600 text-white py-8 sm:py-12 md:py-16">
-      <div class="container mx-auto px-4 text-center">
-        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-          Contact Us
-        </h1>
-        <p class="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto">
-          Get in touch with us to learn more about our mobility products and how they can help you.
-        </p>
-      </div>
-    </section>
+    <section class="contact-section bg-white">
+      <div class="contact-container">
+        <div class="contact-layout">
+          <!-- Contact Form -->
+          <div class="contact-form-section">
+            <h2 class="contact-title">Enquire About Products</h2>
+            <form id="enquiryForm" class="space-y-4">
+              <div class="form-group">
+                <label class="form-label" for="product">Product</label>
+                <select id="product" name="product" required class="form-input">
+                  <option value="" disabled selected>Select a product</option>
+                  <option value="electric-rikshaw">Electric Rikshaw</option>
+                  <option value="electric-tricycle">Electric Tri-cycle</option>
+                  <option value="mobility-vehicle">Electric Mobility Vehicle</option>
+                  <option value="cerebral-palsy-walker">Cerebral Palsy Walker</option>
+                  <option value="walker-prosthetics">Walker Assisted Prosthetics</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="name">Name</label>
+                <input type="text" id="name" name="name" required class="form-input" />
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required class="form-input" />
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="place">Place</label>
+                <input type="text" id="place" name="place" class="form-input" />
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="question">Question</label>
+                <textarea id="question" name="question" rows="4" required class="form-input form-textarea"></textarea>
+              </div>
+              
+              <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane mr-2"></i>
+                Submit Enquiry
+              </button>
+            </form>
+          </div>
 
-    <section class="py-8 sm:py-12 md:py-16 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="max-w-6xl mx-auto">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            
-            <!-- Contact Form -->
-            <div class="order-2 lg:order-1">
-              <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-6 md:mb-8">
-                Enquire About Products
-              </h2>
-              <form id="enquiryForm" class="space-y-6">
-                <div>
-                  <label class="block text-gray-700 font-semibold mb-2 text-base" for="product">
-                    Product *
-                  </label>
-                  <select id="product" name="product" required
-                    class="w-full border-2 border-gray-300 px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all touch-input text-base">
-                    <option value="" disabled selected>Select a product</option>
-                    <option value="electric-rikshaw">Electric Rikshaw</option>
-                    <option value="electric-tricycle">Electric Tri-cycle</option>
-                    <option value="mobility-vehicle">Electric Mobility Vehicle</option>
-                    <option value="cerebral-palsy-walker">Cerebral Palsy Walker</option>
-                    <option value="walker-prosthetics">Walker Assisted Prosthetics</option>
-                  </select>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label class="block text-gray-700 font-semibold mb-2 text-base" for="name">
-                      Name *
-                    </label>
-                    <input type="text" id="name" name="name" required
-                      class="w-full border-2 border-gray-300 px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all touch-input text-base" 
-                      placeholder="Your full name" />
-                  </div>
-                  <div>
-                    <label class="block text-gray-700 font-semibold mb-2 text-base" for="phone">
-                      Phone Number *
-                    </label>
-                    <input type="tel" id="phone" name="phone" required
-                      class="w-full border-2 border-gray-300 px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all touch-input text-base" 
-                      placeholder="Your phone number" />
-                  </div>
-                </div>
-
-                <div>
-                  <label class="block text-gray-700 font-semibold mb-2 text-base" for="place">
-                    Place
-                  </label>
-                  <input type="text" id="place" name="place"
-                    class="w-full border-2 border-gray-300 px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all touch-input text-base" 
-                    placeholder="Your city/location" />
-                </div>
-
-                <div>
-                  <label class="block text-gray-700 font-semibold mb-2 text-base" for="question">
-                    Question *
-                  </label>
-                  <textarea id="question" name="question" rows="4" required
-                    class="w-full border-2 border-gray-300 px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-base resize-none" 
-                    placeholder="Tell us about your requirements..."></textarea>
-                </div>
-
-                <div class="flex flex-col sm:flex-row gap-4">
-                  <button type="submit"
-                    class="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 touch-button text-base flex-1">
-                    <i class="fas fa-paper-plane mr-2"></i>
-                    Submit Enquiry
-                  </button>
-                  <a href="tel:+917083861174" 
-                    class="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300 touch-button text-base flex items-center justify-center">
-                    <i class="fas fa-phone mr-2"></i>
-                    Call Now
-                  </a>
-                </div>
-              </form>
+          <!-- Map & Gauges -->
+          <div class="contact-info-section">
+            <!-- Map -->
+            <div class="map-container">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215573291234!2d-73.98784492453715!3d40.74844097138985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1689876423582!5m2!1sen!2sus" 
+                class="map-iframe"
+                allowfullscreen="" 
+                loading="lazy">
+              </iframe>
             </div>
 
-            <!-- Map & Gauges -->
-            <div class="order-1 lg:order-2">
-              <!-- Map -->
-              <div class="mb-8">
-                <h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-4">
-                  Our Location
-                </h3>
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215573291234!2d-73.98784492453715!3d40.74844097138985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1689876423582!5m2!1sen!2sus" 
-                  class="w-full h-64 sm:h-80 md:h-96 rounded-lg shadow-lg border-0"
-                  allowfullscreen="" 
-                  loading="lazy">
-                </iframe>
+            <!-- Gauges -->
+            <div class="gauges-container">
+              <!-- India Gauge -->
+              <div class="gauge-item">
+                <p class="gauge-title">Views from India</p>
+                <div id="gauge-india" class="gauge-container"></div>
+                <p class="gauge-label">India</p>
               </div>
 
-              <!-- Gauges -->
-              <div class="bg-gray-50 rounded-lg p-6">
-                <h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-6 text-center">
-                  Global Reach
-                </h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                  <!-- India Gauge -->
-                  <div class="flex flex-col items-center">
-                    <p class="text-base font-semibold text-gray-700 mb-3">Views from India</p>
-                    <div id="gauge-india" class="w-32 h-24 sm:w-40 sm:h-32"></div>
-                    <p class="text-sm text-gray-500 mt-2">India</p>
-                  </div>
-
-                  <!-- World Gauge -->
-                  <div class="flex flex-col items-center">
-                    <p class="text-base font-semibold text-gray-700 mb-3">Views from World</p>
-                    <div id="gauge-world" class="w-32 h-24 sm:w-40 sm:h-32"></div>
-                    <p class="text-sm text-gray-500 mt-2">World</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Contact Info -->
-              <div class="mt-8 bg-blue-50 rounded-lg p-6">
-                <h3 class="text-xl font-bold text-gray-800 mb-4">
-                  Get in Touch
-                </h3>
-                <div class="space-y-3">
-                  <div class="flex items-center">
-                    <i class="fas fa-phone text-blue-600 w-5 mr-3"></i>
-                    <a href="tel:+917083861174" class="text-gray-700 hover:text-blue-600 transition-colors">
-                      +91 708 386 1174
-                    </a>
-                  </div>
-                  <div class="flex items-center">
-                    <i class="fab fa-whatsapp text-green-600 w-5 mr-3"></i>
-                    <a href="https://wa.me/917083861174" class="text-gray-700 hover:text-green-600 transition-colors">
-                      WhatsApp
-                    </a>
-                  </div>
-                  <div class="flex items-center">
-                    <i class="fas fa-envelope text-blue-600 w-5 mr-3"></i>
-                    <a href="mailto:info@jagomotion.com" class="text-gray-700 hover:text-blue-600 transition-colors">
-                      info@jagomotion.com
-                    </a>
-                  </div>
-                </div>
+              <!-- World Gauge -->
+              <div class="gauge-item">
+                <p class="gauge-title">Views from World</p>
+                <div id="gauge-world" class="gauge-container"></div>
+                <p class="gauge-label">World</p>
               </div>
             </div>
           </div>

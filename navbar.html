@@ -1,15 +1,26 @@
 <!-- navbar.html -->
 <header class="bg-[#001C71] text-white shadow-md">
   <div class="container mx-auto px-4 py-2">
-    <div class="flex justify-between items-center">
-      <!-- Logo -->
+    <!-- Mobile layout -->
+    <div class="flex justify-between items-center lg:hidden">
       <div class="flex items-center">
-        <img src="images/JAGO_Blue_Light.png" alt="Logo" class="w-16 h-12 sm:w-20 sm:h-14 md:w-[100px] md:h-[70px] object-contain">
+        <img src="images/JAGO_Blue_Light.png" alt="Logo" class="w-16 h-12 sm:w-20 sm:h-14 object-contain">
+      </div>
+      
+      <!-- Mobile hamburger menu -->
+      <button id="mobile-menu-btn" class="text-white p-2 focus:outline-none">
+        <i class="fas fa-bars text-xl"></i>
+      </button>
+    </div>
+
+    <!-- Desktop layout -->
+    <div class="hidden lg:flex justify-between items-center">
+      <div class="flex items-center">
+        <img src="images/JAGO_Blue_Light.png" alt="Logo" class="w-[100px] h-[70px] object-contain">
       </div>
 
-      <!-- Desktop Navigation -->
-      <nav class="hidden lg:flex items-center space-x-6 text-lg">
-        <a href="main.html" class="hover:text-blue-200 transition-colors duration-200">Home</a>
+      <nav class="relative space-x-6 flex items-center text-xl">
+        <a href="main.html" class="hover:text-blue-200 transition-colors">Home</a>
 
         <!-- Products Dropdown -->
         <div class="relative group">
@@ -34,65 +45,138 @@
           </div>
         </div>
 
-        <a href="contacts.html" class="hover:text-blue-200 transition-colors duration-200">Contact</a>
+        <a href="contacts.html" class="hover:text-blue-200 transition-colors">Contact</a>
       </nav>
-
-      <!-- Mobile Menu Button -->
-      <button id="mobile-menu-btn" class="lg:hidden text-white p-2 focus:outline-none">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
     </div>
 
-    <!-- Mobile Navigation -->
-    <div id="mobile-menu" class="lg:hidden hidden mt-4 pb-4">
-      <nav class="flex flex-col space-y-4 text-lg">
-        <a href="main.html" class="hover:text-blue-200 transition-colors duration-200 py-2">Home</a>
+    <!-- Mobile menu overlay -->
+    <div id="mobile-menu" class="lg:hidden hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+      <div class="bg-[#001C71] w-80 h-full transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="flex justify-between items-center p-4 border-b border-blue-600">
+          <img src="images/JAGO_Blue_Light.png" alt="Logo" class="w-20 h-14 object-contain">
+          <button id="close-menu-btn" class="text-white p-2 focus:outline-none">
+            <i class="fas fa-times text-xl"></i>
+          </button>
+        </div>
         
-        <!-- Mobile Products Section -->
-        <div class="space-y-2">
-          <div class="font-semibold text-blue-200">Products</div>
-          <div class="ml-4 space-y-2">
-            <a href="electricrikshaw.html" class="block py-1 hover:text-blue-200">Electric Rikshaw</a>
-            <a href="electricrikshaw.html" class="block py-1 hover:text-blue-200">Electric Mobility Vehicle</a>
-            <a href="electricrikshaw.html" class="block py-1 hover:text-blue-200">Electric Mini-Vehicle</a>
-            <a href="electricrikshaw.html" class="block py-1 hover:text-blue-200">Electric Tri-cycle</a>
-            <a href="electricrikshaw.html" class="block py-1 hover:text-blue-200">Cerebral Palsy Walker</a>
-            <a href="electricrikshaw.html" class="block py-1 hover:text-blue-200">Walker assisted prosthetics</a>
+        <nav class="p-4 space-y-4">
+          <a href="main.html" class="block text-white text-lg py-2 hover:text-blue-200 transition-colors">Home</a>
+          
+          <!-- Mobile Products Accordion -->
+          <div class="mobile-accordion">
+            <button class="mobile-accordion-btn w-full text-left text-white text-lg py-2 hover:text-blue-200 transition-colors flex justify-between items-center">
+              Products
+              <i class="fas fa-chevron-down transition-transform"></i>
+            </button>
+            <div class="mobile-accordion-content hidden bg-blue-800 mt-2 rounded">
+              <a href="electricrikshaw.html" class="block px-4 py-2 text-white hover:bg-blue-700">Electric Rikshaw</a>
+              <a href="electricrikshaw.html" class="block px-4 py-2 text-white hover:bg-blue-700">Electric Mobility Vehicle</a>
+              <a href="electricrikshaw.html" class="block px-4 py-2 text-white hover:bg-blue-700">Electric Mini-Vehicle</a>
+              <a href="electricrikshaw.html" class="block px-4 py-2 text-white hover:bg-blue-700">Electric Tri-cycle</a>
+              <a href="electricrikshaw.html" class="block px-4 py-2 text-white hover:bg-blue-700">Cerebral Palsy Walker</a>
+              <a href="electricrikshaw.html" class="block px-4 py-2 text-white hover:bg-blue-700">Walker assisted prosthetics</a>
+            </div>
           </div>
-        </div>
-
-        <!-- Mobile About Section -->
-        <div class="space-y-2">
-          <div class="font-semibold text-blue-200">About</div>
-          <div class="ml-4 space-y-2">
-            <a href="about-us.html" class="block py-1 hover:text-blue-200">Mission</a>
-            <a href="team.html" class="block py-1 hover:text-blue-200">Disabilities Policies</a>
-            <a href="about-us.html" class="block py-1 hover:text-blue-200">Blogs</a>
+          
+          <!-- Mobile About Accordion -->
+          <div class="mobile-accordion">
+            <button class="mobile-accordion-btn w-full text-left text-white text-lg py-2 hover:text-blue-200 transition-colors flex justify-between items-center">
+              About
+              <i class="fas fa-chevron-down transition-transform"></i>
+            </button>
+            <div class="mobile-accordion-content hidden bg-blue-800 mt-2 rounded">
+              <a href="about-us.html" class="block px-4 py-2 text-white hover:bg-blue-700">Mission</a>
+              <a href="team.html" class="block px-4 py-2 text-white hover:bg-blue-700">Disabilities Policies</a>
+              <a href="about-us.html" class="block px-4 py-2 text-white hover:bg-blue-700">Blogs</a>
+            </div>
           </div>
-        </div>
-
-        <a href="contacts.html" class="hover:text-blue-200 transition-colors duration-200 py-2">Contact</a>
-      </nav>
+          
+          <a href="contacts.html" class="block text-white text-lg py-2 hover:text-blue-200 transition-colors">Contact</a>
+        </nav>
+      </div>
     </div>
   </div>
 </header>
 
-<script>
-  // Mobile menu toggle
-  document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-    const mobileMenu = document.getElementById('mobile-menu');
-    mobileMenu.classList.toggle('hidden');
-  });
-
-  // Close mobile menu when clicking outside
-  document.addEventListener('click', function(event) {
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    
-    if (!mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
-      mobileMenu.classList.add('hidden');
+<style>
+  /* Mobile menu styles */
+  .mobile-accordion-btn.active i {
+    transform: rotate(180deg);
+  }
+  
+  .mobile-accordion-content {
+    transition: all 0.3s ease;
+  }
+  
+  /* Responsive container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  @media (min-width: 640px) {
+    .container {
+      padding: 0 1.5rem;
     }
+  }
+  
+  @media (min-width: 1024px) {
+    .container {
+      padding: 0 2rem;
+    }
+  }
+</style>
+
+<script>
+  // Mobile menu functionality
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const closeMenuBtn = document.getElementById('close-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuContent = mobileMenu.querySelector('div');
+  const accordionBtns = document.querySelectorAll('.mobile-accordion-btn');
+  
+  // Toggle mobile menu
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.remove('hidden');
+    setTimeout(() => {
+      mobileMenuContent.classList.remove('translate-x-full');
+    }, 10);
+  });
+  
+  closeMenuBtn.addEventListener('click', () => {
+    mobileMenuContent.classList.add('translate-x-full');
+    setTimeout(() => {
+      mobileMenu.classList.add('hidden');
+    }, 300);
+  });
+  
+  // Close menu when clicking outside
+  mobileMenu.addEventListener('click', (e) => {
+    if (e.target === mobileMenu) {
+      closeMenuBtn.click();
+    }
+  });
+  
+  // Mobile accordion functionality
+  accordionBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('i');
+      
+      btn.classList.toggle('active');
+      
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        setTimeout(() => {
+          content.style.maxHeight = content.scrollHeight + 'px';
+        }, 10);
+      } else {
+        content.style.maxHeight = '0px';
+        setTimeout(() => {
+          content.classList.add('hidden');
+        }, 300);
+      }
+    });
   });
 </script>
