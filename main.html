@@ -12,10 +12,12 @@
             position: relative;
             width: 100%;
             padding-bottom: 1rem;
+            will-change: transform;
         }
         .carousel-track {
             display: flex;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
         }
         .carousel-slide {
             flex: 0 0 100%;
@@ -153,10 +155,10 @@
                             <!-- Product 1 Clone -->
                             <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px] flex flex-col justify-between items-center">
                                 <div class="h-64 md:h-64 bg-gray-200 flex items-center justify-center w-full">
-                                    <img src="images/electric_rickshaw.jpg" alt="Electric Rikshaw" class="w-60 h-60 object-contain">
+                                    <img src="images/trycycle.jpg" alt="Cerebral Palsy Walker" class="w-60 h-60 object-contain">
                                 </div>
                                 <div class="flex flex-col items-center justify-center flex-1 w-full p-3 md:p-4">
-                                    <h3 class="text-xl font-bold text-center mb-1">Electric Rikshaw</h3>
+                                    <h3 class="text-xl font-bold text-center mb-1">Electric Tricycle</h3>
                                     <a href="try.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">Enquire</a>
                                 </div>
                             </div>
@@ -164,10 +166,10 @@
                             <!-- Product 2 Clone -->
                             <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px] flex flex-col justify-between items-center">
                                 <div class="h-64 md:h-64 bg-gray-200 flex items-center justify-center w-full">
-                                    <img src="images/electric_mobility_vehicle.jpg" alt="Mobility Vehicle" class="w-full h-full object-cover">
+                                    <img src="images/mini.png" alt="Mini-Vehicle" class="w-60 h-60 object-contain">
                                 </div>
                                 <div class="flex flex-col items-center justify-center flex-1 w-full p-3 md:p-4">
-                                    <h3 class="text-xl font-bold text-center mb-1">Electric Mobility Vehicle</h3>
+                                    <h3 class="text-xl font-bold text-center mb-1">Electric Mini-Vehicle</h3>
                                     <a href="try.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">Enquire</a>
                                 </div>
                             </div>
@@ -175,10 +177,10 @@
                             <!-- Product 3 Clone -->
                             <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px] flex flex-col justify-between items-center">
                                 <div class="h-64 md:h-64 bg-gray-200 flex items-center justify-center w-full">
-                                    <img src="images/mini.png" alt="Mini-Vehicle" class="w-60 h-60 object-contain">
+                                    <img src="images/electric_mobility_vehicle.jpg" alt="Mobility Vehicle" class="w-full h-full object-cover">
                                 </div>
                                 <div class="flex flex-col items-center justify-center flex-1 w-full p-3 md:p-4">
-                                    <h3 class="text-xl font-bold text-center mb-1">Electric Mini-Vehicle</h3>
+                                    <h3 class="text-xl font-bold text-center mb-1">Electric Mobility Vehicle</h3>
                                     <a href="try.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">Enquire</a>
                                 </div>
                             </div>
@@ -204,16 +206,25 @@
 
         function updateCarousel() {
             const slideWidth = document.querySelector(".carousel-slide").offsetWidth;
-            track.style.transition = "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
+            track.style.transition = "transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
             track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
             
-            // When we reach the clone (last slide), instantly reset to first slide
+            // When we reach the clone (last slide), seamlessly reset to first slide
             if (currentSlide >= realSlideCount) {
                 setTimeout(() => {
                     track.style.transition = "none";
                     currentSlide = 0;
                     track.style.transform = `translateX(0)`;
-                }, 500);
+                }, 800);
+            }
+            
+            // When we go backwards from first slide, seamlessly jump to the clone
+            if (currentSlide < 0) {
+                setTimeout(() => {
+                    track.style.transition = "none";
+                    currentSlide = realSlideCount - 1;
+                    track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+                }, 800);
             }
         }
 
@@ -224,12 +235,18 @@
 
         function goToPrevSlide() {
             if (currentSlide === 0) {
-                currentSlide = realSlideCount - 1;
-                track.style.transition = "none";
-                const slideWidth = document.querySelector(".carousel-slide").offsetWidth;
+                // Instantly jump to the clone (last) slide
+                const slideWidth = document.querySelector('.carousel-slide').offsetWidth;
+                track.style.transition = 'none';
+                currentSlide = realSlideCount;
                 track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+                // Force reflow to apply the transform instantly
+                void track.offsetWidth;
+                // Then animate to the real last slide
                 setTimeout(() => {
-                    track.style.transition = "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
+                    track.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                    currentSlide = realSlideCount - 1;
+                    track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
                 }, 20);
             } else {
                 currentSlide--;
