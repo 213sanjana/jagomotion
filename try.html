@@ -8,24 +8,29 @@
   <!-- Add jsPDF library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papmQ+1QwQw5QwQw5QwQw5QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
     /* Mobile-first product page styles */
     .product-container {
-      max-width: 1200px;
+      max-width: 100%;
       margin: 0 auto;
-      padding: 0 1rem;
+      padding: 0 0.25rem;
     }
 
     @media (min-width: 640px) {
       .product-container {
-        padding: 0 1.5rem;
+        padding: 0 0.25rem;
       }
     }
 
     @media (min-width: 1024px) {
       .product-container {
-        padding: 0 2rem;
+        max-width: 100%;
+        max-height: 1000px;
+        margin: 0 auto;
+        padding: 0 0.25rem;
       }
     }
 
@@ -38,7 +43,7 @@
 
     @media (min-width: 768px) {
       .hero-section {
-        padding: 3rem 0;
+        padding: 0.25rem 0;
       }
     }
 
@@ -134,7 +139,7 @@
 
     .content-section {
       background: white;
-      padding: 1.5rem;
+      padding: 1rem;
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
@@ -278,16 +283,13 @@
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="product-container">
-      <h1 class="hero-title">Electric Rickshaw</h1>
+      <h1 class="hero-title">Electric Tricycle</h1>
       <div class="hero-actions">
         <button onclick="generateBrochure()" class="hero-btn">
-          <i class="fas fa-download mr-2"></i>
-          Download Brochure
-        </button>
+          <i class="fas fa-download mr-2"></i>Brochure</button>
+          
         <a href="contacts.html" class="hero-btn">
-          <i class="fas fa-envelope mr-2"></i>
-          Enquire Now
-        </a>
+          <i class="fas fa-envelope mr-2"></i>Enquire</a>
       </div>
     </div>
   </section>
@@ -295,57 +297,74 @@
   <!-- Main Content -->
   <main class="main-content">
     <div class="product-container">
-      <div class="content-grid">
-        <!-- Product Information -->
-        <section class="content-section">
-          <h2 class="section-title">Product Overview</h2>
-          <p class="product-description">
-            This electric rickshaw is designed for easy mobility with a lightweight, foldable frame. Perfect for short-distance travel with a 20-mile battery range. The vehicle features advanced battery technology, ergonomic seating, and eco-friendly operation with zero emissions. Ideal for urban transportation needs, it combines comfort with sustainability.
-          </p>
-      </section>
+      <!-- Add padding wrapper here -->
+      <div class="px-4 md:px-8">
+        <div class="flex flex-row w-full gap-2 items-start">
+          <!-- Left: Product Gallery (WIDER: 55%) -->
+          <section class="content-section flex flex-col items-center w-[45%]">
+            <h2 class="section-title sr-only">Product Gallery</h2>
+            <div class="w-full flex flex-col items-center">
+              <!-- Thumbnails -->
+              <div class="flex flex-row space-x-7 mb-4">
+                <img src="images/tricycle.jpg" alt="Electric Rickshaw" class="w-14 h-14 object-cover rounded cursor-pointer border-2 border-blue-500" onclick="showMedia('img1')" id="thumb-img1">
+                <img src="images/mini.png" alt="Mobility Vehicle" class="w-14 h-14 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img2')" id="thumb-img2">
+                <img src="images/electric_rickshaw.jpg" alt="Electric Rickshaw 2" class="w-14 h-14 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img3')" id="thumb-img3">
+                <img src="images/electric_mobility_vehicle.jpg" alt="Mobility Vehicle 2" class="w-14 h-14 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img4')" id="thumb-img4">
+                <div class="w-14 h-14 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid1')" id="thumb-vid1">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-6.518-3.759A1 1 0 007 8.06v7.882a1 1 0 001.234.97l6.518-1.857A1 1 0 0016 14.06V9.94a1 1 0 00-1.248-.772z" />
+                  </svg>
+                </div>
+              </div>
+              <!-- Main Media -->
+              <div class="w-full flex items-center justify-center">
+                <img src="images/tricycle.jpg" alt="Electric Rickshaw" id="main-img1" class="main-media rounded-lg shadow-lg w-96 h-96 object-contain block">
+                <img src="images/mini.png" alt="Mobility Vehicle" id="main-img2" class="main-media rounded-lg shadow-lg w-96 h-96 object-contain hidden">
+                <img src="images/electric_rickshaw.jpg" alt="Electric Rickshaw 2" id="main-img3" class="main-media rounded-lg shadow-lg w-96 h-96 object-contain hidden">
+                <img src="images/electric_mobility_vehicle.jpg" alt="Mobility Vehicle 2" id="main-img4" class="main-media rounded-lg shadow-lg w-96 h-96 object-contain hidden">
+                <video controls id="main-vid1" class="main-media rounded-lg shadow-lg w-96 h-96 object-contain hidden">
+                  <source src="images/rikshaw.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>          
+          </section>
+          
+          <!-- Right: Overview Section Grid (NARROWER: 45%) -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-[55%]">
+            <!-- Product Overview (wider) -->
+            <section class="content-section md:col-span-2">
+              <h2 class="section-title">Product Overview</h2>
+              <p class="product-description mb-6">
+                This electric rickshaw is designed for easy mobility with a lightweight, foldable frame. Perfect for short-distance travel with a 20-mile battery range. The vehicle features advanced battery technology, ergonomic seating, and eco-friendly operation with zero emissions. Ideal for urban transportation needs, it combines comfort with sustainability.
+              </p>
+            </section>
 
-        <!-- Key Features -->
-        <section class="content-section">
-          <h2 class="section-title">Key Features</h2>
-          <ul class="features-list">
-          <li>Lightweight & foldable aluminum alloy frame</li>
-          <li>20-mile range on a single charge</li>
-          <li>Fast charging (0-100% in 4 hours)</li>
-          <li>Ergonomic handle with anti-slip grip</li>
-          <li>Digital display with battery indicator</li>
-          <li>Durable and weather-resistant materials</li>
-          <li>LED headlights and taillights</li>
-          <li>Comfortable seating for 2 passengers</li>
-          <li>Rear storage compartment</li>
-          <li>Regenerative braking system</li>
-        </ul>
-      </section>
+            <!-- Price (narrower) -->
+            <section class="content-section flex flex-col items-center justify-center">
+              <h2 class="section-title">PRICE</h2>
+              <div class="text-3xl font-bold text-blue-700 mb-2">₹ 1,20,000</div>
+              <button class="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">Enquire Now</button>
+            </section>
 
-        <!-- Product Images -->
-        <section class="content-section">
-          <h2 class="section-title">Product Gallery</h2>
-          <div class="media-container">
-            <div class="media-item">
-              <img src="images/mini.png" alt="Electric Rickshaw" />
-            </div>
-            <div class="media-item">
-              <img src="images/tricycle.png" alt="Mobility Vehicle" />
-            </div>
+            <!-- Product Features (full width below) -->
+            <section class="content-section md:col-span-3 flex flex-col">
+              <h2 class="section-title">Product Features</h2>
+              <ul class="features-list flex-1">
+                <li>Lightweight & foldable aluminum alloy frame</li>
+                <li>20-mile range on a single charge</li>
+                <li>Fast charging (0-100% in 4 hours)</li>
+                <li>Ergonomic handle with anti-slip grip</li>
+                <li>Digital display with battery indicator</li>
+                <li>Durable and weather-resistant materials</li>
+                <li>LED headlights and taillights</li>
+                <li>Comfortable seating for 2 passengers</li>
+                <li>Rear storage compartment</li>
+                <li>Regenerative braking system</li>
+              </ul>
+            </section>
           </div>
-      </section>
-
-        <!-- Product Video -->
-        <section class="content-section">
-          <h2 class="section-title">Product Demo</h2>
-          <div class="media-container">
-            <div class="media-item">
-              <video controls>
-          <source src="images/rikshaw.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-            </div>
-          </div>
-      </section>
+        </div>
       </div>
     </div>
   </main>
@@ -475,6 +494,29 @@
       
       // Optional: Open PDF in new tab for printing
       // window.open(doc.output('bloburl'), '_blank');
+    }
+
+    function showMedia(id) {
+      // Hide all
+      document.querySelectorAll('.main-media').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('[id^="thumb-"]').forEach(el => el.classList.remove('border-blue-500'));
+      // Show selected
+      if (id === 'img1') {
+        document.getElementById('main-img1').classList.remove('hidden');
+        document.getElementById('thumb-img1').classList.add('border-blue-500');
+      } else if (id === 'img2') {
+        document.getElementById('main-img2').classList.remove('hidden');
+        document.getElementById('thumb-img2').classList.add('border-blue-500');
+      } else if (id === 'img3') {
+        document.getElementById('main-img3').classList.remove('hidden');
+        document.getElementById('thumb-img3').classList.add('border-blue-500');
+      } else if (id === 'img4') {
+        document.getElementById('main-img4').classList.remove('hidden');
+        document.getElementById('thumb-img4').classList.add('border-blue-500');
+      } else if (id === 'vid1') {
+        document.getElementById('main-vid1').classList.remove('hidden');
+        document.getElementById('thumb-vid1').classList.add('border-blue-500');
+      }
     }
   </script>
 </body>
