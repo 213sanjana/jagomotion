@@ -294,20 +294,20 @@
             <h2 class="section-title sr-only">Product Gallery</h2>
             <div class="w-full flex flex-col items-center">
               <!-- Thumbnails -->
-              <div class="flex flex-row space-x-7 mb-4">
-                <img src="images/trycycle.jpg" alt="Electric Tricycle" class="w-20 h-20 object-cover rounded cursor-pointer border-2 border-blue-500" onclick="showMedia('img1')" id="thumb-img1">
+              <div class="flex flex-row space-x-8 mb-6">
+                <img src="images/tricycle.jpg" alt="Electric Tricycle" class="w-20 h-20 object-cover rounded cursor-pointer border-2 border-blue-500" onclick="showMedia('img1')" id="thumb-img1">
                 <img src="images/mini.png" alt="Mini" class="w-20 h-20 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img2')" id="thumb-img2">
                 <img src="images/electric_rickshaw.jpg" alt="Electric Rickshaw" class="w-20 h-20 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img3')" id="thumb-img3">
                 <img src="images/electric_mobility_vehicle.jpg" alt="Mobility Vehicle" class="w-20 h-20 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img4')" id="thumb-img4">
                 <div class="w-20 h-20 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid1')" id="thumb-vid1">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-6.518-3.759A1 1 0 007 8.06v7.882a1 1 0 001.234.97l6.518-1.857A1 1 0 0016 14.06V9.94a1 1 0 00-1.248-.772z" />
                   </svg>
                 </div>
               </div>
               <!-- Main Media -->
               <div class="w-full flex items-center justify-center">
-                <img src="images/trycycle.jpg" alt="Electric Tricycle" id="main-img1" class="main-media rounded-lg shadow-lg w-96 h-96 object-contain block">
+                <img src="images/tricycle.jpg" alt="Electric Tricycle" id="main-img1" class="main-media rounded-lg shadow-lg w-96 h-96 object-contain block">
                 <img src="images/mini.png" alt="Mini" id="main-img2" class="main-media rounded-lg shadow-lg w-96 h-96 object-contain hidden">
                 <img src="images/electric_rickshaw.jpg" alt="Electric Rickshaw" id="main-img3" class="main-media rounded-lg shadow-lg w-96 h-96 object-contain hidden">
                 <img src="images/electric_mobility_vehicle.jpg" alt="Mobility Vehicle" id="main-img4" class="main-media rounded-lg shadow-lg w-96 h-96 object-contain hidden">
@@ -323,10 +323,18 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-[55%]">
             <!-- Product Overview (wider) -->
             <section class="content-section md:col-span-2">
-              <h2 class="section-title">Electric Tricycle</h2>
+              <h2 class="section-title text-3xl">Electric Tricycle</h2>
               <p class="product-description mb-6">
                 This electric rickshaw is designed for easy mobility with a lightweight, foldable frame. Perfect for short-distance travel with a 20-mile battery range. The vehicle features advanced battery technology, ergonomic seating, and eco-friendly operation with zero emissions. Ideal for urban transportation needs, it combines comfort with sustainability.
               </p>
+              <h2 class="section-title text-xl">Product Features</h2>
+              <ul class="features-list flex-1">
+                <li>Lightweight & foldable aluminum alloy frame</li>
+                <li>20-mile range on a single charge</li>
+                <li>Fast charging (0-100% in 4 hours)</li>
+                <li>Ergonomic handle with anti-slip grip</li>
+                <li>Digital display with battery indicator</li>
+              </ul>
             </section>
 
             <!-- Price (narrower) -->
@@ -340,23 +348,6 @@
                   <i class="fas fa-download"></i>Brochure
                 </button>
               </div>
-            </section>
-
-            <!-- Product Features (full width below) -->
-            <section class="content-section md:col-span-3 flex flex-col">
-              <h2 class="section-title">Product Features</h2>
-              <ul class="features-list flex-1">
-                <li>Lightweight & foldable aluminum alloy frame</li>
-                <li>20-mile range on a single charge</li>
-                <li>Fast charging (0-100% in 4 hours)</li>
-                <li>Ergonomic handle with anti-slip grip</li>
-                <li>Digital display with battery indicator</li>
-                <li>Durable and weather-resistant materials</li>
-                <li>LED headlights and taillights</li>
-                <li>Comfortable seating for 2 passengers</li>
-                <li>Rear storage compartment</li>
-                <li>Regenerative braking system</li>
-              </ul>
             </section>
           </div>
         </div>
