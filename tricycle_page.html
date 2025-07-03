@@ -109,9 +109,8 @@
       }
     }
 
-
     .main-content {
-      padding: 2rem 0;
+      padding: 1rem;
     }
 
     @media (min-width: 768px) {
@@ -269,9 +268,28 @@
         grid-column: auto;
       }
     }
+
+    .product-overview-box {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .product-overview-box {
+        padding-top: 1.4rem;
+        padding-bottom: 1.4rem;
+      }
+    }
+
+    footer {
+       padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+
+
   </style>
 </head>
-<body class="bg-gray-50 font-sans min-h-screen flex flex-col">
+<body class="bg-gray-50 font-sans min-h-screen flex flex-col justify-between">
 
   <!-- Navbar -->
   <div id="navbar-placeholder" class="w-full"></div>
@@ -284,7 +302,7 @@
   </script>
 
   <!-- Main Content -->
-  <main class="main-content">
+  <main class="main-content pt-4 md:pt-8 pb-11 flex-grow">
     <div class="product-container">
       <!-- Add padding wrapper here -->
       <div class="px-4 md:px-8">
@@ -295,11 +313,11 @@
             <div class="w-full flex flex-col items-center">
               <!-- Thumbnails -->
               <div class="flex flex-row space-x-5 mb-6">
-                <img src="images/trycycle.jpg" alt="Electric Tricycle" class="w-20 h-20 object-cover rounded cursor-pointer border-2 border-blue-500" onclick="showMedia('img1')" id="thumb-img1">
-                <img src="images/mini.png" alt="Mini" class="w-20 h-20 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img2')" id="thumb-img2">
-                <img src="images/electric_rickshaw.jpg" alt="Electric Rickshaw" class="w-20 h-20 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img3')" id="thumb-img3">
-                <img src="images/electric_mobility_vehicle.jpg" alt="Mobility Vehicle" class="w-20 h-20 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img4')" id="thumb-img4">
-                <div class="w-20 h-20 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid1')" id="thumb-vid1">
+                <img src="images/tricycle.jpg" alt="Electric Tricycle" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-blue-500" onclick="showMedia('img1')" id="thumb-img1">
+                <img src="images/mini.png" alt="Mini" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img2')" id="thumb-img2">
+                <img src="images/electric_rickshaw.jpg" alt="Electric Rickshaw" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img3')" id="thumb-img3">
+                <img src="images/electric_mobility_vehicle.jpg" alt="Mobility Vehicle" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img4')" id="thumb-img4">
+                <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid1')" id="thumb-vid1">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-6.518-3.759A1 1 0 007 8.06v7.882a1 1 0 001.234.97l6.518-1.857A1 1 0 0016 14.06V9.94a1 1 0 00-1.248-.772z" />
                   </svg>
@@ -307,14 +325,12 @@
               </div>
               <!-- Main Media -->
               <div class="w-full flex items-center justify-center">
-                <img src="images/trycycle.jpg" alt="Electric Tricycle" id="main-img1" class="main-media rounded-lg shadow-lg w-96 h-96 object-contain block">
-                <img src="images/mini.png" alt="Mini" id="main-img2" class="main-media rounded-lg shadow-lg w-96 h-96 object-contain hidden">
-                <img src="images/electric_rickshaw.jpg" alt="Electric Rickshaw" id="main-img3" class="main-media rounded-lg shadow-lg w-96 h-96 object-contain hidden">
-                <img src="images/electric_mobility_vehicle.jpg" alt="Mobility Vehicle" id="main-img4" class="main-media rounded-lg shadow-lg w-96 h-96 object-contain hidden">
-                <video controls id="main-vid1" class="main-media rounded-lg shadow-lg w-96 h-96 object-contain hidden">
-                  <source src="images/rikshaw.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
+                <img src="images/tricycle.jpg" alt="Electric Tricycle" id="main-img1" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain block">
+                <img src="images/mini.png" alt="Mini" id="main-img2" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
+                <img src="images/electric_rickshaw.jpg" alt="Electric Rickshaw" id="main-img3" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
+                <img src="images/electric_mobility_vehicle.jpg" alt="Mobility Vehicle" id="main-img4" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
+                <video controls id="main-vid1" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
+                  <source src="images/rikshaw.mp4" type="video/mp4">Your browser does not support the video tag.</video>
               </div>
             </div>          
           </section>
@@ -322,7 +338,7 @@
           <!-- Right: Overview Section Grid (NARROWER: 45%) -->
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-[55%]">
             <!-- Product Overview (wider) -->
-            <section class="content-section md:col-span-2">
+            <section class="content-section md:col-span-2 product-overview-box">
               <h2 class="section-title text-3xl">Electric Tricycle</h2>
               <p class="product-description mb-6">
                 This electric rickshaw is designed for easy mobility with a lightweight, foldable frame. Perfect for short-distance travel with a 20-mile battery range. The vehicle features advanced battery technology, ergonomic seating, and eco-friendly operation with zero emissions. Ideal for urban transportation needs, it combines comfort with sustainability.
@@ -339,13 +355,14 @@
 
             <!-- Price (narrower) -->
             <section class="content-section flex flex-col items-center justify-center">
-              <h2 class="section-title">PRICE</h2>
+              <h2 class="section-title mb-1">PRICE</h2>
+              <div class="text-lg text-gray-400 line-through mb-1">₹ 1,40,000</div>
               <div class="text-3xl font-bold text-blue-700 mb-2">₹ 1,20,000</div>
               <a href="contacts.html" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded flex items-center justify-center text-center">Enquire</a>
               <div class="w-full border-t border-gray-200 my-4"></div>
               <div class="flex flex-col items-center w-full">
                 <button onclick="generateBrochure()" class="bg-white text-blue-600 hover:bg-blue-100 font-bold py-2 px-6 rounded shadow border border-blue-600 flex items-center justify-center gap-2">
-                  <i class="fas fa-download"></i> Download Brochur</button>
+                  <i class="fas fa-download"></i> Download Brochure</button>
               </div>
             </section>
           </div>
@@ -355,7 +372,7 @@
   </main>
 
   <!-- Footer -->
-  <div id="footer-placeholder" class="w-full mt-8"></div>
+  <div id="footer-placeholder" class="w-full"></div>
   <script>
     fetch("footer.html")
       .then(response => response.text())
@@ -475,7 +492,7 @@
       doc.rect(5, 5, 200, 287);
       
       // Save the PDF
-      doc.save('Jago_Electric_Rickshaw_Brochure.pdf');
+      doc.save('Jago_Electric_Tricycle_Brochure.pdf');
       
       // Optional: Open PDF in new tab for printing
       // window.open(doc.output('bloburl'), '_blank');
