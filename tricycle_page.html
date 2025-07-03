@@ -50,13 +50,13 @@
     .hero-title {
       font-size: 1.5rem;
       font-weight: 700;
-      margin-bottom: 1rem;
+      margin-bottom: 0.25rem;
     }
 
     @media (min-width: 768px) {
       .hero-title {
         font-size: 2rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 0.75rem;
       }
     }
 
@@ -78,6 +78,8 @@
         flex-direction: row;
         justify-content: center;
         gap: 1rem;
+        margin-top: -0.25rem;
+        margin-bottom: 0.5rem;
       }
     }
 
@@ -85,13 +87,13 @@
       background: white;
       color: #2563eb;
       font-weight: 600;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
+      padding: 1rem 0.9rem;
+      border-radius: 6px;
       text-decoration: none;
       transition: all 0.2s ease;
       border: none;
       cursor: pointer;
-      font-size: 0.875rem;
+      font-size: 0.75rem;
     }
 
     .hero-btn:hover {
@@ -102,10 +104,11 @@
 
     @media (min-width: 768px) {
       .hero-btn {
-        padding: 1rem 2rem;
-        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.875rem;
       }
     }
+
 
     .main-content {
       padding: 2rem 0;
@@ -280,20 +283,6 @@
       });
   </script>
 
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="product-container">
-      <h1 class="hero-title">Electric Tricycle</h1>
-      <div class="hero-actions">
-        <button onclick="generateBrochure()" class="hero-btn">
-          <i class="fas fa-download mr-2"></i>Brochure</button>
-          
-        <a href="contacts.html" class="hero-btn">
-          <i class="fas fa-envelope mr-2"></i>Enquire</a>
-      </div>
-    </div>
-  </section>
-
   <!-- Main Content -->
   <main class="main-content">
     <div class="product-container">
@@ -306,7 +295,7 @@
             <div class="w-full flex flex-col items-center">
               <!-- Thumbnails -->
               <div class="flex flex-row space-x-7 mb-4">
-                <img src="images/trycycle.jpg" alt="Electric Rickshaw" class="w-14 h-14 object-cover rounded cursor-pointer border-2 border-blue-500" onclick="showMedia('img1')" id="thumb-img1">
+                <img src="images/tricycle.jpg" alt="Electric Rickshaw" class="w-14 h-14 object-cover rounded cursor-pointer border-2 border-blue-500" onclick="showMedia('img1')" id="thumb-img1">
                 <img src="images/mini.png" alt="Mobility Vehicle" class="w-14 h-14 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img2')" id="thumb-img2">
                 <img src="images/electric_rickshaw.jpg" alt="Electric Rickshaw 2" class="w-14 h-14 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img3')" id="thumb-img3">
                 <img src="images/electric_mobility_vehicle.jpg" alt="Mobility Vehicle 2" class="w-14 h-14 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img4')" id="thumb-img4">
@@ -318,7 +307,7 @@
               </div>
               <!-- Main Media -->
               <div class="w-full flex items-center justify-center">
-                <img src="images/trycycle.jpg" alt="Electric Rickshaw" id="main-img1" class="main-media rounded-lg shadow-lg w-96 h-96 object-contain block">
+                <img src="images/tricycle.jpg" alt="Electric Rickshaw" id="main-img1" class="main-media rounded-lg shadow-lg w-96 h-96 object-contain block">
                 <img src="images/mini.png" alt="Mobility Vehicle" id="main-img2" class="main-media rounded-lg shadow-lg w-96 h-96 object-contain hidden">
                 <img src="images/electric_rickshaw.jpg" alt="Electric Rickshaw 2" id="main-img3" class="main-media rounded-lg shadow-lg w-96 h-96 object-contain hidden">
                 <img src="images/electric_mobility_vehicle.jpg" alt="Mobility Vehicle 2" id="main-img4" class="main-media rounded-lg shadow-lg w-96 h-96 object-contain hidden">
@@ -334,7 +323,7 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-[55%]">
             <!-- Product Overview (wider) -->
             <section class="content-section md:col-span-2">
-              <h2 class="section-title">Product Overview</h2>
+              <h2 class="section-title">Electric Tricycle</h2>
               <p class="product-description mb-6">
                 This electric rickshaw is designed for easy mobility with a lightweight, foldable frame. Perfect for short-distance travel with a 20-mile battery range. The vehicle features advanced battery technology, ergonomic seating, and eco-friendly operation with zero emissions. Ideal for urban transportation needs, it combines comfort with sustainability.
               </p>
@@ -344,7 +333,13 @@
             <section class="content-section flex flex-col items-center justify-center">
               <h2 class="section-title">PRICE</h2>
               <div class="text-3xl font-bold text-blue-700 mb-2">₹ 1,20,000</div>
-              <button class="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">Enquire</button>
+              <a href="contacts.html" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded flex items-center justify-center text-center">Enquire</a>
+              <div class="w-full border-t border-gray-200 my-4"></div>
+              <div class="flex flex-col items-center w-full">
+                <button onclick="generateBrochure()" class="bg-white text-blue-600 hover:bg-blue-100 font-bold py-2 px-6 rounded shadow border border-blue-600 flex items-center justify-center gap-2">
+                  <i class="fas fa-download"></i>Brochure
+                </button>
+              </div>
             </section>
 
             <!-- Product Features (full width below) -->
