@@ -9,7 +9,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
   <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papmQ+1QwQw5QwQw5QwQw5QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papmQ+1QwQw5QwQw5QwQw5QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
     /* Mobile-first product page styles */
@@ -282,7 +282,7 @@
     }
 
     footer {
-       padding-top: 1rem;
+      padding-top: 1rem;
       padding-bottom: 1rem;
     }
 
@@ -313,24 +313,22 @@
             <div class="w-full flex flex-col items-center">
               <!-- Thumbnails -->
               <div class="flex flex-row space-x-5 mb-6">
-                <img src="images/trycycle.jpg" alt="Electric Tricycle" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-blue-500" onclick="showMedia('img1')" id="thumb-img1">
-                <img src="images/mini.png" alt="Mini" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img2')" id="thumb-img2">
-                <img src="images/electric_rickshaw.jpg" alt="Electric Rickshaw" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img3')" id="thumb-img3">
-                <img src="images/electric_mobility_vehicle.jpg" alt="Mobility Vehicle" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img4')" id="thumb-img4">
+                <img src="images/E-Tricycle/E-Tricycle-1.jpg" alt="Electric Tricycle" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-blue-500" onclick="showMedia('img1')" id="thumb-img1">
+                <img src="images/E-Tricycle/E-Tricycle-2.jpg" alt="Mini" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img2')" id="thumb-img2">
+                <img src="images/E-Tricycle/E-Tricycle-3.jpg" alt="Electric Rickshaw" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img3')" id="thumb-img3">
+                <img src="images/E-Tricycle/E-Tricycle-4.jpg" alt="Mobility Vehicle" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img4')" id="thumb-img4">
                 <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid1')" id="thumb-vid1">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-6.518-3.759A1 1 0 007 8.06v7.882a1 1 0 001.234.97l6.518-1.857A1 1 0 0016 14.06V9.94a1 1 0 00-1.248-.772z" />
-                  </svg>
+                  <video src="images/E-Tricycle/E-Tricycle-V-1.mp4" class="w-full h-full object-cover" muted preload="metadata" playsinline></video>
                 </div>
               </div>
               <!-- Main Media -->
               <div class="w-full flex items-center justify-center">
-                <img src="images/trycycle.jpg" alt="Electric Tricycle" id="main-img1" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain block">
-                <img src="images/mini.png" alt="Mini" id="main-img2" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
-                <img src="images/electric_rickshaw.jpg" alt="Electric Rickshaw" id="main-img3" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
-                <img src="images/electric_mobility_vehicle.jpg" alt="Mobility Vehicle" id="main-img4" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
+                <img src="images/E-Tricycle/E-Tricycle-1.jpg" alt="Electric Tricycle" id="main-img1" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain block">
+                <img src="images/E-Tricycle/E-Tricycle-2.jpg" alt="Mini" id="main-img2" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
+                <img src="images/E-Tricycle/E-Tricycle-3.jpg" alt="Electric Rickshaw" id="main-img3" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
+                <img src="images/E-Tricycle/E-Tricycle-4.jpg" alt="Mobility Vehicle" id="main-img4" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
                 <video controls id="main-vid1" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
-                  <source src="images/rikshaw.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+                  <source src="images/E-Tricycle/E-Tricycle-V-1.mp4" type="video/mp4">Your browser does not support the video tag.</video>
               </div>
             </div>          
           </section>
@@ -340,21 +338,21 @@
             <!-- Product Overview (wider) -->
             <section class="content-section md:col-span-2 product-overview-box">
               <h2 class="section-title text-3xl">Electric Tricycle</h2>
-              <p class="product-description mb-6">
-                This electric rickshaw is designed for easy mobility with a lightweight, foldable frame. Perfect for short-distance travel with a 20-mile battery range. The vehicle features advanced battery technology, ergonomic seating, and eco-friendly operation with zero emissions. Ideal for urban transportation needs, it combines comfort with sustainability.
-              </p>
-              <h2 class="section-title text-xl">Product Features</h2>
               <ul class="features-list flex-1">
                 <li>Lightweight & foldable aluminum alloy frame</li>
                 <li>20-mile range on a single charge</li>
                 <li>Fast charging (0-100% in 4 hours)</li>
                 <li>Ergonomic handle with anti-slip grip</li>
                 <li>Digital display with battery indicator</li>
+                <li>Ergonomic handle with anti-slip grip</li>
+                <li>Digital display with battery indicator</li>
+                <li>Ergonomic handle with anti-slip grip</li>
+                <li>Digital display with battery indicator</li>
               </ul>
             </section>
 
             <!-- Price (narrower) -->
-            <section class="content-section flex flex-col items-center justify-center">
+            <section class="content-section product-overview-box flex flex-col items-center justify-center">
               <h2 class="section-title mb-1">PRICE</h2>
               <div class="text-lg text-gray-400 line-through mb-1">₹ 1,40,000</div>
               <div class="text-3xl font-bold text-blue-700 mb-2">₹ 1,20,000</div>
@@ -362,7 +360,7 @@
               <div class="w-full border-t border-gray-200 my-4"></div>
               <div class="flex flex-col items-center w-full">
                 <button onclick="generateBrochure()" class="bg-white text-blue-600 hover:bg-blue-100 font-bold py-2 px-6 rounded shadow border border-blue-600 flex items-center justify-center gap-2">
-                  <i class="fas fa-download"></i> Download Brochure</button>
+                  <i class="fas fa-download"></i>Download Brochure</button>
               </div>
             </section>
           </div>
@@ -380,128 +378,38 @@
         document.getElementById("footer-placeholder").innerHTML = data;
       });
     
-    // PDF Generation Function
+    // Brochure Generation Function
     function generateBrochure() {
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
-      
-      // Set document properties
-      doc.setProperties({
-        title: 'Jago Motion - Electric Rickshaw Brochure',
-        subject: 'Product Information',
-        author: 'Jago Motion Technologies',
-        keywords: 'electric, rickshaw, eco-friendly, transportation',
-        creator: 'Jago Motion Technologies'
-      });
-      
-      // Add header
-      doc.setFontSize(20);
-      doc.setTextColor(13, 71, 161); // Dark blue
-      doc.setFont('helvetica', 'bold');
-      doc.text('JAGO MOTION TECHNOLOGIES', 105, 20, { align: 'center' });
-      
-      doc.setFontSize(16);
-      doc.setTextColor(0, 0, 0);
-      doc.text('Electric Rickshaw - Product Brochure', 105, 30, { align: 'center' });
-      
-      // Add divider line
-      doc.setDrawColor(13, 71, 161);
-      doc.setLineWidth(0.5);
-      doc.line(20, 35, 190, 35);
-      
-      // Product overview
-      doc.setFontSize(12);
-      doc.setFont('helvetica', 'normal');
-      doc.text('Product Overview:', 20, 45);
-      const description = [
-        "The Jago Motion Electric Rickshaw revolutionizes urban mobility with its eco-friendly design",
-        "and advanced features. Designed for both personal and commercial use, it offers a",
-        "comfortable, economical, and sustainable transportation solution."
-      ];
-      doc.text(description, 20, 55, { maxWidth: 170 });
-      
-      // Key specifications table
-      doc.autoTable({
-        startY: 80,
-        head: [['Specification', 'Details']],
-        body: [
-          ['Model', 'JM-ER2023'],
-          ['Battery Type', 'Lithium-ion 48V 30Ah'],
-          ['Range', '20-25 miles per charge'],
-          ['Max Speed', '25 km/h'],
-          ['Charging Time', '4-6 hours'],
-          ['Motor Power', '1000W Brushless DC'],
-          ['Weight Capacity', '300 kg (including passengers)'],
-          ['Frame Material', 'Aircraft-grade aluminum alloy'],
-          ['Brakes', 'Front and rear drum brakes + regenerative'],
-          ['Suspension', 'Front hydraulic, rear spring'],
-          ['Wheels', '16-inch puncture-resistant tires'],
-          ['Lighting', 'LED headlight and taillights'],
-          ['Dimensions (LxWxH)', '2.4m x 1.2m x 1.8m'],
-          ['Weight', '95 kg (without battery)']
-        ],
-        theme: 'grid',
-        headStyles: {
-          fillColor: [13, 71, 161],
-          textColor: [255, 255, 255],
-          fontStyle: 'bold'
-        },
-        alternateRowStyles: {
-          fillColor: [240, 240, 240]
-        },
-        margin: { top: 10 }
-      });
-      
-      // Features section
-      doc.setFontSize(14);
-      doc.setTextColor(13, 71, 161);
-      doc.text('Key Features & Benefits:', 20, doc.lastAutoTable.finalY + 15);
-      
-      doc.setFontSize(10);
-      doc.setTextColor(0, 0, 0);
-      const features = [
-        { icon: '✓', text: 'Zero emissions - Environmentally friendly transportation solution' },
-        { icon: '✓', text: 'Low operating cost - Saves up to 70% compared to petrol vehicles' },
-        { icon: '✓', text: 'Quiet operation - Reduced noise pollution in urban areas' },
-        { icon: '✓', text: 'Easy maintenance - Fewer moving parts than conventional rickshaws' },
-        { icon: '✓', text: 'Comfortable ride - Ergonomic seating and smooth suspension' },
-        { icon: '✓', text: 'Safety features - Includes headlights, taillights, and reflectors' },
-        { icon: '✓', text: 'Weather protection - Optional canopy available' },
-        { icon: '✓', text: 'Smart charging - Battery management system for longer life' }
-      ];
-      
-      let y = doc.lastAutoTable.finalY + 25;
-      features.forEach(feature => {
-        doc.setFont('zapfdingbats');
-        doc.text(feature.icon, 20, y);
-        doc.setFont('helvetica');
-        doc.text(feature.text, 25, y, { maxWidth: 165 });
-        y += 7;
-      });
-      
-      // Add footer
-      doc.setFontSize(10);
-      doc.setTextColor(100, 100, 100);
-      doc.text('For more information, please contact:', 20, 270);
-      doc.setTextColor(13, 71, 161);
-      doc.text('Email: info@jagomotion.com | Phone: +91 9876543210', 20, 275);
-      doc.text('Website: www.jagomotion.com | Address: 123 Tech Park, Bangalore, India', 20, 280);
-      
-      // Add page border
-      doc.setDrawColor(200, 200, 200);
-      doc.rect(5, 5, 200, 287);
-      
-      // Save the PDF
-      doc.save('Jago_Electric_Tricycle_Brochure.pdf');
-      
-      // Optional: Open PDF in new tab for printing
-      // window.open(doc.output('bloburl'), '_blank');
+      // 1. Open the brochure image directly in a new window for printing
+      const printWindow = window.open('images/E-Tricycle/E-Tricycle-Brochure.jpg', '_blank');
+      if (printWindow) {
+        printWindow.onload = function() {
+          setTimeout(function() {
+            printWindow.print();
+          }, 1000); // Wait 1 second for image to load
+        };
+      }
+
+      // 2. Trigger download of the image
+      const link = document.createElement('a');
+      link.href = 'images/E-Tricycle/E-Tricycle-Brochure.jpg';
+      link.download = 'E-Tricycle-Brochure.jpg';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
 
     function showMedia(id) {
-      // Hide all
-      document.querySelectorAll('.main-media').forEach(el => el.classList.add('hidden'));
+      // Hide all and pause video
+      document.querySelectorAll('.main-media').forEach(el => {
+        el.classList.add('hidden');
+        // If it's a video element, pause it
+        if (el.tagName === 'VIDEO') {
+          el.pause();
+        }
+      });
       document.querySelectorAll('[id^="thumb-"]').forEach(el => el.classList.remove('border-blue-500'));
+      
       // Show selected
       if (id === 'img1') {
         document.getElementById('main-img1').classList.remove('hidden');
