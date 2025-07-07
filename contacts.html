@@ -16,7 +16,7 @@
     .contact-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 1rem;
+      /*padding: 0 0.5rem;       /* Reduced padding */
     }
 
     @media (min-width: 640px) {
@@ -32,18 +32,18 @@
     }
 
     .contact-section {
-      padding: 2rem 0;
+      padding: 0.5rem 0 2rem 0; /* Reduced top padding */
     }
 
     @media (min-width: 768px) {
       .contact-section {
-        padding: 3rem 0;
+        padding: 1rem 0 3rem 0; /* Reduced top padding for md screens */
       }
     }
 
     @media (min-width: 1024px) {
       .contact-section {
-        padding: 4rem 0;
+        padding: 2rem 0 4rem 0; /* Reduced top padding for lg screens */
       }
     }
 
@@ -97,7 +97,7 @@
       width: 100%;
       border: 2px solid #d1d5db;
       border-radius: 8px;
-      padding: 0.75rem;
+      padding: 0.4rem 0.75rem;  /* For height */
       font-size: 1rem;
       transition: all 0.2s ease;
       background: white;
@@ -116,9 +116,8 @@
       }
     }
 
-    .form-textarea {
-      resize: vertical;
-      min-height: 100px;
+    .form-input.form-textarea {
+      padding: 0.75rem; /* Keep textarea padding larger */
     }
 
     @media (min-width: 768px) {
@@ -253,15 +252,16 @@
     /* Layout responsive */
     .contact-layout {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       gap: 2rem;
     }
 
     @media (min-width: 1024px) {
       .contact-layout {
         flex-direction: row;
-        gap: 4rem;
+        gap: 2rem;
         align-items: flex-start;
+        /* Ensure both form and map start at the same vertical position */
       }
     }
 
@@ -285,41 +285,38 @@
       <div class="contact-container">
         <div class="contact-layout">
         <!-- Contact Form -->
-          <div class="contact-form-section">
-            <h2 class="contact-title">Enquire About Products</h2>
+          <div class="contact-form-section flex flex-col justify-start">
+            <!-- <h2 class="contact-title">Enquire About Products</h2> -->
           <form id="enquiryForm" class="space-y-4">
-              <div class="form-group">
-                <label class="form-label" for="product">Product</label>
-                <select id="product" name="product" required class="form-input">
-                <option value="" disabled selected>Select a product</option>
-                <option value="electric-rikshaw">Electric Rikshaw</option>
-                <option value="electric-tricycle">Electric Tri-cycle</option>
-                <option value="mobility-vehicle">Electric Mobility Vehicle</option>
-                <option value="cerebral-palsy-walker">Cerebral Palsy Walker</option>
-                <option value="walker-prosthetics">Walker Assisted Prosthetics</option>
-              </select>
-            </div>
-              
               <div class="form-group">
                 <label class="form-label" for="name">Name</label>
                 <input type="text" id="name" name="name" required class="form-input" />
-            </div>
-              
+              </div>
+              <div class="form-group flex flex-col sm:flex-row gap-2">
+                <div class="w-full sm:w-1/2">
+                  <label class="form-label" for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" required class="form-input" />
+                </div>
+                <div class="w-full sm:w-1/2">
+                  <label class="form-label" for="place">Place</label>
+                  <input type="text" id="place" name="place" class="form-input" />
+                </div>
+              </div>
               <div class="form-group">
-                <label class="form-label" for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" required class="form-input" />
-            </div>
-              
-              <div class="form-group">
-                <label class="form-label" for="place">Place</label>
-                <input type="text" id="place" name="place" class="form-input" />
-            </div>
-              
+                <label class="form-label" for="product">Product</label>
+                <select id="product" name="product" required class="form-input">
+                  <option value="" disabled selected>Select a product</option>
+                  <option value="electric-rikshaw">Electric Rikshaw</option>
+                  <option value="electric-tricycle">Electric Tri-cycle</option>
+                  <option value="mobility-vehicle">Electric Mobility Vehicle</option>
+                  <option value="cerebral-palsy-walker">Cerebral Palsy Walker</option>
+                  <option value="walker-prosthetics">Walker Assisted Prosthetics</option>
+                </select>
+              </div>
               <div class="form-group">
                 <label class="form-label" for="question">Question</label>
                 <textarea id="question" name="question" rows="4" required class="form-input form-textarea"></textarea>
-            </div>
-              
+              </div>
               <button type="submit" class="submit-btn">
                 <i class="fas fa-paper-plane mr-2"></i>
                 Submit Enquiry
@@ -339,37 +336,57 @@
           </iframe>
             </div>
 
-            <!-- Gauges -->
-            <div class="gauges-container">
-            <!-- India Gauge -->
-              <div class="gauge-item">
-                <p class="gauge-title">Views from India</p>
-                <div id="gauge-india" class="gauge-container"></div>
-                <p class="gauge-label">India</p>
-            </div>
-
-            <!-- World Gauge -->
-              <div class="gauge-item">
-                <p class="gauge-title">Views from World</p>
-                <div id="gauge-world" class="gauge-container"></div>
-                <p class="gauge-label">World</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer Loader -->
-  <div id="footer-placeholder"></div>
-  <script>
-    fetch("footer.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("footer-placeholder").innerHTML = data;
-      });
-  </script>
+  <!-- Footer -->
+  <footer class="bg-[#001C71] text-white pt-4">
+      <div class="w-5/6 mx-auto">
+          <div class="flex flex-col md:flex-row justify-between">
+              <!-- Left: Company Info -->
+              <div class="pl-8">
+                  <h3 class="text-2xl font-bold mb-4">Jago Motion Technologies</h3>
+                  <ul class="space-y-2">
+                  <li class="flex items-center">
+                      <i class="fas fa-map-marker-alt mr-2"></i>
+                      <span>Sangli, Maharashtra, India. PIN: 416416</span>
+                  </li>
+                  <li class="flex items-center">
+                      <i class="fas fa-phone mr-2"></i>
+                      <span>+91 7083861174</span>
+                  </li>
+                  <li class="flex items-center">
+                      <i class="fas fa-envelope mr-2"></i>
+                      <span>info.jagomotion@gmail.com</span>
+                  </li>
+                  </ul>
+              </div>
+
+              <!-- Right: Social Media Icons -->
+              <div class="flex space-x-4 text-3xl mt-6 pr-8 md:mt-0 md:items-end">
+                  <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300"><i class="fab fa-linkedin"></i></a>
+                  <a href="https://wa.me/917083861174" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300"><i class="fab fa-whatsapp"></i></a>
+                  <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300"><i class="fab fa-facebook"></i></a>
+                  <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300"><i class="fab fa-instagram"></i></a>
+                  <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300"><i class="fab fa-twitter"></i></a>
+                  <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300"><i class="fab fa-youtube"></i></a>
+              </div>
+          </div>
+
+          <!-- Divider -->
+          <div class="pt-6">
+              <hr class="border-t border-white opacity-30">
+          </div>
+
+          <!-- Copyright -->
+          <div class="py-4 flex justify-center">
+              <p class="text-white text-center">&copy; 2025 Jago Motion Technologies. All rights reserved.</p>
+          </div>
+      </div>
+  </footer>
 
   <!-- Navbar Loader -->
   <script>
@@ -395,49 +412,6 @@
       const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
       window.open(whatsappURL, "_blank");
     });
-  </script>
-
-  <!-- JustGage Initialization -->
-  <script>
-    window.onload = function () {
-      new JustGage({
-        id: "gauge-india",
-        value: 76,
-        min: 0,
-        max: 100,
-        title: "",
-        label: "%",
-        gaugeWidthScale: 0.6,
-        donut: true,
-        hideInnerShadow: true,
-        customSectors: [
-          { color: "#f44336", lo: 0, hi: 30 },
-          { color: "#ffeb3b", lo: 30, hi: 60 },
-          { color: "#4caf50", lo: 60, hi: 100 }
-        ],
-        levelColors: ["#4caf50"],
-        counter: true
-      });
-
-      new JustGage({
-        id: "gauge-world",
-        value: 92,
-        min: 0,
-        max: 100,
-        title: "",
-        label: "%",
-        gaugeWidthScale: 0.6,
-        donut: true,
-        hideInnerShadow: true,
-        customSectors: [
-          { color: "#f44336", lo: 0, hi: 30 },
-          { color: "#ffeb3b", lo: 30, hi: 60 },
-          { color: "#2196f3", lo: 60, hi: 100 }
-        ],
-        levelColors: ["#2196f3"],
-        counter: true
-      });
-    };
   </script>
 </body>
 </html>
