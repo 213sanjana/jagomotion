@@ -326,22 +326,22 @@
             <div class="w-full flex flex-col items-center">
               <!-- Thumbnails -->
               <div class="flex flex-row space-x-5 mb-6">
-                <img src="images/CP-Walker/E-CP-Walker-1.jpg" alt="Electric Tricycle" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-blue-500" onclick="showMedia('img1')" id="thumb-img1">
-                <img src="images/CP-Walker/E-CP-Walker-2.jpg" alt="Mini" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img2')" id="thumb-img2">
-                <img src="images/CP-Walker/E-CP-Walker-3.jpg" alt="Electric Rickshaw" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img3')" id="thumb-img3">
-                <img src="images/CP-Walker/E-CP-Walker-4.jpg" alt="Mobility Vehicle" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img4')" id="thumb-img4">
+                <img src="images/CPWalker/CPWalker-1.jpg" alt="Electric Tricycle" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-blue-500" onclick="showMedia('img1')" id="thumb-img1">
+                <img src="images/CPWalker/CPWalker-2.jpg" alt="Mini" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img2')" id="thumb-img2">
+                <img src="images/CPWalker/CPWalker-3.jpg" alt="Electric Rickshaw" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img3')" id="thumb-img3">
+                <img src="images/CPWalker/CPWalker-4.jpg" alt="Mobility Vehicle" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img4')" id="thumb-img4">
                 <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid1')" id="thumb-vid1">
-                  <video src="images/CP-Walker/E-CP-Walker-V-1.mp4" class="w-full h-full object-cover" muted preload="metadata" playsinline></video>
+                  <video src="images/CPWalker/CPWalker-V-1.mp4" class="w-full h-full object-cover" muted preload="metadata" playsinline></video>
                 </div>
               </div>
               <!-- Main Media -->
               <div class="w-full flex items-center justify-center">
-                <img src="images/CP-Walker/E-CP-Walker-1.jpg" alt="Electric Tricycle" id="main-img1" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain block">
-                <img src="images/CP-Walker/E-CP-Walker-2.jpg" alt="Mini" id="main-img2" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
-                <img src="images/CP-Walker/E-CP-Walker-3.jpg" alt="Electric Rickshaw" id="main-img3" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
-                <img src="images/CP-Walker/E-CP-Walker-4.jpg" alt="Mobility Vehicle" id="main-img4" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
+                <img src="images/CPWalker/CPWalker-1.jpg" alt="Electric Tricycle" id="main-img1" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain block">
+                <img src="images/CPWalker/CPWalker-2.jpg" alt="Mini" id="main-img2" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
+                <img src="images/CPWalker/CPWalker-3.jpg" alt="Electric Rickshaw" id="main-img3" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
+                <img src="images/CPWalker/CPWalker-4.jpg" alt="Mobility Vehicle" id="main-img4" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
                 <video controls id="main-vid1" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
-                  <source src="images/CP-Walker/E-CP-Walker-V-1.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+                  <source src="images/CPWalker/CPWalker-V-1.mp4" type="video/mp4">Your browser does not support the video tag.</video>
               </div>
             </div>          
           </section>
@@ -367,8 +367,8 @@
             <!-- Price (narrower) -->
             <section class="content-section price-box product-overview-box flex flex-col items-center justify-center gap-2 py-2">
               <h2 class="section-title mb-0.5">PRICE</h2>
-              <div class="text-lg text-gray-400 line-through mb-0.5">₹ 1,40,000</div>
-              <div class="text-2xl font-bold text-blue-700 mb-0.5">₹ 1,20,000</div>
+              <div class="text-lg text-gray-400 line-through mb-0.5">₹ 25,000</div>
+              <div class="text-2xl font-bold text-blue-700 mb-0.5">₹ 15,000</div>
               <a href="contacts.html" class="mt-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded flex items-center justify-center text-center">Enquire</a>
               <div class="w-full border-t border-gray-200 my-1.5"></div>
               <div class="flex flex-col items-center w-full">
@@ -394,7 +394,7 @@
     // Brochure Generation Function
     function generateBrochure() {
       // 1. Open the brochure image directly in a new window for printing
-      const printWindow = window.open('images/CP-Walker/E-CP-Walker-Brochure.jpg', '_blank');
+      const printWindow = window.open('images/CPWalker/E-CPW-Brochure.jpg', '_blank');
       if (printWindow) {
         printWindow.onload = function() {
           setTimeout(function() {
@@ -405,7 +405,7 @@
 
       // 2. Trigger download of the image
       const link = document.createElement('a');
-      link.href = 'images/CP-Walker/E-CP-Walker-Brochure.jpg';
+      link.href = 'images/CPWalker/E-CPW-Brochure.jpg';
       link.download = 'E-Tricycle-Brochure.jpg';
       document.body.appendChild(link);
       link.click();
