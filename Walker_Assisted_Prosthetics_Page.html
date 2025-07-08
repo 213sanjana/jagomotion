@@ -326,20 +326,20 @@
             <div class="w-full flex flex-col items-center">
               <!-- Thumbnails -->
               <div class="flex flex-row space-x-5 mb-6">
-                <img src="images/Walker-Assisted-Prosthetics/E-Walker-Assisted-Prosthetics-1.jpg" alt="Electric Tricycle" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-blue-500" onclick="showMedia('img1')" id="thumb-img1">
-                <img src="images/Walker-Assisted-Prosthetics/E-Walker-Assisted-Prosthetics-2.jpg" alt="Mini" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img2')" id="thumb-img2">
-                <img src="images/Walker-Assisted-Prosthetics/E-Walker-Assisted-Prosthetics-3.jpg" alt="Electric Rickshaw" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img3')" id="thumb-img3">
-                <img src="images/Walker-Assisted-Prosthetics/E-Walker-Assisted-Prosthetics-4.jpg" alt="Mobility Vehicle" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img4')" id="thumb-img4">
+                <img src="images/WAP/E-WAP-1.jpg" alt="Electric Tricycle" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-blue-500" onclick="showMedia('img1')" id="thumb-img1">
+                <img src="images/WAP/E-WAP-2.jpg" alt="Mini" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img2')" id="thumb-img2">
+                <img src="images/WAP/E-WAP-3.jpg" alt="Electric Rickshaw" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img3')" id="thumb-img3">
+                <img src="images/WAP/E-WAP-4.jpg" alt="Mobility Vehicle" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img4')" id="thumb-img4">
                 <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid1')" id="thumb-vid1">
                   <video src="images/Walker-Assisted-Prosthetics/E-Walker-Assisted-Prosthetics-V-1.mp4" class="w-full h-full object-cover" muted preload="metadata" playsinline></video>
                 </div>
               </div>
               <!-- Main Media -->
               <div class="w-full flex items-center justify-center">
-                <img src="images/Walker-Assisted-Prosthetics/E-Walker-Assisted-Prosthetics-1.jpg" alt="Electric Tricycle" id="main-img1" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain block">
-                <img src="images/Walker-Assisted-Prosthetics/E-Walker-Assisted-Prosthetics-2.jpg" alt="Mini" id="main-img2" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
-                <img src="images/Walker-Assisted-Prosthetics/E-Walker-Assisted-Prosthetics-3.jpg" alt="Electric Rickshaw" id="main-img3" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
-                <img src="images/Walker-Assisted-Prosthetics/E-Walker-Assisted-Prosthetics-4.jpg" alt="Mobility Vehicle" id="main-img4" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
+                <img src="images/WAP/E-WAP-1.jpg" alt="Electric Tricycle" id="main-img1" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain block">
+                <img src="images/WAP/E-WAP-2.jpg" alt="Mini" id="main-img2" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
+                <img src="images/WAP/E-WAP-3.jpg" alt="Electric Rickshaw" id="main-img3" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
+                <img src="images/WAP/E-WAP-4.jpg" alt="Mobility Vehicle" id="main-img4" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
                 <video controls id="main-vid1" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
                   <source src="images/Walker-Assisted-Prosthetics/E-Walker-Assisted-Prosthetics-V-1.mp4" type="video/mp4">Your browser does not support the video tag.</video>
               </div>
@@ -394,7 +394,7 @@
     // Brochure Generation Function
     function generateBrochure() {
       // 1. Open the brochure image directly in a new window for printing
-      const printWindow = window.open('images/Walker-Assisted-Prosthetics/E-Walker-Assisted-Prosthetics-Brochure.jpg', '_blank');
+      const printWindow = window.open('images/WAP/E-WAP-Brochure.jpg', '_blank');
       if (printWindow) {
         printWindow.onload = function() {
           setTimeout(function() {
@@ -405,7 +405,7 @@
 
       // 2. Trigger download of the image
       const link = document.createElement('a');
-      link.href = 'images/Walker-Assisted-Prosthetics/E-Walker-Assisted-Prosthetics-Brochure.jpg';
+      link.href = 'images/WAP/E-WAP-Brochure.jpg';
       link.download = 'E-Walker-Assisted-Prosthetics-Brochure.jpg';
       document.body.appendChild(link);
       link.click();
