@@ -9,7 +9,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
   <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papmQ+1QwQw5QwQw5QwQw5QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papmQ+1QwQw5QwQw5QwQw5QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
     html, body {
@@ -48,10 +48,13 @@
       text-align: center;
     }
     .carousel-slide img {
-      max-width: 90%;
+      max-width: 95%;
       max-height: 500px;
-      border-radius: 8px;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+      -webkit-user-drag: none;
+      user-drag: none;
+      pointer-events: none;
     }
     .active {
       display: block;
@@ -232,6 +235,15 @@
       clearInterval(autoSlideInterval);
       startAutoSlide();
     }
+
+    // Prevent right-click and drag on images
+    document.addEventListener('DOMContentLoaded', function() {
+      const imgs = document.querySelectorAll('.carousel-slide img');
+      imgs.forEach(img => {
+        img.addEventListener('contextmenu', e => e.preventDefault());
+        img.setAttribute('draggable', 'false');
+      });
+    });
   </script>
 
     <!-- Footer -->
