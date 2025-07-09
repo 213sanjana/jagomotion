@@ -9,7 +9,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
   <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papmQ+1QwQw5QwQw5QwQw5QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papmQ+1QwQw5QwQw5QwQw5QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
     html, body {
@@ -187,14 +187,18 @@
       "Express. Explore. Excel.",
       "Creativity for All."
     ];
+    let autoSlideInterval = null;
     showSlides(slideIndex);
+    startAutoSlide();
 
     function plusSlides(n) {
       showSlides(slideIndex += n);
+      resetAutoSlide();
     }
 
     function currentSlide(n) {
       showSlides(slideIndex = n);
+      resetAutoSlide();
     }
 
     function showSlides(n) {
@@ -216,6 +220,17 @@
       if (sloganDiv && slogans[slideIndex-1]) {
         sloganDiv.textContent = slogans[slideIndex-1];
       }
+    }
+
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(() => {
+        showSlides(++slideIndex);
+      }, 3000);
+    }
+
+    function resetAutoSlide() {
+      clearInterval(autoSlideInterval);
+      startAutoSlide();
     }
   </script>
 
