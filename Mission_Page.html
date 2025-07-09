@@ -1,1 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mission Page - Doodle Carousel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Add jsPDF library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papmQ+1QwQw5QwQw5QwQw5QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+    .main-content {
+      flex: 1 0 auto;
+    }
+    .slogan {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin: 25px 0 20px 0;
+      color: #001C71;
+    }
+    .carousel-container {
+      max-width: 800px;
+      margin: 0 auto 40px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 24px 0 16px 0;
+      position: relative;
+    }
+    .carousel-slide {
+      display: none;
+      text-align: center;
+    }
+    .carousel-slide img {
+      max-width: 90%;
+      max-height: 500px;
+      border-radius: 8px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+    }
+    .active {
+      display: block;
+    }
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 12px;
+      margin-top: -22px;
+      color: #001C71;
+      font-weight: bold;
+      font-size: 24px;
+      border-radius: 0 3px 3px 0;
+      -webkit-user-select: none;
+      user-select: none;
+      background: rgba(255,255,255,0.7);
+      border: none;
+      z-index: 2;
+      transition: background 0.2s;
+    }
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+    .prev:hover, .next:hover {
+      background: #e0e7ff;
+    }
+    .carousel-dots {
+      text-align: center;
+      margin-top: 12px;
+    }
+    .dot {
+      cursor: pointer;
+      height: 12px;
+      width: 12px;
+      margin: 0 4px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.3s;
+    }
+    .dot.active {
+      background-color: #001C71;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans min-h-screen flex flex-col justify-between">
+
+  <!-- Navbar -->
+  <div id="navbar-placeholder" class="w-full"></div>
+  <script>
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar-placeholder").innerHTML = data;
+      });
+  </script>
+
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div id="slogan" class="slogan">Empowering Creativity, One Doodle at a Time!</div>
+    <div class="carousel-container">
+      <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
+      <button class="next" onclick="plusSlides(1)">&#10095;</button>
+      <div class="carousel-slide active">
+        <img src="images/Doodle/Disability-Doodle-1.jpg" alt="Doodle 1" class="mx-auto">
+      </div>
+      <div class="carousel-slide">
+        <img src="images/Doodle/Disability-Doodle-2.jpg" alt="Doodle 2" class="mx-auto">
+      </div>
+      <div class="carousel-slide">
+        <img src="images/Doodle/Disability-Doodle-3.jpg" alt="Doodle 3" class="mx-auto">
+      </div>
+      <div class="carousel-slide">
+        <img src="images/Doodle/Disability-Doodle-4.jpg" alt="Doodle 4" class="mx-auto">
+      </div>
+      <div class="carousel-slide">
+        <img src="images/Doodle/Disability-Doodle-5.jpg" alt="Doodle 5" class="mx-auto">
+      </div>
+      <div class="carousel-slide">
+        <img src="images/Doodle/Disability-Doodle-6.jpg" alt="Doodle 6" class="mx-auto">
+      </div>
+      <div class="carousel-slide">
+        <img src="images/Doodle/Disability-Doodle-7.jpg" alt="Doodle 7" class="mx-auto">
+      </div>
+      <div class="carousel-slide">
+        <img src="images/Doodle/Disability-Doodle-8.jpg" alt="Doodle 8" class="mx-auto">
+      </div>
+      <div class="carousel-slide">
+        <img src="images/Doodle/Disability-Doodle-9.jpg" alt="Doodle 9" class="mx-auto">
+      </div>
+      <div class="carousel-slide">
+        <img src="images/Doodle/Disability-Doodle-10.jpg" alt="Doodle 10" class="mx-auto">
+      </div>
+      <div class="carousel-slide">
+        <img src="images/Doodle/Disability-Doodle-11.jpg" alt="Doodle 11" class="mx-auto">
+      </div>
+      <div class="carousel-slide">
+        <img src="images/Doodle/Disability-Doodle-12.jpg" alt="Doodle 12" class="mx-auto">
+      </div>
+      <div class="carousel-dots">
+        <span class="dot active" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+        <span class="dot" onclick="currentSlide(6)"></span>
+        <span class="dot" onclick="currentSlide(7)"></span>
+        <span class="dot" onclick="currentSlide(8)"></span>
+        <span class="dot" onclick="currentSlide(9)"></span>
+        <span class="dot" onclick="currentSlide(10)"></span>
+        <span class="dot" onclick="currentSlide(11)"></span>
+        <span class="dot" onclick="currentSlide(12)"></span>
+      </div>
+    </div>
+  </div>
+  <script>
+    let slideIndex = 1;
+    const slogans = [
+      "Empowering Creativity, One Doodle at a Time!",
+      "Every Doodle Tells a Story.",
+      "Imagination in Motion.",
+      "Art Without Limits.",
+      "Coloring the World Differently.",
+      "Dream. Draw. Do.",
+      "Inspiration Starts Here.",
+      "See Beyond the Lines.",
+      "Every Mark Matters.",
+      "From Mind to Masterpiece.",
+      "Express. Explore. Excel.",
+      "Creativity for All."
+    ];
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      let i;
+      const slides = document.getElementsByClassName("carousel-slide");
+      const dots = document.getElementsByClassName("dot");
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].classList.remove("active");
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].classList.remove("active");
+      }
+      slides[slideIndex-1].classList.add("active");
+      dots[slideIndex-1].classList.add("active");
+      // Update slogan
+      const sloganDiv = document.getElementById('slogan');
+      if (sloganDiv && slogans[slideIndex-1]) {
+        sloganDiv.textContent = slogans[slideIndex-1];
+      }
+    }
+  </script>
+
+    <!-- Footer -->
+  <div id="footer-placeholder" class="w-full"></div>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+    
+    // Brochure Generation Function
+    function generateBrochure() {
+      // 1. Open the brochure image directly in a new window for printing
+      const printWindow = window.open('images/E-Trike/E-Trike-Brochure.jpg', '_blank');
+      if (printWindow) {
+        printWindow.onload = function() {
+          setTimeout(function() {
+            printWindow.print();
+          }, 1000); // Wait 1 second for image to load
+        };
+      }
+
+      // 2. Trigger download of the image
+      const link = document.createElement('a');
+      link.href = 'images/E-Trike/E-Trike-Brochure.jpg';
+      link.download = 'E-Trike-Brochure.jpg';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function showMedia(id) {
+      // Hide all and pause video
+      document.querySelectorAll('.main-media').forEach(el => {
+        el.classList.add('hidden');
+        // If it's a video element, pause it
+        if (el.tagName === 'VIDEO') {
+          el.pause();
+        }
+      });
+      document.querySelectorAll('[id^="thumb-"]').forEach(el => el.classList.remove('border-blue-500'));
+      
+      // Show selected
+      if (id === 'img1') {
+        document.getElementById('main-img1').classList.remove('hidden');
+        document.getElementById('thumb-img1').classList.add('border-blue-500');
+      } else if (id === 'img2') {
+        document.getElementById('main-img2').classList.remove('hidden');
+        document.getElementById('thumb-img2').classList.add('border-blue-500');
+      } else if (id === 'img3') {
+        document.getElementById('main-img3').classList.remove('hidden');
+        document.getElementById('thumb-img3').classList.add('border-blue-500');
+      } else if (id === 'img4') {
+        document.getElementById('main-img4').classList.remove('hidden');
+        document.getElementById('thumb-img4').classList.add('border-blue-500');
+      } else if (id === 'vid1') {
+        document.getElementById('main-vid1').classList.remove('hidden');
+        document.getElementById('thumb-vid1').classList.add('border-blue-500');
+      }
+    }
+  </script>
+</body>
+</html>
