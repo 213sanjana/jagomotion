@@ -9,7 +9,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
   <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papmQ+1QwQw5QwQw5QwQw5QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papmQ+1QwQw5QwQw5QwQw5QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
     html, body {
@@ -242,6 +242,10 @@
       imgs.forEach(img => {
         img.addEventListener('contextmenu', e => e.preventDefault());
         img.setAttribute('draggable', 'false');
+      });
+      // Prevent right-click context menu on the whole page
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
       });
     });
   </script>
