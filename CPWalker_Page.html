@@ -325,23 +325,44 @@
             <h2 class="section-title sr-only">Product Gallery</h2>
             <div class="w-full flex flex-col items-center">
               <!-- Thumbnails -->
-              <div class="flex flex-row space-x-5 mb-6">
-                <img src="images/CPWalker/CPWalker-1.jpg" alt="Electric Tricycle" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-blue-500" onclick="showMedia('img1')" id="thumb-img1">
-                <img src="images/CPWalker/CPWalker-2.jpg" alt="Mini" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img2')" id="thumb-img2">
-                <img src="images/CPWalker/CPWalker-3.jpg" alt="Electric Rickshaw" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img3')" id="thumb-img3">
-                <img src="images/CPWalker/CPWalker-4.jpg" alt="Mobility Vehicle" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img4')" id="thumb-img4">
-                <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid1')" id="thumb-vid1">
-                  <video src="images/CPWalker/CPWalker-V-1.mp4" class="w-full h-full object-cover" muted preload="metadata" playsinline></video>
-                </div>
+              <div class="flex flex-row space-x-5 mb-6 ml-20">
+                <img src="images/CPWalker/CPWalker-1.jpg" alt="CP Walker" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-blue-500" onclick="showMedia('img1')" id="thumb-img1">
+                <img src="images/CPWalker/CPWalker-2.jpg" alt="CP Walker" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img2')" id="thumb-img2">
+                <img src="images/CPWalker/CPWalker-3.jpg" alt="CP Walker" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img3')" id="thumb-img3">
+                <img src="images/CPWalker/CPWalker-4.jpg" alt="CP Walker" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img4')" id="thumb-img4">
+                <img src="images/CPWalker/CPWalker-0.jpg" alt="CP Walker" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img5')" id="thumb-img5">
               </div>
-              <!-- Main Media -->
-              <div class="w-full flex items-center justify-center">
-                <img src="images/CPWalker/CPWalker-1.jpg" alt="Electric Tricycle" id="main-img1" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain block">
-                <img src="images/CPWalker/CPWalker-2.jpg" alt="Mini" id="main-img2" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
-                <img src="images/CPWalker/CPWalker-3.jpg" alt="Electric Rickshaw" id="main-img3" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
-                <img src="images/CPWalker/CPWalker-4.jpg" alt="Mobility Vehicle" id="main-img4" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
-                <video controls id="main-vid1" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
-                  <source src="images/CPWalker/CPWalker-V-1.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+              <!-- Main Media + Left Side Thumbnails -->
+              <div class="flex flex-row items-start gap-6 w-full justify-center">
+                <!-- Left Vertical Thumbnails -->
+                <div class="flex flex-col space-y-4">
+                  <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid1')" id="thumb-vid1-side">
+                    <video src="images/CPWalker/CPWalker-V-1.mp4" class="w-full h-full object-cover" muted preload="metadata" playsinline></video>
+                  </div>
+                  <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid1')" id="thumb-vid1-side">
+                    <video src="images/CPWalker/CPWalker-V-1.mp4" class="w-full h-full object-cover" muted preload="metadata" playsinline></video>
+                  </div>
+                  <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid1')" id="thumb-vid1-side">
+                    <video src="images/CPWalker/CPWalker-V-1.mp4" class="w-full h-full object-cover" muted preload="metadata" playsinline></video>
+                  </div>
+                  <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid1')" id="thumb-vid1-side">
+                    <video src="images/CPWalker/CPWalker-V-1.mp4" class="w-full h-full object-cover" muted preload="metadata" playsinline></video>
+                  </div>
+                  <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid1')" id="thumb-vid1-side">
+                    <video src="images/CPWalker/CPWalker-V-1.mp4" class="w-full h-full object-cover" muted preload="metadata" playsinline></video>
+                  </div>
+                </div>
+
+                <!-- Main Media Display -->
+                <div class="flex items-center justify-center">
+                  <img src="images/CPWalker/CPWalker-1.jpg" alt="CP Walker" id="main-img1" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain block">
+                  <img src="images/CPWalker/CPWalker-2.jpg" alt="CP Walker" id="main-img2" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
+                  <img src="images/CPWalker/CPWalker-3.jpg" alt="CP Walker" id="main-img3" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
+                  <img src="images/CPWalker/CPWalker-4.jpg" alt="CP Walker" id="main-img4" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
+                  <img src="images/CPWalker/CPWalker-0.jpg" alt="CP Walker" id="main-img5" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
+                  <video controls id="main-vid1" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
+                    <source src="images/CPWalker/CPWalker-V-1.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+                </div>
               </div>
             </div>          
           </section>
@@ -436,6 +457,9 @@
       } else if (id === 'img4') {
         document.getElementById('main-img4').classList.remove('hidden');
         document.getElementById('thumb-img4').classList.add('border-blue-500');
+      } else if (id === 'img5') {
+        document.getElementById('main-img5').classList.remove('hidden');
+        document.getElementById('thumb-img5').classList.add('border-blue-500');
       } else if (id === 'vid1') {
         document.getElementById('main-vid1').classList.remove('hidden');
         document.getElementById('thumb-vid1').classList.add('border-blue-500');

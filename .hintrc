@@ -16,7 +16,8 @@
       {
         "ignore": [
           "iframe[loading]",
-          "iframe[referrerpolicy=no-referrer-when-downgrade]"
+          "iframe[referrerpolicy=no-referrer-when-downgrade]",
+          "video[playsinline]"
         ]
       }
     ],
@@ -24,6 +25,14 @@
       "default",
       {
         "frame-title": "off"
+      }
+    ],
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "user-select"
+        ]
       }
     ]
   }
