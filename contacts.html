@@ -12,267 +12,7 @@
   <script src="https://cdn.jsdelivr.net/npm/justgage@1.4.0/justgage.min.js"></script>
 
   <style>
-    /* Mobile-first contact page styles */
-    .contact-container {
-      max-width: 1500px;
-      margin: 0 auto;
-      /*padding: 0 0.5rem;       /* Reduced padding */
-    }
-
-    @media (min-width: 640px) {
-      .contact-container {
-        padding: 0 1.5rem;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .contact-container {
-        padding: 0 2rem;
-      }
-    }
-
-    .contact-section {
-      padding: 0.5rem 0 2rem 0; /* Reduced top padding */
-    }
-
-    @media (min-width: 768px) {
-      .contact-section {
-        padding: 1rem 0 3rem 0; /* Reduced top padding for md screens */
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .contact-section {
-        padding: 2rem 0 0rem 0; /* Reduced top padding for lg screens */
-      }
-    }
-
-    .contact-title {
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: #1f2937;
-      margin-bottom: 1.5rem;
-    }
-
-    @media (min-width: 768px) {
-      .contact-title {
-        font-size: 2.25rem;
-        margin-bottom: 2rem;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .contact-title {
-        font-size: 2.5rem;
-        margin-bottom: 2.5rem;
-      }
-    }
-
-    .form-group {
-      margin-bottom: 0rem;
-    }
-
-    @media (min-width: 768px) {
-      .form-group {
-        margin-bottom: 0rem;
-      }
-    }
-
-    .form-label {
-      display: block;
-      color: #374151;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      font-size: 0.875rem;
-    }
-
-    @media (min-width: 768px) {
-      .form-label {
-        font-size: 1rem;
-        margin-bottom: 0.75rem;
-      }
-    }
-
-    .form-input {
-      width: 100%;
-      border: 2px solid #d1d5db;
-      border-radius: 8px;
-      padding: 0.2rem 0.5rem;  /* 0.4rem 0.75rem;  */
-      font-size: 0.875rem;    /* 1rem; */
-      transition: all 0.2s ease;
-      background: white;
-    }
-
-    .form-input:focus {
-      outline: none;
-      border-color: #2563eb;
-      box-shadow: 0 0 0 3px rgba(16, 26, 49, 0.1);
-    }
-
-    @media (min-width: 768px) {
-      .form-input {
-        padding: 0.4rem 0.75rem;  /* was 1rem */
-        font-size: 1rem;  /* was 1.125rem */  
-      }
-    }
-
-    .form-input.form-textarea {
-      padding: 0.75rem; /* Keep textarea padding larger */
-    }
-
-    @media (min-width: 768px) {
-      .form-textarea {
-        min-height: 60px;
-      }
-    }
-
-    .submit-btn {
-      /*background: #2563eb;    bg-blue-600*/
-      color: white;
-      padding: 0rem 1rem;  /* 0.875rem 2rem */
-      border: none;
-      border-radius: 8px;
-      font-size: 0.875rem;   /* 1rem */
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      width: 100%;
-    }
-
-    .submit-btn:hover {
-      background: #1d4ed8;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-    }
-
-    .submit-btn:active {
-      transform: translateY(0);
-    }
-
-    @media (min-width: 768px) {
-      .submit-btn {
-        width: auto;
-        padding:  0.5rem 1.5rem; /* 0.875rem 2rem */
-        font-size: 1rem;
-      }
-    }
-
-    .map-container {
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-      margin-bottom: 2rem;
-    }
-
-    @media (min-width: 768px) {
-      .map-container {
-        margin-bottom: 2.5rem;
-      }
-    }
-
-    .map-iframe {
-      width: 100%;
-      height: 250px;
-      border: none;
-    }
-
-    @media (min-width: 768px) {
-      .map-iframe {
-        height: 300px;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .map-iframe {
-        height: 320px;
-      }
-    }
-
-    .gauges-container {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      align-items: center;
-    }
-
-    @media (min-width: 768px) {
-      .gauges-container {
-        flex-direction: row;
-        justify-content: center;
-        gap: 3rem;
-      }
-    }
-
-    .gauge-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .gauge-title {
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: #374151;
-      margin-bottom: 0.5rem;
-    }
-
-    @media (min-width: 768px) {
-      .gauge-title {
-        font-size: 1rem;
-        margin-bottom: 0.75rem;
-      }
-    }
-
-    .gauge-container {
-      width: 120px;
-      height: 100px;
-      margin-bottom: 0.5rem;
-    }
-
-    @media (min-width: 768px) {
-      .gauge-container {
-        width: 140px;
-        height: 120px;
-        margin-bottom: 0.75rem;
-      }
-    }
-
-    .gauge-label {
-      font-size: 0.75rem;
-      color: #6b7280;
-    }
-
-    @media (min-width: 768px) {
-      .gauge-label {
-        font-size: 0.875rem;
-      }
-    }
-
-    /* Layout responsive */
-    .contact-layout {
-      display: flex;
-      flex-direction: row;
-      gap: 2rem;
-    }
-
-    @media (min-width: 1024px) {
-      .contact-layout {
-        /*padding: 1rem;*/
-        flex-direction: row;
-        gap: 4rem;
-        align-items: flex-start;
-        /* Ensure both form and map start at the same vertical position */
-      }
-    }
-
-    .contact-form-section {
-      flex: 1;
-    }
-
-    .contact-info-section {
-      flex: 1;
-    }
+    /* Keep only minimal custom styles for gauges and map if needed. Remove layout, padding, and font-size custom CSS in favor of Tailwind. */
   </style>
 </head>
 <body class="bg-gray-50 font-sans flex flex-col min-h-screen">
@@ -283,59 +23,40 @@
   <!-- Main content -->
   <main class="flex-grow">
     <section class="contact-section bg-white">
-      <div class="contact-container">
-        <div class="contact-layout">
-        <!-- Contact Form -->
-          <div class="contact-form-section flex flex-col justify-start">
-            <!-- <h2 class="contact-title">Enquire About Products</h2> -->
-          <form id="enquiryForm" class="space-y-2">
-              <div class="form-group">
-                <label class="form-label" for="name">Name</label>
-                <input type="text" id="name" name="name" required class="form-input" />
+      <div class="max-w-screen-lg mx-auto px-2 sm:px-4 py-4">
+        <h1 class="text-2xl sm:text-3xl font-bold text-center mb-6">Contact Us</h1>
+        <div class="flex flex-col lg:flex-row gap-6">
+          <section class="flex-1 bg-white rounded-lg shadow-md p-4 sm:p-8 mb-4 lg:mb-0">
+            <form>
+              <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2 text-sm sm:text-base">Name</label>
+                <input type="text" class="form-input w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
               </div>
-              <div class="form-group flex flex-col sm:flex-row gap-2">
-                <div class="w-full sm:w-1/2">
-                  <label class="form-label" for="phone">Phone Number</label>
-                  <input type="tel" id="phone" name="phone" required class="form-input" />
-                </div>
-                <div class="w-full sm:w-1/2">
-                  <label class="form-label" for="place">Place</label>
-                  <input type="text" id="place" name="place" class="form-input" />
-                </div>
+              <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2 text-sm sm:text-base">Email</label>
+                <input type="email" class="form-input w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
               </div>
-              <div class="form-group">
-                <label class="form-label" for="product">Product</label>
-                <select id="product" name="product" required class="form-input">
-                  <option value="" disabled selected>Select a product</option>
-                  <option value="electric-rikshaw">Electric Rikshaw</option>
-                  <option value="electric-tricycle">Electric Tri-cycle</option>
-                  <option value="mobility-vehicle">Electric Mobility Vehicle</option>
-                  <option value="cerebral-palsy-walker">Cerebral Palsy Walker</option>
-                  <option value="walker-prosthetics">Walker Assisted Prosthetics</option>
-                </select>
+              <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2 text-sm sm:text-base">Message</label>
+                <textarea class="form-input w-full border border-gray-300 rounded px-3 py-2 min-h-[80px] focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
               </div>
-              <div class="form-group">
-                <label class="form-label" for="question">Question</label>
-                <textarea id="question" name="question" rows="2" required class="form-input form-textarea"></textarea>
+              <button type="submit" class="bg-blue-700 text-white font-bold py-2 px-6 rounded hover:bg-blue-800 w-full sm:w-auto">Send</button>
+            </form>
+          </section>
+          <section class="flex-1 flex flex-col gap-4">
+            <div class="bg-white rounded-lg shadow-md p-4">
+              <h2 class="text-lg font-bold mb-2">Our Location</h2>
+              <div class="rounded-lg overflow-hidden">
+                <iframe class="w-full h-48 sm:h-64 border-0" src="https://www.google.com/maps/embed?..." allowfullscreen="" loading="lazy"></iframe>
               </div>
-              <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2 flex items-center justify-center">
-                <i class="fas fa-paper-plane mr-2"></i>Submit</button>
-          </form>
-        </div>
-
-        <!-- Map & Gauges -->
-          <div class="contact-info-section">
-          <!-- Map -->
-            <div class="map-container">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1919.0631922770708!2d74.5585461!3d16.8640321!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc119029ccd0493%3A0xb3ad9bd497812aae!2sJAGO%20Motion%20Technologies%20Pvt.%20Ltd!5e1!3m2!1sen!2sin!4v1752070183311!5m2!1sen!2sin"
-                class="map-iframe"
-            allowfullscreen="" 
-            loading="lazy">
-          </iframe>
             </div>
-
-          </div>
+            <div class="bg-white rounded-lg shadow-md p-4">
+              <h2 class="text-lg font-bold mb-2">Our Gauges</h2>
+              <div class="flex flex-col sm:flex-row gap-4 items-center justify-center">
+                <!-- Gauge widgets here -->
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </section>

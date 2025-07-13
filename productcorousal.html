@@ -14,32 +14,7 @@
       display: flex;
       transition: transform 0.5s ease-in-out;
     }
-    .carousel-slide {
-      flex: 0 0 100%;
-      display: flex;
-      gap: 1rem;
-      padding: 0 1rem;
-      box-sizing: border-box;
-    }
-    .product-card {
-      flex: 0 0 calc(33.333% - 1rem);
-    }
-
-    @media (max-width: 768px) {
-      .carousel-slide {
-        gap: 0.5rem;
-        padding: 0 0.5rem;
-      }
-      .product-card {
-        flex: 0 0 100%;
-      }
-    }
-
-    @media (min-width: 769px) and (max-width: 1024px) {
-      .product-card {
-        flex: 0 0 calc(50% - 1rem);
-      }
-    }
+    /* Remove .carousel-slide and .product-card custom CSS, use Tailwind for layout */
   </style>
 </head>
 <body class="bg-gray-50 font-sans">
@@ -56,7 +31,6 @@
   <section class="py-8 bg-white relative">
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Featured Products</h2>
-
       <div class="carousel-container relative overflow-hidden">
         <!-- Arrows -->
         <button id="prevBtn" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 z-10">
@@ -65,70 +39,50 @@
         <button id="nextBtn" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 z-10">
           <i class="fas fa-chevron-right text-gray-700"></i>
         </button>
-
         <!-- Carousel Track -->
-        <div class="carousel-track" id="carousel">
+        <div class="carousel-track w-full" id="carousel">
+          <!-- Slides: On mobile, each slide is one product; on desktop, each slide is 3 products -->
+          <!-- Example with 6 products -->
           <!-- Slide 1 -->
-          <div class="carousel-slide">
-            <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px]">
-              <div class="h-64 bg-gray-200 flex items-center justify-center">
-                <img src="images/cutout.jpg" alt="Electric Rikshaw" class="w-60 h-60 object-contain" />
+          <div class="carousel-slide flex justify-center w-full">
+            <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 w-full max-w-xs mx-auto">
+              <div class="h-48 sm:h-64 flex items-center justify-center">
+                <img src="images/E-Tricycle/E-Tricycle-0.jpg" alt="Electric Tricycle" class="w-full max-w-[320px] h-48 sm:h-64 object-contain mx-auto" />
               </div>
               <div class="p-4">
-                <h3 class="text-xl font-semibold text-gray-800 mb-2">Electric Rikshaw</h3>
-                <p class="text-gray-600 text-sm">Lightweight, foldable electric rickshaw for short-distance mobility.</p>
-              </div>
-            </div>
-            <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px]">
-              <div class="h-64 bg-gray-200 flex items-center justify-center">
-                <img src="images/tricycle.png" alt="Mobility Tricycle" class="w-60 h-60 object-contain" />
-              </div>
-              <div class="p-4">
-                <h3 class="text-xl font-semibold text-gray-800 mb-2">Mobility Tricycle</h3>
-                <p class="text-gray-600 text-sm">Designed for comfortable travel with stability and ease.</p>
-              </div>
-            </div>
-            <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px]">
-              <div class="h-64 bg-gray-200 flex items-center justify-center">
-                <img src="images/wheelchair.png" alt="Wheelchair" class="w-60 h-60 object-contain" />
-              </div>
-              <div class="p-4">
-                <h3 class="text-xl font-semibold text-gray-800 mb-2">Smart Wheelchair</h3>
-                <p class="text-gray-600 text-sm">Motorized wheelchair with smart features for disabled users.</p>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Electric Tricycle</h3>
+                <p class="text-gray-600 text-sm">Lightweight, foldable electric tricycle for mobility.</p>
+                <a href="#" class="block mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center">Enquire</a>
               </div>
             </div>
           </div>
-
-          <!-- Slide 2 (clone or more products) -->
-          <div class="carousel-slide">
-            <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px]">
-              <div class="h-64 bg-gray-200 flex items-center justify-center">
-                <img src="images/product1.jpg" alt="Product 4" class="w-60 h-60 object-contain" />
+          <!-- Slide 2 -->
+          <div class="carousel-slide flex justify-center w-full">
+            <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 w-full max-w-xs mx-auto">
+              <div class="h-48 sm:h-64 flex items-center justify-center">
+                <img src="images/E-Mini/E-Mini-0.jpg" alt="Electric Mini-Vehicle" class="w-full max-w-[320px] h-48 sm:h-64 object-contain mx-auto" />
               </div>
               <div class="p-4">
-                <h3 class="text-xl font-semibold text-gray-800 mb-2">Portable Walker</h3>
-                <p class="text-gray-600 text-sm">Foldable walker for assisted walking with ergonomic grip.</p>
-              </div>
-            </div>
-            <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px]">
-              <div class="h-64 bg-gray-200 flex items-center justify-center">
-                <img src="images/product2.jpg" alt="Product 5" class="w-60 h-60 object-contain" />
-              </div>
-              <div class="p-4">
-                <h3 class="text-xl font-semibold text-gray-800 mb-2">Assistive Crutches</h3>
-                <p class="text-gray-600 text-sm">Durable and lightweight crutches for mobility assistance.</p>
-              </div>
-            </div>
-            <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px]">
-              <div class="h-64 bg-gray-200 flex items-center justify-center">
-                <img src="images/product3.jpg" alt="Product 6" class="w-60 h-60 object-contain" />
-              </div>
-              <div class="p-4">
-                <h3 class="text-xl font-semibold text-gray-800 mb-2">Reclining Chair</h3>
-                <p class="text-gray-600 text-sm">Adjustable recliner for home or clinical care comfort.</p>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Electric Mini-Vehicle</h3>
+                <p class="text-gray-600 text-sm">Compact electric vehicle for urban mobility.</p>
+                <a href="#" class="block mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center">Enquire</a>
               </div>
             </div>
           </div>
+          <!-- Slide 3 -->
+          <div class="carousel-slide flex justify-center w-full">
+            <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 w-full max-w-xs mx-auto">
+              <div class="h-48 sm:h-64 flex items-center justify-center">
+                <img src="images/E-Rickshaw/E-Rickshaw-0.jpg" alt="Electric Rickshaw" class="w-full max-w-[320px] h-48 sm:h-64 object-contain mx-auto" />
+              </div>
+              <div class="p-4">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Electric Rickshaw</h3>
+                <p class="text-gray-600 text-sm">Efficient electric rickshaw for last-mile delivery.</p>
+                <a href="#" class="block mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center">Enquire</a>
+              </div>
+            </div>
+          </div>
+          <!-- Add more slides as needed -->
         </div>
       </div>
     </div>
@@ -144,14 +98,32 @@
     let currentSlide = 0;
 
     function updateCarousel() {
+      const isMobile = window.innerWidth < 768;
       const slideWidth = slides[0].offsetWidth;
       track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+      // Show only one slide at a time on mobile, 3 at a time on desktop
+      slides.forEach((slide, idx) => {
+        if (isMobile) {
+          slide.style.display = idx === currentSlide ? "flex" : "none";
+        } else {
+          slide.style.display = "flex";
+        }
+      });
     }
 
     nextBtn.addEventListener("click", () => {
-      if (currentSlide < slides.length - 1) {
-        currentSlide++;
-        updateCarousel();
+      const isMobile = window.innerWidth < 768;
+      if (isMobile) {
+        if (currentSlide < slides.length - 1) {
+          currentSlide++;
+          updateCarousel();
+        }
+      } else {
+        // On desktop, scroll by 3 slides at a time if needed
+        if (currentSlide < slides.length - 3) {
+          currentSlide++;
+          updateCarousel();
+        }
       }
     });
 
@@ -164,6 +136,8 @@
 
     // Responsive fix on window resize
     window.addEventListener("resize", updateCarousel);
+    // Initialize
+    updateCarousel();
   </script>
 </body>
 </html>

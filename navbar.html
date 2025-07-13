@@ -1,25 +1,20 @@
 <!-- navbar.html -->
-<header class="bg-[#001C71] text-white shadow-md">
-  <div class="container mx-auto pl-2 pr-0 py-2 flex justify-between items-center">
-    <div class="flex items-center">
-      <img src="images/JAGO_Blue_Light.png" alt="Logo" class="w-[100px] h-[70px] object-contain">
+<header class="bg-blue-700 text-white w-full shadow-md">
+  <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-screen-xl flex flex-col sm:flex-row items-center justify-between py-2">
+    <div class="flex items-center justify-between w-full sm:w-auto">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="images/JAGO_Blue_Light.png" alt="JAGO Logo" class="h-10 w-auto" />
+        <span class="font-bold text-lg tracking-wide">JAGO Motion</span>
+      </a>
+      <!-- Mobile menu button (hamburger) -->
+      <button class="sm:hidden ml-auto p-2 focus:outline-none" id="mobile-menu-btn" aria-label="Open Menu">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
     </div>
-    <nav class="relative space-x-6 flex items-center text-xl">
-      <a href="main.html" class="hover:text-blue-200">Home</a>
-
-      <!-- Products Dropdown -->
-      <div class="relative group">
-        <a class="hover:text-blue-200 inline-block py-2 px-2">Products</a>
-        <div class="absolute left-0 top-full hidden group-hover:block bg-white text-black rounded shadow-lg mt-0 min-w-[230px] z-50 text-base">
-          <a href="E_Tricycle_Page.html" class="block px-4 py-2 hover:bg-gray-100">Electric Tricycle</a>
-          <a href="E_Mini_Page.html" class="block px-4 py-2 hover:bg-gray-100">Electric Mini-Vehicle</a>
-          <a href="E_Rickshaw_Page.html" class="block px-4 py-2 hover:bg-gray-100">Electric Rickshaw</a>
-          <a href="E_Trike_Page.html" class="block px-4 py-2 hover:bg-gray-100">Electric Trike</a>
-          <a href="CPWalker_Page.html" class="block px-4 py-2 hover:bg-gray-100">Cerebral Palsy Walker</a>
-          <a href="WAP_Page.html" class="block px-4 py-2 hover:bg-gray-100">Walker Assisted Prosthetics</a>
-        </div>
-      </div>
-
+    <!-- Navigation Links -->
+    <nav class="hidden sm:flex gap-4 items-center font-medium text-base" id="navbar-links">
+      <a href="index.html" class="hover:text-blue-200">Home</a>
+      <a href="productcorousal.html" class="hover:text-blue-200">Products</a>
       <!-- About Dropdown -->
       <div class="relative group">
         <a class="hover:text-blue-200 inline-block py-2 px-2">About</a>
@@ -29,10 +24,41 @@
           <a href="Blogs.html" class="block px-4 py-2 hover:bg-gray-100">Blogs</a>
         </div>
       </div>
-
       <a href="contacts.html" class="hover:text-blue-200">Contact</a>
     </nav>
   </div>
+  <!-- Mobile Navigation (hidden by default) -->
+  <nav class="sm:hidden bg-blue-800 w-full px-4 py-2 flex flex-col gap-2 text-base font-medium" id="mobile-navbar" style="display: none;">
+    <a href="index.html" class="hover:text-blue-200 py-2">Home</a>
+    <a href="productcorousal.html" class="hover:text-blue-200 py-2">Products</a>
+    <div class="border-t border-blue-600 my-1"></div>
+    <a href="Mission_Page.html" class="hover:text-blue-200 py-2">Mission</a>
+    <a href="Disabilities_Policies.html" class="hover:text-blue-200 py-2">Disabilities Policies</a>
+    <a href="Blogs.html" class="hover:text-blue-200 py-2">Blogs</a>
+    <div class="border-t border-blue-600 my-1"></div>
+    <a href="contacts.html" class="hover:text-blue-200 py-2">Contact</a>
+  </nav>
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileNavbar = document.getElementById('mobile-navbar');
+    const navbarLinks = document.getElementById('navbar-links');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', () => {
+        if (mobileNavbar.style.display === 'none' || mobileNavbar.style.display === '') {
+          mobileNavbar.style.display = 'flex';
+        } else {
+          mobileNavbar.style.display = 'none';
+        }
+      });
+    }
+    // Hide mobile nav on desktop resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 640) {
+        mobileNavbar.style.display = 'none';
+      }
+    });
+  </script>
 </header>
 
 <style>
@@ -40,29 +66,10 @@
   .mobile-accordion-btn.active i {
     transform: rotate(180deg);
   }
-  
   .mobile-accordion-content {
     transition: all 0.3s ease;
   }
-  
-  /* Responsive container */
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-  
-  @media (min-width: 640px) {
-    .container {
-      padding: 0 1.5rem;
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    .container {
-      padding: 0 2rem;
-    }
-  }
+  /* Remove .container custom CSS, use Tailwind for responsive container */
 </style>
 
 <script>

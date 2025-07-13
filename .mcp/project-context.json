@@ -1,0 +1,83 @@
+{
+  "project": {
+    "name": "JAGO Motion Technologies Website",
+    "description": "A static website showcasing healthcare and disability products for enhanced mobility and independence. Features responsive design, interactive product galleries, accessibility, and brochure downloads.",
+    "primary_language": "HTML, CSS, JavaScript",
+    "framework": "None (Static Site, Tailwind CSS for styling)",
+    "build_command": "",
+    "deploy_target": "Netlify",
+    "live_url": "(set after deployment)"
+  },
+  "integrations": {
+    "netlify": {
+      "usage": "Hosting, CDN, and deployment for static site",
+      "site_id_env": "NETLIFY_SITE_ID",
+      "access_token_env": "NETLIFY_ACCESS_TOKEN"
+    }
+  },
+  "data_flow": {
+    "media_gallery": {
+      "image_display": "Static images in /images/ folders referenced by HTML pages",
+      "video_display": "Static videos in /images/[Product]/ folders referenced by HTML pages"
+    },
+    "brochure_download": {
+      "download_link": "Brochure images or PDFs linked from product pages"
+    },
+    "contact": {
+      "form": "Static HTML form (no backend processing)"
+    }
+  },
+  "folders": {
+    "source": ".",
+    "images": "images/",
+    "html_pages": ".",
+    "css": "(CDN Tailwind)",
+    "js": "(inline or CDN)",
+    "mcp": ".mcp/"
+  },
+  "key_files": {
+    "main_pages": [
+      "index.html",
+      "main.html",
+      "CPWalker_Page.html",
+      "E_Mini_Page.html",
+      "E_Rickshaw_Page.html",
+      "E_Tricycle_Page.html",
+      "E_Trike_Page.html",
+      "WAP_Page.html",
+      "contacts.html",
+      "blogs.html"
+    ],
+    "components": [
+      "navbar.html",
+      "footer.html",
+      "productcorousal.html"
+    ],
+    "config": [
+      "netlify.toml",
+      "package.json"
+    ]
+  },
+  "testing": {
+    "framework": "None (manual browser testing)",
+    "auto_generate_tests": false,
+    "notes": "Test responsiveness, gallery navigation, and accessibility manually."
+  },
+  "ai_goals": [
+    "Suggest UI/UX improvements for accessibility and responsiveness",
+    "Automate static asset optimization (images/videos)",
+    "Generate documentation for new features or pages",
+    "Propose SEO enhancements for static site"
+  ],
+  "deployment": {
+    "build_pipeline": "Local development -> Netlify deploy",
+    "environment_variables": [
+      "NETLIFY_SITE_ID",
+      "NETLIFY_ACCESS_TOKEN"
+    ],
+    "notes": "No build step required. Drag-and-drop or git-based deploy to Netlify."
+  },
+  "ai_workflow_file": ".mcp/AI-process.json",
+  "knowledge_map_file": ".mcp/knowledge-map.json",
+  "knowledge_map_description": "Canonical, machine-readable map of all HTML pages, components, and static assets. AI agents and automation tools should consult this file first for code understanding, RAG, and advanced code search."
+} 
