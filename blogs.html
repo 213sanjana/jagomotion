@@ -1,31 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blogs</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
+    html, body {
+      height: 100%;
       margin: 0;
       padding: 0;
+    }
+    body {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
     }
-    .container {
+    .main-content {
+      flex: 1 0 auto;
+    }
+    .blog-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin: 25px 0 20px 0;
+      color: #001C71;
+    }
+    .blog-container {
       max-width: 700px;
-      margin: 60px auto 0 auto;
+      margin: 0 auto 20px auto;
       background: #fff;
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       padding: 40px 32px 32px 32px;
       text-align: center;
-    }
-    h1 {
-      color: #001C71;
-      margin-bottom: 24px;
     }
     .coming-soon {
       font-size: 1.3rem;
@@ -35,13 +45,36 @@
     }
   </style>
 </head>
-<body>
-  <div class="container">
-    <h1>Blogs</h1>
-    <p>
-      Stay tuned for insightful articles, stories, and updates from our community. Our blog section will feature voices and experiences that inspire and inform.
-    </p>
-    <div class="coming-soon">... Coming soon</div>
+<body class="bg-gray-50 font-sans min-h-screen flex flex-col justify-between">
+  <!-- Navbar -->
+  <div id="navbar-placeholder" class="w-full"></div>
+  <script>
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar-placeholder").innerHTML = data;
+      });
+  </script>
+
+  <!-- Main Content -->
+  <div class="main-content flex flex-1 items-center justify-center flex-col" style="margin-top: -80px;">
+    <div id="blog-title" class="blog-title">Blogs</div>
+    <div class="blog-container">
+      <p>
+        Stay tuned for insightful articles, stories, and updates from our community. Our blog section will feature voices and experiences that inspire and inform.
+      </p>
+      <div class="coming-soon">... Coming soon</div>
+    </div>
   </div>
+
+  <!-- Footer -->
+  <div id="footer-placeholder" class="w-full"></div>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+  </script>
 </body>
 </html>
