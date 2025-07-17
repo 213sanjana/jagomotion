@@ -1,19 +1,16 @@
 <!-- navbar.html -->
-<header class="bg-blue-700 text-white w-full shadow-md">
+<header class="bg-[#001C71] text-white w-full shadow-md">
   <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-screen-xl flex flex-col sm:flex-row items-center justify-between py-2">
     <div class="flex items-center justify-between w-full sm:w-auto">
       <a href="index.html" class="flex items-center gap-2">
         <img src="images/JAGO_Blue_Light.png" alt="JAGO Logo" class="h-10 w-auto" />
-        <span class="font-bold text-lg tracking-wide">JAGO Motion</span>
       </a>
-      <!-- Mobile menu button (hamburger) -->
-      <button class="sm:hidden ml-auto p-2 focus:outline-none" id="mobile-menu-btn" aria-label="Open Menu">
-        <i class="fas fa-bars text-2xl"></i>
-      </button>
+      <!-- Home menu link for mobile instead of hamburger -->
+      <a href="main.html" class="sm:hidden ml-auto p-2 font-bold text-lg tracking-wide">Home</a>
     </div>
     <!-- Navigation Links -->
     <nav class="hidden sm:flex gap-4 items-center font-medium text-base" id="navbar-links">
-      <a href="index.html" class="hover:text-blue-200">Home</a>
+      <a href="main.html" class="hover:text-blue-200">Home</a>
       <a href="productcorousal.html" class="hover:text-blue-200">Products</a>
       <!-- About Dropdown -->
       <div class="relative group">
@@ -29,7 +26,7 @@
   </div>
   <!-- Mobile Navigation (hidden by default) -->
   <nav class="sm:hidden bg-blue-800 w-full px-4 py-2 flex flex-col gap-2 text-base font-medium" id="mobile-navbar" style="display: none;">
-    <a href="index.html" class="hover:text-blue-200 py-2">Home</a>
+    <a href="main.html" class="hover:text-blue-200 py-2">Home</a>
     <a href="productcorousal.html" class="hover:text-blue-200 py-2">Products</a>
     <div class="border-t border-blue-600 my-1"></div>
     <a href="Mission_Page.html" class="hover:text-blue-200 py-2">Mission</a>
@@ -71,56 +68,3 @@
   }
   /* Remove .container custom CSS, use Tailwind for responsive container */
 </style>
-
-<script>
-  // Mobile menu functionality
-  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  const closeMenuBtn = document.getElementById('close-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const mobileMenuContent = mobileMenu.querySelector('div');
-  const accordionBtns = document.querySelectorAll('.mobile-accordion-btn');
-  
-  // Toggle mobile menu
-  mobileMenuBtn.addEventListener('click', () => {
-    mobileMenu.classList.remove('hidden');
-    setTimeout(() => {
-      mobileMenuContent.classList.remove('translate-x-full');
-    }, 10);
-  });
-  
-  closeMenuBtn.addEventListener('click', () => {
-    mobileMenuContent.classList.add('translate-x-full');
-    setTimeout(() => {
-      mobileMenu.classList.add('hidden');
-    }, 300);
-  });
-  
-  // Close menu when clicking outside
-  mobileMenu.addEventListener('click', (e) => {
-    if (e.target === mobileMenu) {
-      closeMenuBtn.click();
-    }
-  });
-  
-  // Mobile accordion functionality
-  accordionBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const content = btn.nextElementSibling;
-      const icon = btn.querySelector('i');
-      
-      btn.classList.toggle('active');
-      
-      if (content.classList.contains('hidden')) {
-        content.classList.remove('hidden');
-        setTimeout(() => {
-          content.style.maxHeight = content.scrollHeight + 'px';
-        }, 10);
-      } else {
-        content.style.maxHeight = '0px';
-        setTimeout(() => {
-          content.classList.add('hidden');
-        }, 300);
-      }
-    });
-  });
-</script>
