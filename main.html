@@ -11,8 +11,9 @@
         .carousel-container {
             overflow: hidden;
             position: relative;
-            width: 60vw;
-            max-width: 250px;
+            width: 800px; /* or a fixed value like 800px */
+            max-width: 900px;
+            height: 500px;
             margin: 0 auto;
             padding-bottom: 1rem;
             will-change: transform;
@@ -97,8 +98,7 @@
             display: flex;
             gap: 0.5rem;
             padding: 0 0.5rem;
-            }
-
+        }
         #mobile-carousel-wrapper .product-card {
             flex: 0 0 100%;
             max-width: 100%;
@@ -112,6 +112,119 @@
             #desktop-carousel-wrapper .product-card {
                 flex: 0 0 50%;
                 max-width: 50%;
+            }
+        }
+        @media (max-width: 768px) {
+            #mobile-carousel-wrapper {
+                width: 100%;
+                max-width: 500px;
+                height: 420px;
+                margin-left: auto;
+                margin-right: auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: row;
+                position: relative;
+            }
+            #mobile-carousel-wrapper .carousel-container {
+                width: 100%;
+                max-width: 500px;
+                height: 420px;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            #mobile-carousel-wrapper .carousel-track {
+                height: 100%;
+            }
+            #mobile-carousel-wrapper .carousel-slide {
+                padding: 0;
+                gap: 0;
+                align-items: center;
+                justify-content: center;
+            }
+            #mobile-carousel-wrapper .product-card {
+                max-width: 280px;
+                height: 370px;
+                min-width: 0;
+                min-height: 0;
+                padding: 0.5rem 0.5rem 1rem 0.5rem;
+                border-radius: 0.75rem;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08);
+            }
+            #mobile-carousel-wrapper .product-card .h-\[300px\],
+            #mobile-carousel-wrapper .product-card .w-\[300px\],
+            #mobile-carousel-wrapper .product-card .md\:h-64 {
+                height: 260px !important;
+                width: 260px !important;
+                margin: 0.25rem auto 0.5rem auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            #mobile-carousel-wrapper .product-card img {
+                height: 100%;
+                width: 100%;
+                object-fit: contain;
+            }
+            #mobile-carousel-wrapper .product-title,
+            #mobile-carousel-wrapper .text-xl {
+                font-size: 1.25rem !important;
+                margin-bottom: 0.2rem !important;
+            }
+            #mobile-carousel-wrapper .enquire-btn,
+            #mobile-carousel-wrapper .bg-blue-600 {
+                font-size: 0.85rem !important;
+                padding: 0.3rem 0.8rem !important;
+                margin-top: 0.3rem !important;
+            }
+            /* Arrow buttons beside container, not absolutely positioned */
+            #mobile-carousel-wrapper .carousel-arrow-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 1.3rem;
+                margin: 0 6px;
+                position: static;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 2px 8px 0 rgba(30, 58, 138, 0.08);
+                background: #fff;
+                border: 2px solid #002366;
+                color: #002366;
+                border-radius: 50%;
+                padding: 0;
+                transition: background 0.2s, box-shadow 0.2s;
+            }
+            #mobile-carousel-wrapper .carousel-arrow-btn.mobile-arrow {
+                position: static;
+                top: auto;
+                left: auto;
+                right: auto;
+                transform: none;
+                margin: 0 4px;
+            }
+            #mobile-carousel-wrapper .carousel-arrow-btn svg {
+                width: 18px;
+                height: 18px;
+                display: block;
+            }
+            /* Special case: 6th card title (Walker Assisted Prosthetics) stays on one line, but same font size as others */
+            #mobile-carousel-wrapper .carousel-slide:nth-child(6) .product-title,
+            #mobile-carousel-wrapper .carousel-slide:nth-child(6) .text-xl {
+                white-space: nowrap !important;
+                padding-left: 0.2rem;
+                padding-right: 0.2rem;
+                text-overflow: ellipsis;
+                overflow: hidden;
             }
         }
         .carousel-arrow-btn {
@@ -147,16 +260,15 @@
     </script>
 
     <!-- Hero Section -->
-    <section class="bg-white text-gray-800 py-8">
+    <section class="bg-white text-gray-800 pt-6 pb-2">
         <div class="container mx-auto px-4 text-center">
-            <h3 class="text-2xl md:text-3xl font-bold mb-4">Enhancing Mobility & Independence</h3>
+            <h3 class="text-2xl md:text-3xl font-bold mb-2">Enhancing Mobility & Independence</h3>
         </div>
     </section>
 
-
     <!-- Products Carousel Section -->
-    <section class="pb-8 bg-white">
-        <div class="mx-auto px-2 max-w-md md:max-w-6xl w-full">
+    <section class="pt-0 pb-8 bg-white">
+        <div class="mx-auto max-w-md md:max-w-6xl w-full md:px-2">
             <!-- Desktop Carousel (hidden on mobile) -->
             <div class="flex items-center relative justify-center hidden md:flex" id="desktop-carousel-wrapper">
                 <button id="prevBtnDesktop" class="carousel-arrow-btn mobile-arrow absolute left-0 top-1/2 -translate-y-1/2 -ml-6 z-10">
@@ -271,8 +383,8 @@
             </div>
             <!-- Mobile Carousel (hidden on desktop) -->
             <div class="flex items-center relative justify-center md:hidden" id="mobile-carousel-wrapper">
-                <button id="prevBtnMobile" class="carousel-arrow-btn mobile-arrow absolute left-0 top-1/2 -translate-y-1/2 -ml-6 z-10">
-                    <i class="fas fa-chevron-left"></i>
+                <button id="prevBtnMobile" class="carousel-arrow-btn mobile-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#002366" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
                 </button>
                 <div class="carousel-container relative overflow-hidden flex-1 w-full max-w-md mx-auto">
                     <div class="carousel-track w-full flex transition-transform duration-500 ease-in-out" id="carouselMobile">
@@ -357,8 +469,8 @@
                         </div>
                     </div>
                 </div>
-                <button id="nextBtnMobile" class="carousel-arrow-btn mobile-arrow absolute right-0 top-1/2 -translate-y-1/2 -mr-6 z-10">
-                    <i class="fas fa-chevron-right"></i>
+                <button id="nextBtnMobile" class="carousel-arrow-btn mobile-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#002366" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
                 </button>
             </div>
         </div>
