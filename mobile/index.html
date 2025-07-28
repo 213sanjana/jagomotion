@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jago Motion Technologies - Disability & Healthcare Products</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
+    <style>
+        .carousel-container {
+            overflow: hidden;
+            position: relative;
+            width: 800px; /* or a fixed value like 800px */
+            max-width: 900px;
+            height: 500px;
+            margin: 0 auto;
+            padding-bottom: 1rem;
+            will-change: transform;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+        }
+        /* Desktop carousel: each slide is 100% width, 3 product-cards per slide */
+        #desktop-carousel-wrapper .carousel-slide {
+            flex: 0 0 100%;
+            display: flex;
+            gap: 1.5rem;
+            padding: 0 1rem;
+            box-sizing: border-box;
+            align-items: stretch;
+        }
+        #desktop-carousel-wrapper .product-card {
+            flex: 0 0 33.333%;
+            max-width: 33.333%;
+            height: 140px;
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0.25rem 0.5rem;
+            background: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08);
+            transition: box-shadow 0.3s;
+            overflow: hidden;
+        }
+        #desktop-carousel-wrapper .product-card:hover {
+            box-shadow: 0 4px 16px 0 rgba(0,0,0,0.12);
+        }
+        #desktop-carousel-wrapper .image-container {
+            height: 100px;
+            width: 100px;
+            background: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        #desktop-carousel-wrapper .product-card img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
+        #desktop-carousel-wrapper .product-title {
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 0.1rem;
+            min-height: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #desktop-carousel-wrapper .enquire-btn {
+            background: #2563eb;
+            color: #fff;
+            font-weight: bold;
+            padding: 0.2rem 0.7rem;
+            border-radius: 0.375rem;
+            margin-top: 0.2rem;
+            font-size: 0.8rem;
+            transition: background 0.2s;
+            min-height: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #desktop-carousel-wrapper .enquire-btn:hover {
+            background: #1d4ed8;
+        }
+        /* Mobile carousel: each slide is 100% width, 1 product-card per slide */
+        #mobile-carousel-wrapper .carousel-slide {
+            flex: 0 0 100%;
+            display: flex;
+            gap: 0.5rem;
+            padding: 0 0.5rem;
+        }
+        #mobile-carousel-wrapper .product-card {
+            flex: 0 0 100%;
+            max-width: 100%;
+            margin-bottom: 1rem;
+            padding-bottom: 2.5rem;
+            min-width: 250px;
+            min-height: 450px;
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            #desktop-carousel-wrapper .product-card {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+        }
+        @media (max-width: 768px) {
+            #mobile-carousel-wrapper {
+                width: 100%;
+                max-width: 500px;
+                height: 420px;
+                margin-left: auto;
+                margin-right: auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: row;
+                position: relative;
+            }
+            #mobile-carousel-wrapper .carousel-container {
+                width: 100%;
+                max-width: 500px;
+                height: 420px;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            #mobile-carousel-wrapper .carousel-track {
+                height: 100%;
+            }
+            #mobile-carousel-wrapper .carousel-slide {
+                padding: 0;
+                gap: 0;
+                align-items: center;
+                justify-content: center;
+            }
+            #mobile-carousel-wrapper .product-card {
+                max-width: 280px;
+                height: 370px;
+                min-width: 0;
+                min-height: 0;
+                padding: 0.5rem 0.5rem 1rem 0.5rem;
+                border-radius: 0.75rem;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08);
+                border: 1.5px solid #0000001a;
+            }
+            #mobile-carousel-wrapper .product-card .h-\[300px\],
+            #mobile-carousel-wrapper .product-card .w-\[300px\],
+            #mobile-carousel-wrapper .product-card .md\:h-64 {
+                height: 260px !important;
+                width: 260px !important;
+                margin: 0.25rem auto 0.5rem auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            #mobile-carousel-wrapper .product-card img {
+                height: 100%;
+                width: 100%;
+                object-fit: contain;
+            }
+            #mobile-carousel-wrapper .product-title,
+            #mobile-carousel-wrapper .text-xl {
+                font-size: 1.25rem !important;
+                margin-bottom: 0.2rem !important;
+            }
+            #mobile-carousel-wrapper .enquire-btn,
+            #mobile-carousel-wrapper .bg-blue-600 {
+                font-size: 0.85rem !important;
+                padding: 0.3rem 0.8rem !important;
+                margin-top: 0.3rem !important;
+            }
+            /* Arrow buttons beside container, not absolutely positioned */
+            #mobile-carousel-wrapper .carousel-arrow-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 1.3rem;
+                margin: 0 6px;
+                position: static;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 2px 8px 0 rgba(30, 58, 138, 0.08);
+                background: #fff;
+                border: 2px solid #002366;
+                color: #002366;
+                border-radius: 50%;
+                padding: 0;
+                transition: background 0.2s, box-shadow 0.2s;
+            }
+            #mobile-carousel-wrapper .carousel-arrow-btn.mobile-arrow {
+                position: static;
+                top: auto;
+                left: auto;
+                right: auto;
+                transform: none;
+                margin: 0 4px;
+            }
+            #mobile-carousel-wrapper .carousel-arrow-btn svg {
+                width: 18px;
+                height: 18px;
+                display: block;
+            }
+            /* Special case: 6th card title (Walker Assisted Prosthetics) stays on one line, but same font size as others */
+            #mobile-carousel-wrapper .carousel-slide:nth-child(6) .product-title,
+            #mobile-carousel-wrapper .carousel-slide:nth-child(6) .text-xl {
+                white-space: nowrap !important;
+                padding-left: 0.2rem;
+                padding-right: 0.2rem;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+        }
+        .carousel-arrow-btn {
+            background: #e0f2fe; /* faint sky blue */
+            color: #1e3a8a; /* dark blue */
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px 0 rgba(30, 58, 138, 0.08);
+            font-size: 2rem;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        }
+        .carousel-arrow-btn:hover {
+            background: #bae6fd;
+            color: #1d4ed8;
+            box-shadow: 0 4px 16px 0 rgba(30, 58, 138, 0.16);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans flex flex-col min-h-screen">
+    <!-- Navbar from external file -->
+    <div id="navbar-placeholder"></div>
+    <script>
+        fetch("navbar.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("navbar-placeholder").innerHTML = data;
+            });
+    </script>
+
+    <!-- Hero Section -->
+    <section class="bg-white text-gray-800 pt-6 pb-2">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-2xl md:text-3xl font-bold mb-2 text-[#001C71]">Mobility for Disability</h3>
+        </div>
+    </section>
+
+    <!-- Products Carousel Section -->
+    <section class="pt-0 pb-8 bg-white">
+        <div class="mx-auto max-w-md md:max-w-6xl w-full md:px-2">
+            <!-- Desktop Carousel (hidden on mobile) -->
+            <div class="flex items-center relative justify-center hidden md:flex" id="desktop-carousel-wrapper">
+                <button id="prevBtnDesktop" class="carousel-arrow-btn mobile-arrow absolute left-0 top-1/2 -translate-y-1/2 -ml-6 z-10">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="carousel-container relative overflow-hidden flex-1 w-full max-w-6xl mx-auto">
+                    <div class="carousel-track w-full flex transition-transform duration-500 ease-in-out" id="carouselDesktop">
+                        <!-- Slide 1 (Products 1-3) -->
+                        <div class="carousel-slide">
+                            <!-- Product 1 -->
+                            <div class="product-card">
+                                <div class="image-container">
+                                    <img src="images/E-Tricycle/E-Tricycle-0.jpg" alt="Electric Tricycle">
+                                </div>
+                                <div class="flex flex-col items-center justify-center flex-1 w-full p-3 md:p-4">
+                                    <h3 class="product-title">Electric Tricycle</h3>
+                                    <a class='enquire-btn' href='/e_tricycle_page'>Enquire</a>
+                                </div>
+                            </div>
+                            <!-- Product 2 -->
+                            <div class="product-card">
+                                <div class="image-container">
+                                    <img src="images/E-Mini/E-Mini-0.jpg" alt="Electric Mini-Vehicle">
+                                </div>
+                                <div class="flex flex-col items-center justify-center flex-1 w-full p-3 md:p-4">
+                                    <h3 class="product-title">Electric Mini-Vehicle</h3>
+                                    <a class='enquire-btn' href='/e_mini_page'>Enquire</a>
+                                </div>
+                            </div>
+                            <!-- Product 3 -->
+                            <div class="product-card">
+                                <div class="image-container">
+                                    <img src="images/E-Rickshaw/E-Rickshaw-0.jpg" alt="Electric Rickshaw">
+                                </div>
+                                <div class="flex flex-col items-center justify-center flex-1 w-full p-3 md:p-4">
+                                    <h3 class="product-title">Electric Rickshaw</h3>
+                                    <a class='enquire-btn' href='/e_rickshaw_page'>Enquire</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 2 (Products 4-6) -->
+                        <div class="carousel-slide">
+                            <!-- Product 4 -->
+                            <div class="pt-6 product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px] flex flex-col justify-between items-center">
+                                <div class="h-[300px] w-[300px] md:h-64 bg-gray-200 flex items-center justify-center">
+                                    <img src="images/E-Trike/E-Trike-0.jpg" alt="Electric Trike" class="h-full w-full">
+                                </div>
+                                <div class="flex flex-col items-center justify-center flex-1 w-full p-3 md:p-4">
+                                    <h3 class="text-xl font-bold text-center mb-1">Electric Trike</h3>
+                                    <a class='bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2' href='/e_trike_page'>Enquire</a>
+                                </div>
+                            </div>
+                            <!-- Product 5 -->
+                            <div class="pt-6 product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px] flex flex-col justify-between items-center">
+                                <div class="h-[300px] w-[300px] md:h-64 bg-gray-200 flex items-center justify-center">
+                                    <img src="images/CPWalker/CPWalker-0.jpg" alt="Cerebral Palsy Walker" class="h-full w-full">
+                                </div>
+                                <div class="flex flex-col items-center justify-center flex-1 w-full p-3 md:p-4">
+                                    <h3 class="text-xl font-bold text-center mb-1">Cerebral Palsy Walker</h3>
+                                    <a class='bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2' href='/cpwalker_page'>Enquire</a>
+                                </div>
+                            </div>
+                            <!-- Product 6 -->
+                            <div class="pt-6 product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px] flex flex-col justify-between items-center">
+                                <div class="h-[300px] w-[300px] md:h-64 bg-gray-200 flex items-center justify-center">
+                                    <img src="images/WAP/E-WAP-1.jpg" alt="Walker Assisted Prosthetics" class="h-full w-full">
+                                </div>
+                                <div class="flex flex-col items-center justify-center flex-1 w-full p-3 md:p-4">
+                                    <h3 class="text-xl font-bold text-center mb-1">Walker Assisted Prosthetics</h3>
+                                    <a class='bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2' href='/wap_page'>Enquire</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Clone of Slide 1 for seamless looping -->
+                        <div class="carousel-slide">
+                            <!-- Product 1 Clone -->
+                            <div class="pt-6 product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px] flex flex-col justify-between items-center">
+                                <div class="h-[300px] w-[300px] md:h-64 bg-gray-200 flex items-center justify-center">
+                                    <img src="images/E-Tricycle/E-Tricycle-0.jpg" alt="Electric Tricycle" class="h-full w-full">
+                                </div>
+                                <div class="flex flex-col items-center justify-center flex-1 w-full p-3 md:p-4">
+                                    <h3 class="text-xl font-bold text-center mb-1">Electric Tricycle</h3>
+                                    <a class='bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2' href='/e_tricycle_page'>Enquire</a>
+                                </div>
+                            </div>
+                            <!-- Product 2 Clone -->
+                            <div class="pt-6 product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px] flex flex-col justify-between items-center">
+                                <div class="h-[300px] w-[300px] md:h-64 bg-gray-200 flex items-center justify-center">
+                                    <img src="images/E-Mini/E-Mini-0.jpg" alt="Electric Mini-Vehicle" class="h-full w-full">
+                                </div>
+                                <div class="flex flex-col items-center justify-center flex-1 w-full p-3 md:p-4">
+                                    <h3 class="text-xl font-bold text-center mb-1">Electric Mini-Vehicle</h3>
+                                    <a class='bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2' href='/e_mini_page'>Enquire</a>
+                                </div>
+                            </div>
+                            <!-- Product 3 Clone -->
+                            <div class="pt-6 product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px] flex flex-col justify-between items-center">
+                                <div class="h-[300px] w-[300px] md:h-64 bg-gray-200 flex items-center justify-center">
+                                    <img src="images/E-Rickshaw/E-Rickshaw-0.jpg" alt="Electric Rickshaw" class="h-full w-full">
+                                </div>
+                                <div class="flex flex-col items-center justify-center flex-1 w-full p-3 md:p-4">
+                                    <h3 class="text-xl font-bold text-center mb-1">Electric Rickshaw</h3>
+                                    <a class='bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2' href='/e_rickshaw_page'>Enquire</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button id="nextBtnDesktop" class="carousel-arrow-btn mobile-arrow absolute right-0 top-1/2 -translate-y-1/2 -mr-6 z-10">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <!-- Mobile Carousel (hidden on desktop) -->
+            <div class="flex items-center relative justify-center md:hidden" id="mobile-carousel-wrapper">
+                <button id="prevBtnMobile" class="carousel-arrow-btn mobile-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#002366" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <div class="carousel-container relative overflow-hidden flex-1 w-full max-w-md mx-auto">
+                    <div class="carousel-track w-full flex transition-transform duration-500 ease-in-out" id="carouselMobile">
+                        <!-- Each slide contains 1 product card -->
+                        <div class="carousel-slide">
+                            <div class="pt-6 product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px] flex flex-col justify-between items-center">
+                                <div class="h-[300px] w-[300px] bg-gray-200 flex items-center justify-center ">
+                                    <img src="images/E-Tricycle/E-Tricycle-0.jpg" alt="Electric Tricycle" class="h-full w-full">
+                                </div>
+                                <div class="flex flex-col items-center justify-center flex-1 w-full p-3">
+                                    <h3 class="text-xl font-bold text-center mb-1">Electric Tricycle</h3>
+                                    <a class='bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2' href='/e_tricycle_page'>Enquire</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="pt-6 product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px] flex flex-col justify-between items-center">
+                                <div class="h-[300px] w-[300px] bg-gray-200 flex items-center justify-center ">
+                                    <img src="images/E-Mini/E-Mini-0.jpg" alt="Electric Mini-Vehicle" class="h-full w-full">
+                                </div>
+                                <div class="flex flex-col items-center justify-center flex-1 w-full p-3">
+                                    <h3 class="text-xl font-bold text-center mb-1">Electric Mini-Vehicle</h3>
+                                    <a class='bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2' href='/e_mini_page'>Enquire</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="pt-6 product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px] flex flex-col justify-between items-center">
+                                <div class="h-[300px] w-[300px] bg-gray-200 flex items-center justify-center ">
+                                    <img src="images/E-Rickshaw/E-Rickshaw-0.jpg" alt="Electric Rickshaw" class="h-full w-full">
+                                </div>
+                                <div class="flex flex-col items-center justify-center flex-1 w-full p-3">
+                                    <h3 class="text-xl font-bold text-center mb-1">Electric Rickshaw</h3>
+                                    <a class='bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2' href='/e_rickshaw_page'>Enquire</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="pt-6 product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px] flex flex-col justify-between items-center">
+                                <div class="h-[300px] w-[300px] bg-gray-200 flex items-center justify-center ">
+                                    <img src="images/E-Trike/E-Trike-0.jpg" alt="Electric Trike" class="h-full w-full">
+                                </div>
+                                <div class="flex flex-col items-center justify-center flex-1 w-full p-3">
+                                    <h3 class="text-xl font-bold text-center mb-1">Electric Trike</h3>
+                                    <a class='bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2' href='/e_trike_page'>Enquire</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="pt-6 product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px] flex flex-col justify-between items-center">
+                                <div class="h-[300px] w-[300px] bg-gray-200 flex items-center justify-center ">
+                                    <img src="images/CPWalker/CPWalker-0.jpg" alt="Cerebral Palsy Walker" class="h-full w-full">
+                                </div>
+                                <div class="flex flex-col items-center justify-center flex-1 w-full p-3">
+                                    <h3 class="text-xl font-bold text-center mb-1">Cerebral Palsy Walker</h3>
+                                    <a class='bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2' href='/cpwalker_page'>Enquire</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="pt-6 product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px] flex flex-col justify-between items-center">
+                                <div class="h-[300px] w-[300px] bg-gray-200 flex items-center justify-center ">
+                                    <img src="images/WAP/E-WAP-1.jpg" alt="Walker Assisted Prosthetics" class="h-full w-full">
+                                </div>
+                                <div class="flex flex-col items-center justify-center flex-1 w-full p-3">
+                                    <h3 class="text-xl font-bold text-center mb-1">Walker Assisted Prosthetics</h3>
+                                    <a class='bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2' href='/wap_page'>Enquire</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Clone of first slide for seamless looping -->
+                        <div class="carousel-slide">
+                            <div class="pt-6 product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px] flex flex-col justify-between items-center">
+                                <div class="h-[300px] w-[300px] bg-gray-200 flex items-center justify-center ">
+                                    <img src="images/E-Tricycle/E-Tricycle-0.jpg" alt="Electric Tricycle" class="h-full w-full">
+                                </div>
+                                <div class="flex flex-col items-center justify-center flex-1 w-full p-3">
+                                    <h3 class="text-xl font-bold text-center mb-1">Electric Tricycle</h3>
+                                    <a class='bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2' href='/e_tricycle_page'>Enquire</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button id="nextBtnMobile" class="carousel-arrow-btn mobile-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#002366" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- Carousel Script -->
+    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
+    <script src="js/carousel.js"></script>
+
+    <!-- Social Media Icons (above footer, on white background) -->
+    <div class="flex justify-center space-x-6 text-3xl font-bold text-[#001C71] bg-white py-4 mx-auto w-full">
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-blue-800"><i class="fab fa-linkedin"></i></a>
+        <a href="https://wa.me/917083861174" target="_blank" rel="noopener noreferrer" class="hover:text-blue-800"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="hover:text-blue-800"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-blue-800"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" class="hover:text-blue-800"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="hover:text-blue-800"><i class="fab fa-youtube"></i></a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#001C71] text-white pt-4">
+        <div class="w-5/6 mx-auto">
+            <div class="flex flex-col md:flex-row justify-between">
+                <!-- Left: Company Info -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Jago Motion Technologies</h3>
+                    <ul class="space-y-2">
+                    <li class="flex items-center">
+                        <i class="fas fa-map-marker-alt mr-2"></i>
+                        <span class="text-sm">Sangli, Maharashtra, India. PIN: 416416</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-phone mr-2"></i>
+                        <span class="text-sm">+91 7083861174</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-envelope mr-2"></i>
+                        <span class="text-sm">info.jagomotion@gmail.com</span>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="pt-6">
+                <hr class="border-t border-white opacity-30">
+            </div>
+
+            <!-- Copyright -->
+            <div class="py-2 flex justify-center">
+                <p class="text-xs text-white text-center">&copy; 2025 Jago Motion Technologies. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
