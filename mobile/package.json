@@ -1,0 +1,18 @@
+{
+  "name": "jago_website",
+  "version": "1.0.0",
+  "description": "JAGO Motion Technologies - Disability & Healthcare Products Website",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Static site - no build process needed'",
+    "start": "npx http-server . -p 3000 -o",
+    "dev": "npx http-server . -p 3000 -o",
+    "deploy": "echo 'Deploy to Netlify using git push or Netlify CLI'"
+  },
+  "keywords": ["healthcare", "disability", "mobility", "products", "static-site"],
+  "author": "JAGO Motion Technologies",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
