@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jago Motion Technologies - Product Carousel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <style>
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    /* Remove .carousel-slide and .product-card custom CSS, use Tailwind for layout */
+  </style>
+</head>
+<body class="bg-gray-50 font-sans">
+
+  <!-- Hero Section -->
+  <section class="bg-blue-600 text-white py-8">
+    <div class="container mx-auto text-center">
+      <h3 class="text-3xl font-bold mb-4">Enhancing Mobility & Independence</h3>
+      <p class="text-lg mb-6 max-w-2xl mx-auto">Quality healthcare and disability products to improve your quality of life</p>
+    </div>
+  </section>
+
+  <!-- Product Carousel -->
+  <section class="py-8 bg-white relative">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Featured Products</h2>
+      <div class="carousel-container relative overflow-hidden">
+        <!-- Arrows -->
+        <button id="prevBtn" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 z-10">
+          <i class="fas fa-chevron-left text-gray-700"></i>
+        </button>
+        <button id="nextBtn" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 z-10">
+          <i class="fas fa-chevron-right text-gray-700"></i>
+        </button>
+        <!-- Carousel Track -->
+        <div class="carousel-track w-full" id="carousel">
+          <!-- Slides: On mobile, each slide is one product; on desktop, each slide is 3 products -->
+          <!-- Example with 6 products -->
+          <!-- Slide 1 -->
+          <div class="carousel-slide flex justify-center w-full">
+            <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 w-full max-w-xs mx-auto">
+              <div class="h-48 sm:h-64 flex items-center justify-center">
+                <img src="images/E-Tricycle/E-Tricycle-0.jpg" alt="Electric Tricycle" class="w-full max-w-[320px] h-48 sm:h-64 object-contain mx-auto" />
+              </div>
+              <div class="p-4">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Electric Tricycle</h3>
+                <p class="text-gray-600 text-sm">Lightweight, foldable electric tricycle for mobility.</p>
+                <a href="#" class="block mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center">Enquire</a>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="carousel-slide flex justify-center w-full">
+            <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 w-full max-w-xs mx-auto">
+              <div class="h-48 sm:h-64 flex items-center justify-center">
+                <img src="images/E-Mini/E-Mini-0.jpg" alt="Electric Mini-Vehicle" class="w-full max-w-[320px] h-48 sm:h-64 object-contain mx-auto" />
+              </div>
+              <div class="p-4">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Electric Mini-Vehicle</h3>
+                <p class="text-gray-600 text-sm">Compact electric vehicle for urban mobility.</p>
+                <a href="#" class="block mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center">Enquire</a>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="carousel-slide flex justify-center w-full">
+            <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 w-full max-w-xs mx-auto">
+              <div class="h-48 sm:h-64 flex items-center justify-center">
+                <img src="images/E-Rickshaw/E-Rickshaw-0.jpg" alt="Electric Rickshaw" class="w-full max-w-[320px] h-48 sm:h-64 object-contain mx-auto" />
+              </div>
+              <div class="p-4">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Electric Rickshaw</h3>
+                <p class="text-gray-600 text-sm">Efficient electric rickshaw for last-mile delivery.</p>
+                <a href="#" class="block mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center">Enquire</a>
+              </div>
+            </div>
+          </div>
+          <!-- Add more slides as needed -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Carousel Script -->
+  <script>
+    const track = document.getElementById("carousel");
+    const slides = document.querySelectorAll(".carousel-slide");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    let currentSlide = 0;
+
+    function updateCarousel() {
+      const isMobile = window.innerWidth < 768;
+      const slideWidth = slides[0].offsetWidth;
+      track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+      // Show only one slide at a time on mobile, 3 at a time on desktop
+      slides.forEach((slide, idx) => {
+        if (isMobile) {
+          slide.style.display = idx === currentSlide ? "flex" : "none";
+        } else {
+          slide.style.display = "flex";
+        }
+      });
+    }
+
+    nextBtn.addEventListener("click", () => {
+      const isMobile = window.innerWidth < 768;
+      if (isMobile) {
+        if (currentSlide < slides.length - 1) {
+          currentSlide++;
+          updateCarousel();
+        }
+      } else {
+        // On desktop, scroll by 3 slides at a time if needed
+        if (currentSlide < slides.length - 3) {
+          currentSlide++;
+          updateCarousel();
+        }
+      }
+    });
+
+    prevBtn.addEventListener("click", () => {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateCarousel();
+      }
+    });
+
+    // Responsive fix on window resize
+    window.addEventListener("resize", updateCarousel);
+    // Initialize
+    updateCarousel();
+  </script>
+</body>
+</html>

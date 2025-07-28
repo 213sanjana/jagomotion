@@ -1,0 +1,37 @@
+{
+  "ai_workflow": {
+    "mission_name": "Iterative Function Development with Dynamic Subtask Expansion",
+    "intent": "Develop code functions with high accuracy and modularity through iterative, reflective steps. Allow for dynamic subtask expansion and design shifts.",
+    "phases": [
+      {
+        "name": "Step Proposal",
+        "description": "AI proposes the first major step of the implementation."
+      },
+      {
+        "name": "Decomposition",
+        "description": "AI expands the step into subtasks if necessary."
+      },
+      {
+        "name": "Implementation",
+        "description": "AI generates the code or logic for the current step."
+      },
+      {
+        "name": "Reflection",
+        "description": "AI reviews the implementation for completeness, suggests improvements or reordering."
+      },
+      {
+        "name": "Completion",
+        "description": "AI marks the step complete and moves to the next."
+      }
+    ],
+    "rules_of_engagement": [
+      "AI must explicitly state when a step is completed.",
+      "Before starting the next step, AI must evaluate whether new steps or subtasks are needed.",
+      "AI is free to revise earlier steps if needed, but must explain why."
+    ],
+    "feedback_loop": {
+      "prompt": "Would you like to modify, expand, or re-prioritize the current steps or plan? If yes, update and continue. If no, move on."
+    },
+    "end_state": "A well-structured, clean, and optimized function with all supporting logic in place, refined through self-guided iteration."
+  }
+} 

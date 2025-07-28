@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us - Jago Motion Technologies</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- JustGage and Raphael.js -->
+  <script src="https://cdn.jsdelivr.net/npm/raphael@2.3.0/raphael.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/justgage@1.4.0/justgage.min.js"></script>
+
+  <style>
+    /* Keep only minimal custom styles for gauges and map if needed. Remove layout, padding, and font-size custom CSS in favor of Tailwind. */
+  </style>
+</head>
+<body class="bg-gray-50 font-sans flex flex-col min-h-screen">
+
+  <!-- Navbar placeholder -->
+  <div id="navbar"></div>
+
+  <!-- Main content -->
+  <main class="flex-grow">
+    <section class="contact-section bg-white">
+      <div class="max-w-screen-lg mx-auto px-2 sm:px-4 py-4">
+        <div class="flex flex-col lg:flex-row gap-6">
+          <section class="flex-1 bg-white rounded-lg shadow-md p-4 sm:p-8 ">
+            <form id="enquiryForm" class="space-y-2">
+                <div class="mb-4">
+                  <label class="block text-gray-700 font-semibold mb-2 text-sm sm:text-base" for="name">Name</label>
+                  <input type="text" id="name" name="name" required class="form-input w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                </div>
+                <div class="mb-4">
+                  <label class="block text-gray-700 font-semibold mb-2 text-sm sm:text-base" for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" required class="form-input w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                </div>
+                <div class="mb-4">
+                  <label class="block text-gray-700 font-semibold mb-2 text-sm sm:text-base" for="place">Place</label>
+                  <input type="text" id="place" name="place" class="form-input w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                </div>
+                <div class="mb-4">
+                  <label class="block text-gray-700 font-semibold mb-2 text-sm sm:text-base" for="product">Product</label>
+                  <select id="product" name="product" required class="form-input w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="" disabled selected>Select a product</option>
+                    <option value="electric-tricycle">Electric Tricycle</option>
+                    <option value="electric-mini-vehicle">Electric Mini-Vehicle</option>
+                    <option value="electric-rikshaw">Electric Rikshaw</option>
+                    <option value="electric-trike">Electric Trike</option>
+                    <option value="cerebral-palsy-walker">Cerebral Palsy Walker</option>
+                    <option value="walker-prosthetics">Walker Assisted Prosthetics</option>
+                  </select>
+                </div>
+                <div class="mb-4">
+                  <label class="block text-gray-700 font-semibold mb-2 text-sm sm:text-base" for="question">Question</label>
+                  <textarea id="question" name="question" rows="2" required class="form-input w-full border border-gray-300 rounded px-3 py-2 min-h-[80px] focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+                <button type="submit" class="bg-blue-700 text-white font-bold py-2 px-6 rounded hover:bg-blue-800 w-full sm:w-auto">Submit</button>
+            </form>
+          </section>
+          <section class="flex-1 flex flex-col gap-4">
+            <div class="bg-white rounded-lg shadow-md p-2">
+              <div class="rounded-lg overflow-hidden">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1919.0631922770708!2d74.5585461!3d16.8640321!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc119029ccd0493%3A0xb3ad9bd497812aae!2sJAGO%20Motion%20Technologies%20Pvt.%20Ltd!5e1!3m2!1sen!2sin!4v1752070183311!5m2!1sen!2sin"
+                  class="w-full h-48 sm:h-64 border-0"
+                  allowfullscreen="" 
+                  loading="lazy">
+                </iframe>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <div class="flex justify-center space-x-6 text-3xl font-bold text-[#001C71] bg-white py-4 mx-auto w-full">
+      <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-blue-800"><i class="fab fa-linkedin"></i></a>
+      <a href="https://wa.me/917083861174" target="_blank" rel="noopener noreferrer" class="hover:text-blue-800"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="hover:text-blue-800"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-blue-800"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" class="hover:text-blue-800"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="hover:text-blue-800"><i class="fab fa-youtube"></i></a>
+  </div>
+  <footer class="bg-[#001C71] text-white pt-4">
+      <div class="w-5/6 mx-auto">
+          <div class="flex flex-col md:flex-row justify-between">
+              <!-- Left: Company Info -->
+              <div>
+                  <h3 class="text-xl font-bold mb-4">Jago Motion Technologies</h3>
+                  <ul class="space-y-2">
+                  <li class="flex items-center">
+                      <i class="fas fa-map-marker-alt mr-2"></i>
+                      <span class="text-sm">Sangli, Maharashtra, India. PIN: 416416</span>
+                  </li>
+                  <li class="flex items-center">
+                      <i class="fas fa-phone mr-2"></i>
+                      <span class="text-sm">+91 7083861174</span>
+                  </li>
+                  <li class="flex items-center">
+                      <i class="fas fa-envelope mr-2"></i>
+                      <span class="text-sm">info.jagomotion@gmail.com</span>
+                  </li>
+                  </ul>
+              </div>
+          </div>
+
+          <!-- Divider -->
+          <div class="pt-6">
+              <hr class="border-t border-white opacity-30">
+          </div>
+
+          <!-- Copyright -->
+          <div class="py-2 flex justify-center">
+              <p class="text-xs text-white text-center">&copy; 2025 Jago Motion Technologies. All rights reserved.</p>
+          </div>
+      </div>
+  </footer>
+
+  <!-- Navbar Loader -->
+  <script>
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+      });
+  </script>
+
+  <!-- WhatsApp Submission -->
+  <script>
+    document.getElementById("enquiryForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const product = document.getElementById("product").value;
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const place = document.getElementById("place").value.trim();
+      const question = document.getElementById("question").value.trim();
+
+      const message = `Hello, my name is ${name}%0AProduct: ${product}%0APhone: ${phone}%0APlace: ${place}%0AQuestion: ${question}`;
+      const whatsappNumber = "917083861174";
+      const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+      window.open(whatsappURL, "_blank");
+    });
+  </script>
+</body>
+</html>
