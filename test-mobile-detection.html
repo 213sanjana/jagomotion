@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Detection Test</title>
+    <script>
+        // Test mobile detection
+        function testMobileDetection() {
+            const userAgent = navigator.userAgent;
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+            
+            document.getElementById('user-agent').textContent = userAgent;
+            document.getElementById('is-mobile').textContent = isMobile ? 'Yes' : 'No';
+            document.getElementById('redirect-url').textContent = isMobile ? '/mobile/' : 'No redirect (desktop)';
+        }
+        
+        // Simulate mobile detection
+        function simulateMobile() {
+            Object.defineProperty(navigator, 'userAgent', {
+                value: 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1',
+                configurable: true
+            });
+            testMobileDetection();
+        }
+        
+        function simulateDesktop() {
+            Object.defineProperty(navigator, 'userAgent', {
+                value: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+                configurable: true
+            });
+            testMobileDetection();
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            background: #f5f5f5;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .result {
+            background: #e8f5e8;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        button {
+            background: #007cba;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #005a87;
+        }
+        code {
+            background: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mobile Detection Test</h1>
+    
+    <div class="test-section">
+        <h2>Current Device Detection</h2>
+        <p><strong>User Agent:</strong> <span id="user-agent"></span></p>
+        <p><strong>Is Mobile:</strong> <span id="is-mobile"></span></p>
+        <p><strong>Redirect URL:</strong> <span id="redirect-url"></span></p>
+        
+        <button onclick="testMobileDetection()">Test Current Device</button>
+        <button onclick="simulateMobile()">Simulate Mobile</button>
+        <button onclick="simulateDesktop()">Simulate Desktop</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>Implementation Details</h2>
+        <p>The mobile detection script in your <code>index.html</code> uses this pattern:</p>
+        <pre><code>/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)</code></pre>
+        
+        <p>When a mobile device is detected, it redirects to:</p>
+        <pre><code>window.location.href = "/mobile/";</code></pre>
+    </div>
+    
+    <div class="test-section">
+        <h2>Expected Behavior</h2>
+        <ul>
+            <li><strong>Desktop users:</strong> Should see the main desktop site at <code>javamotion.com</code></li>
+            <li><strong>Mobile users:</strong> Should be automatically redirected to <code>javamotion.com/mobile/</code></li>
+            <li><strong>Mobile product pages:</strong> Should be accessible at <code>javamotion.com/mobile/e_tricycle_page</code> etc.</li>
+        </ul>
+    </div>
+    
+    <script>
+        // Run test on page load
+        testMobileDetection();
+    </script>
+</body>
+</html> 

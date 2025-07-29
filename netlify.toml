@@ -12,6 +12,43 @@
   to = "/main.html"
   status = 200
 
+# Mobile version redirect
+[[redirects]]
+  from = "/mobile"
+  to = "/mobile/"
+  status = 301
+
+# Mobile product page redirects
+[[redirects]]
+  from = "/mobile/e_tricycle_page"
+  to = "/mobile/e_tricycle_page.html"
+  status = 200
+
+[[redirects]]
+  from = "/mobile/e_mini_page"
+  to = "/mobile/e_mini_page.html"
+  status = 200
+
+[[redirects]]
+  from = "/mobile/e_rickshaw_page"
+  to = "/mobile/e_rickshaw_page.html"
+  status = 200
+
+[[redirects]]
+  from = "/mobile/e_trike_page"
+  to = "/mobile/e_trike_page.html"
+  status = 200
+
+[[redirects]]
+  from = "/mobile/cpwalker_page"
+  to = "/mobile/cpwalker_page.html"
+  status = 200
+
+[[redirects]]
+  from = "/mobile/wap_page"
+  to = "/mobile/wap_page.html"
+  status = 200
+
 # Handle 404 errors
 [[redirects]]
   from = "/*"

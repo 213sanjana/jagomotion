@@ -3,47 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JAGO Motion Technologies - Redirecting...</title>
-    <meta http-equiv="refresh" content="0; url=main.html">
+    <title>Jago Motion Technologies - Loading...</title>
+    
+    <!-- Device Detection and Routing Script -->
     <script>
-      // Mobile detection and redirect
-      if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        fetch('/mobile/index.html')
-          .then(response => response.text())
-          .then(html => {
-            document.open();
-            document.write(html);
-            document.close();
-          })
-          .catch(error => {
-            console.log('Mobile version not found, using desktop version');
-            // Fallback to desktop version if mobile version fails to load
-          });
-      } else if (
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-        && window.location.hostname === "jagomotion.com"
-      ) {
-        window.location.href = "https://jagopreprod.netlify.app" + window.location.pathname;
-      }
+        function isMobileDevice() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                   window.innerWidth <= 768;
+        }
+        
+        // Redirect based on device type
+        if (isMobileDevice()) {
+            window.location.href = 'mobile/main.html';
+        } else {
+            window.location.href = 'main.html';
+        }
     </script>
+    
+    <!-- Loading screen -->
     <style>
         body {
-            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f3f4f6;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #001C71 0%, #2563eb 100%);
+            font-family: Arial, sans-serif;
+            color: white;
         }
-        .redirect-message {
+        .loading {
             text-align: center;
-            color: #374151;
         }
         .spinner {
-            border: 4px solid #e5e7eb;
-            border-top: 4px solid #3b82f6;
+            border: 4px solid rgba(255,255,255,0.3);
             border-radius: 50%;
+            border-top: 4px solid white;
             width: 40px;
             height: 40px;
             animation: spin 1s linear infinite;
@@ -56,10 +52,10 @@
     </style>
 </head>
 <body>
-    <div class="redirect-message">
+    <div class="loading">
         <div class="spinner"></div>
-        <h2>Redirecting to JAGO Motion Technologies...</h2>
-        <p>If you are not redirected automatically, <a href="main.html">click here</a>.</p>
+        <h2>Jago Motion Technologies</h2>
+        <p>Loading your experience...</p>
     </div>
 </body>
 </html> 

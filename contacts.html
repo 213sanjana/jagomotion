@@ -6,7 +6,14 @@
   <title>Contact Us - Jago Motion Technologies</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
+  <script>
+    if (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+        && window.location.hostname === "jagomotion.com"
+    ) {
+        window.location.href = "https://jagopreprod.netlify.app" + window.location.pathname;
+    }
+  </script>
   <!-- JustGage and Raphael.js -->
   <script src="https://cdn.jsdelivr.net/npm/raphael@2.3.0/raphael.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/justgage@1.4.0/justgage.min.js"></script>

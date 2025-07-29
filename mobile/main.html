@@ -4,6 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jago Motion Technologies - Disability & Healthcare Products</title>
+    
+    <!-- Device Detection Script -->
+    <script>
+        function isDesktopDevice() {
+            return !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) &&
+                   window.innerWidth > 768;
+        }
+        
+        // Redirect desktop users to desktop version
+        if (isDesktopDevice()) {
+            window.location.href = '../main.html';
+        }
+    </script>
+    
+    <!-- Mobile content continues here -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>

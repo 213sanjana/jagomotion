@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Details - Jago Motion Technologies</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Add jsPDF library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papmQ+1QwQw5QwQw5QwQw5QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* Keep only minimal custom styles for unique effects. Remove layout, padding, and font-size custom CSS in favor of Tailwind. */
+    .custom-arrow-btn {
+      border: 2px solid #002366;
+      background: #fff;
+      color: #002366;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px 0 rgba(0,0,0,0.06);
+      transition: background 0.2s, box-shadow 0.2s;
+      padding: 0;
+    }
+    .custom-arrow-icon {
+      width: 18px;
+      height: 18px;
+      display: block;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans min-h-screen flex flex-col justify-between">
+
+  <!-- Navbar -->
+  <div id="navbar-placeholder" class="w-full"></div>
+  <script>
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar-placeholder").innerHTML = data;
+      });
+  </script>
+
+  <!-- Main Content -->
+  <main class="main-content pt-4 md:pt-8 pb-4 flex-grow">
+    <div class="max-w-screen-lg mx-auto px-2 sm:px-4 py-4">
+      <div class="text-center mb-6">
+        <h1 class="text-2xl md:text-3xl font-bold mb-2 text-[#001C71]">Electric Tricycle</h1>
+      </div>
+      <main class="main-content py-4 sm:py-8">
+        <div class="content-grid grid grid-cols-1 md:grid-cols-2 gap-6">
+          <section class="media-container flex flex-col gap-4">
+            <div class="media-item flex justify-center items-center gap-2">
+              <button id="carousel-left" class="custom-arrow-btn aspect-square p-0 flex items-center justify-center z-10" aria-label="Previous image">
+                <svg class="custom-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="#002366" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <div class="bg-white rounded-lg shadow p-2 aspect-square w-96 flex justify-center items-center relative">
+                <div id="carousel-main-container" class="w-full h-full flex justify-center items-center">
+                  <!-- Main content (image or video carousel) will be rendered here by JS -->
+                </div>
+                <div id="carousel-indicators" class="flex justify-center items-center gap-1 absolute left-0 right-0 bottom-2 z-20 bg-white/70 rounded-full py-0.5"></div>
+              </div>
+              <button id="carousel-right" class="custom-arrow-btn aspect-square p-0 flex items-center justify-center z-10" aria-label="Next image">
+                <svg class="custom-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="#002366" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+              </button>
+            </div>
+            <!-- Thumbnail below carousel -->
+            <div class="flex justify-center mt-1">
+              <div class="flex flex-row gap-4 items-center">
+                <div id="carousel-thumbnail" class="cursor-pointer relative w-20 h-20 rounded overflow-hidden shadow border-2 border-gray-300 transition-all"></div>
+                <button id="download-brochure" class="bg-blue-600 hover:bg-blue-700 text-white w-20 h-20 rounded flex items-center justify-center shadow hover:bg-blue-800 transition-all text-base font-semibold">Brochure</button>
+                <a href="contacts.html" class="bg-blue-600 hover:bg-blue-700 text-white w-20 h-20 rounded flex items-center justify-center shadow transition-all text-base font-semibold text-center">Enquire</a>
+              </div>
+            </div>
+            <!-- Price Box -->
+            <div class="flex justify-center mt-2">
+              <div class="bg-white rounded-xl shadow-lg px-8 py-6 w-80 flex flex-col items-center">
+                <span class="text-xl font-bold text-[#001C71] mb-2">PRICE</span>
+                <span class="text-gray-400 line-through text-lg">₹ 65,000</span>
+                <span class="text-2xl font-extrabold text-blue-700 mt-1 mb-4">₹ 55,000</span>
+              </div>
+            </div>
+            <!-- Features Box -->
+            <div class="flex justify-center mt-2">
+              <div class="bg-white rounded-xl shadow-lg px-8 py-6 w-80 flex flex-col items-center">
+                <span class="text-xl font-bold text-[#001C71] mb-2">FEATURES</span>
+                <ul class="list-disc list-inside text-gray-700 text-base space-y-1 text-left w-full">
+                  <li>Travel within the city, carry goods such as vegetables, milk, newspapers</li>
+                  <li>Lithium battery 20 AMPH, range 40 km per charge, 2 year warranty</li>
+                  <li>Customizable arrangement for carrier space, excellent aesthetic and color scheme</li>
+                  <li>BLDC hub motor (36 V) and 2 Kg weight with 1 year replace warranty</li>
+                  <li>Front and rear suspension for smooth ride</li>
+                  <li>Proper braking system with front and rear disc brakes</li>
+                  <li>Excellent combination of headlight, indicators, horn, display and wire harnessing</li>
+                  <li>High-quality cushion for seat, excellent aesthetic and color scheme on demand</li>
+                  <li>Affordable price with 1 year free service</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer-placeholder" class="w-full"></div>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+    
+    // Brochure Generation Function
+    function generateBrochure() {
+      // 1. Open the brochure image directly in a new window for printing
+      const printWindow = window.open('images/E-Tricycle/E-Tricycle-Brochure.jpg', '_blank');
+      if (printWindow) {
+        printWindow.onload = function() {
+          setTimeout(function() {
+            printWindow.print();
+          }, 1000); // Wait 1 second for image to load
+        };
+      }
+
+      // 2. Trigger download of the image
+      const link = document.createElement('a');
+      link.href = 'images/E-Tricycle/E-Tricycle-Brochure.jpg';
+      link.download = 'E-Tricycle-Brochure.jpg';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function showMedia(id) {
+      // Hide all and pause video
+      document.querySelectorAll('.main-media').forEach(el => {
+        el.classList.add('hidden');
+        // If it's a video element, pause it
+        if (el.tagName === 'VIDEO') {
+          el.pause();
+        }
+      });
+      document.querySelectorAll('[id^="thumb-"]').forEach(el => el.classList.remove('border-blue-500'));
+      
+      // Show selected
+      if (id === 'img1') {
+        document.getElementById('main-img1').classList.remove('hidden');
+        document.getElementById('thumb-img1').classList.add('border-blue-500');
+      } else if (id === 'img2') {
+        document.getElementById('main-img2').classList.remove('hidden');
+        document.getElementById('thumb-img2').classList.add('border-blue-500');
+      } else if (id === 'img3') {
+        document.getElementById('main-img3').classList.remove('hidden');
+        document.getElementById('thumb-img3').classList.add('border-blue-500');
+      } else if (id === 'img4') {
+        document.getElementById('main-img4').classList.remove('hidden');
+        document.getElementById('thumb-img4').classList.add('border-blue-500');
+      } else if (id === 'img5') {
+        document.getElementById('main-img5').classList.remove('hidden');
+        document.getElementById('thumb-img5').classList.add('border-blue-500');
+      } else if (id === 'vid1') {
+        document.getElementById('main-vid1').classList.remove('hidden');
+        document.getElementById('thumb-vid1').classList.add('border-blue-500');
+      }
+    }
+
+    // Dual carousel logic
+    const tricycleImages = [
+      'images/E-Tricycle/E-Tricycle-0.jpg',
+      'images/E-Tricycle/E-Tricycle-1.jpg',
+      'images/E-Tricycle/E-Tricycle-2.jpg',
+      'images/E-Tricycle/E-Tricycle-3.jpg',
+      'images/E-Tricycle/E-Tricycle-4.jpg'
+    ];
+    const tricycleVideos = [
+      'images/E-Tricycle/E-Tricycle-V-1.mp4',
+      'images/E-Tricycle/E-Tricycle-V-1.mp4',
+      'images/E-Tricycle/E-Tricycle-V-3.mp4',
+      'images/E-Tricycle/E-Tricycle-V-1.mp4',
+      'images/E-Tricycle/E-Tricycle-V-3.mp4'
+    ];
+    let currentTricycleIndex = 0;
+    let currentVideoIndex = 0;
+    let isVideoMode = false;
+
+    const carouselMainContainer = document.getElementById('carousel-main-container');
+    const indicatorsContainer = document.getElementById('carousel-indicators');
+    const leftBtn = document.getElementById('carousel-left');
+    const rightBtn = document.getElementById('carousel-right');
+    const carouselThumbnail = document.getElementById('carousel-thumbnail');
+
+    function renderMainCarousel() {
+      if (isVideoMode) {
+        // Video carousel
+        carouselMainContainer.innerHTML = `
+          <div class='relative w-full h-full flex justify-center items-center'>
+            <video id="carousel-video" src="${tricycleVideos[currentVideoIndex]}" controls autoplay class="max-w-full max-h-full rounded"></video>
+          </div>
+        `;
+        renderIndicators(tricycleVideos.length, currentVideoIndex);
+      } else {
+        // Image carousel
+        carouselMainContainer.innerHTML = `
+          <img id='carousel-image' src='${tricycleImages[currentTricycleIndex]}' alt='E-Tricycle' class='max-w-full max-h-full object-contain transition-all duration-300' />
+        `;
+        renderIndicators(tricycleImages.length, currentTricycleIndex);
+      }
+      renderThumbnail();
+    }
+
+    function renderThumbnail() {
+      if (isVideoMode) {
+        // Show current image as thumbnail
+        carouselThumbnail.innerHTML = `
+          <img src='${tricycleImages[currentTricycleIndex]}' alt='Image thumbnail' class='w-full h-full object-cover' />
+        `;
+      } else {
+        // Show current video as thumbnail with play icon
+        carouselThumbnail.innerHTML = `
+          <video src='${tricycleVideos[currentVideoIndex]}' class='w-full h-full object-cover'></video>
+          <span class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <svg class="w-8 h-8 text-white drop-shadow" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+        `;
+      }
+    }
+
+    function renderIndicators(length, activeIndex) {
+      if (!indicatorsContainer) return;
+      indicatorsContainer.innerHTML = '';
+      for (let i = 0; i < length; i++) {
+        const dot = document.createElement('span');
+        dot.className = 'inline-block rounded-full mx-0.5 transition-all duration-200' + (i === activeIndex ? ' bg-[#002366] w-2 h-2' : ' bg-gray-400 w-1.5 h-1.5');
+        dot.style.cursor = 'pointer';
+        dot.addEventListener('click', () => {
+          if (isVideoMode) {
+            currentVideoIndex = i;
+          } else {
+            currentTricycleIndex = i;
+          }
+          renderMainCarousel();
+        });
+        indicatorsContainer.appendChild(dot);
+      }
+    }
+
+    // Button navigation
+    if (leftBtn && rightBtn) {
+      leftBtn.onclick = () => {
+        if (isVideoMode) {
+          currentVideoIndex = (currentVideoIndex - 1 + tricycleVideos.length) % tricycleVideos.length;
+        } else {
+          currentTricycleIndex = (currentTricycleIndex - 1 + tricycleImages.length) % tricycleImages.length;
+        }
+        renderMainCarousel();
+      };
+      rightBtn.onclick = () => {
+        if (isVideoMode) {
+          currentVideoIndex = (currentVideoIndex + 1) % tricycleVideos.length;
+        } else {
+          currentTricycleIndex = (currentTricycleIndex + 1) % tricycleImages.length;
+        }
+        renderMainCarousel();
+      };
+    }
+
+    // Thumbnail click toggles mode
+    if (carouselThumbnail) {
+      carouselThumbnail.onclick = () => {
+        isVideoMode = !isVideoMode;
+        renderMainCarousel();
+      };
+    }
+
+    // Initial render
+    renderMainCarousel();
+
+    // Brochure button logic
+    const downloadBrochureBtn = document.getElementById('download-brochure');
+    if (downloadBrochureBtn) {
+      downloadBrochureBtn.onclick = function() {
+        const link = document.createElement('a');
+        link.href = 'images/E-Tricycle/E-Tricycle-Brochure.jpg';
+        link.download = 'E-Tricycle-Brochure.jpg';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      };
+    }
+  </script>
+</body>
+</html>
