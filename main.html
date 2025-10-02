@@ -1,480 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Product Details - Jago Motion Technologies</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Add jsPDF library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papmQ+1QwQw5QwQw5QwQw5QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <script>
-    if (
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-      && window.location.hostname === "jagomotion.com"
-    ) {
-      window.location.href = "https://jagopreprod.netlify.app" + window.location.pathname;
-    }
-  </script>
-
-  <style>
-    /* Mobile-first product page styles */
-    .product-container {
-      max-width: 100%;
-      margin: 0 auto;
-      padding: 0 0.25rem;
-    }
-
-    @media (min-width: 640px) {
-      .product-container {
-        padding: 0 0.25rem;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .product-container {
-        max-width: 100%;
-        max-height: 1000px;
-        margin: 0 auto;
-        padding: 0 0.25rem;
-      }
-    }
-
-    .hero-section {
-      background: #2563eb;
-      color: white;
-      padding: 2rem 0;
-      text-align: center;
-    }
-
-    @media (min-width: 768px) {
-      .hero-section {
-        padding: 0.25rem 0;
-      }
-    }
-
-    .hero-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 0.25rem;
-    }
-
-    @media (min-width: 768px) {
-      .hero-title {
-        font-size: 2rem;
-        margin-bottom: 0.75rem;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .hero-title {
-        font-size: 2.5rem;
-      }
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      align-items: center;
-    }
-
-    @media (min-width: 768px) {
-      .hero-actions {
-        flex-direction: row;
-        justify-content: center;
-        gap: 1rem;
-        margin-top: -0.25rem;
-        margin-bottom: 0.5rem;
-      }
-    }
-
-    .hero-btn {
-      background: white;
-      color: #2563eb;
-      font-weight: 600;
-      padding: 1rem 0.9rem;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      border: none;
-      cursor: pointer;
-      font-size: 0.75rem;
-    }
-
-    .hero-btn:hover {
-      background: #f8fafc;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    @media (min-width: 768px) {
-      .hero-btn {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.875rem;
-      }
-    }
-
-    .main-content {
-      padding: 1rem;
-    }
-
-    @media (min-width: 768px) {
-      .main-content {
-        padding: 3rem 0;
-      }
-    }
-
-    .content-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-
-    @media (min-width: 768px) {
-      .content-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .content-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2.5rem;
-      }
-    }
-
-    .content-section {
-      background: white;
-      padding: 1rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-    }
-
-    .content-section:hover {
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-      transform: translateY(-2px);
-    }
-
-    @media (min-width: 768px) {
-      .content-section {
-        padding: 2rem;
-      }
-    }
-
-    .section-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #2563eb;
-      margin-bottom: 1rem;
-    }
-
-    @media (min-width: 768px) {
-      .section-title {
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
-      }
-    }
-
-    .product-description {
-      color: #374151;
-      line-height: 1.6;
-      font-size: 0.875rem;
-    }
-
-    @media (min-width: 768px) {
-      .product-description {
-        font-size: 1rem;
-      }
-    }
-
-    .features-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .features-list li {
-      color: #374151;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid #e5e7eb;
-      font-size: 0.875rem;
-      display: flex;
-      align-items: center;
-    }
-
-    .features-list li:last-child {
-      border-bottom: none;
-    }
-
-    .features-list li::before {
-      content: "✓";
-      color: #2563eb;
-      font-weight: bold;
-      margin-right: 0.75rem;
-      font-size: 1rem;
-    }
-
-    @media (min-width: 768px) {
-      .features-list li {
-        font-size: 1rem;
-        padding: 0.75rem 0;
-      }
-    }
-
-    .media-container {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    @media (min-width: 768px) {
-      .media-container {
-        gap: 1.5rem;
-      }
-    }
-
-    .media-item {
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .media-item img,
-    .media-item video {
-      width: 100%;
-      height: 200px;
-      object-fit: contain;
-      background: #f3f4f6;
-    }
-
-    @media (min-width: 768px) {
-      .media-item img,
-      .media-item video {
-        height: 250px;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .media-item img,
-      .media-item video {
-        height: 300px;
-      }
-    }
-
-    /* Full-width sections for mobile */
-    .full-width {
-      grid-column: 1 / -1;
-    }
-
-    @media (min-width: 768px) {
-      .full-width {
-        grid-column: auto;
-      }
-    }
-
-    .product-overview-box {
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-    }
-
-    @media (min-width: 768px) {
-      .product-overview-box {
-        padding-top: 1.4rem;
-        padding-bottom: 1.4rem;
-      }
-    }
-
-    /* Custom padding just for the price box */
-    .price-box {
-      padding: 0.5rem 1rem;
-      height: 280px;
-    }
-
-    @media (min-width: 768px) {
-      .price-box {
-        padding: 0.75rem 1rem;
-      }
-    }
-
-
-    footer {
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-    }
-
-
-  </style>
-</head>
-<body class="bg-gray-50 font-sans min-h-screen flex flex-col justify-between">
-
-  <!-- Navbar -->
-  <div id="navbar-placeholder" class="w-full"></div>
-  <script>
-    fetch("navbar.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("navbar-placeholder").innerHTML = data;
-      });
-  </script>
-
-  <!-- Main Content -->
-  <main class="main-content pt-4 md:pt-8 pb-11 flex-grow">
-    <div class="product-container">
-      <!-- Add padding wrapper here -->
-      <div class="px-4 md:px-8">
-        <div class="flex flex-row w-full gap-4 items-start">
-          <!-- Left: Product Gallery (WIDER: 55%) -->
-          <section class="content-section flex flex-col items-center w-[45%]">
-            <h2 class="section-title sr-only">Product Gallery</h2>
-
-            <div class="w-full flex flex-col items-center">
-              <!-- Thumbnails -->
-              <div class="flex flex-row space-x-5 mb-6 ml-20">
-                <img src="images/E-Tricycle/E-Tricycle-1.jpg" alt="Electric Tricycle" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-blue-500" onclick="showMedia('img1')" id="thumb-img1">
-                <img src="images/E-Tricycle/E-Tricycle-2.jpg" alt="Electric Tricycle" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img2')" id="thumb-img2">
-                <img src="images/E-Tricycle/E-Tricycle-3.jpg" alt="Electric Tricycle" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img3')" id="thumb-img3">
-                <img src="images/E-Tricycle/E-Tricycle-4.jpg" alt="Electric Tricycle" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img4')" id="thumb-img4">
-                <img src="images/E-Tricycle/E-Tricycle-0.jpg" alt="Electric Tricycle" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img5')" id="thumb-img5">
-              </div>
-              <!-- Main Media + Left Side Thumbnails -->
-              <div class="flex flex-row items-start gap-6 w-full justify-center">
-                <!-- Left Vertical Thumbnails -->
-                <div class="flex flex-col space-y-4">
-                  <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid1')" id="thumb-vid1-side">
-                    <video src="images/E-Tricycle/E-Tricycle-V-1.mp4" class="w-full h-full object-cover" muted preload="metadata" playsinline></video>
-                  </div>
-                  <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid1')" id="thumb-vid1-side">
-                    <video src="images/E-Tricycle/E-Tricycle-V-2.mp4" class="w-full h-full object-cover" muted preload="metadata" playsinline></video>
-                  </div>
-                  <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid1')" id="thumb-vid1-side">
-                    <video src="images/E-Tricycle/E-Tricycle-V-3.mp4" class="w-full h-full object-cover" muted preload="metadata" playsinline></video>
-                  </div>
-                  <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid1')" id="thumb-vid1-side">
-                    <video src="images/E-Tricycle/E-Tricycle-V-1.mp4" class="w-full h-full object-cover" muted preload="metadata" playsinline></video>
-                  </div>
-                  <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid1')" id="thumb-vid1-side">
-                    <video src="images/E-Tricycle/E-Tricycle-V-1.mp4" class="w-full h-full object-cover" muted preload="metadata" playsinline></video>
-                  </div>
-                </div>
-
-                <!-- Main Media Display -->
-                <div class="flex items-center justify-center">
-                  <img src="images/E-Tricycle/E-Tricycle-1.jpg" alt="Electric Tricycle" id="main-img1" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain block">
-                  <img src="images/E-Tricycle/E-Tricycle-2.jpg" alt="Electric Tricycle" id="main-img2" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
-                  <img src="images/E-Tricycle/E-Tricycle-3.jpg" alt="Electric Tricycle" id="main-img3" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
-                  <img src="images/E-Tricycle/E-Tricycle-4.jpg" alt="Electric Tricycle" id="main-img4" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
-                  <img src="images/E-Tricycle/E-Tricycle-0.jpg" alt="Electric Tricycle" id="main-img5" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
-                  <video controls id="main-vid1" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
-                    <source src="images/E-Tricycle/E-Tricycle-V-1.mp4" type="video/mp4">Your browser does not support the video tag.</video>
-                </div>
-              </div>
-            </div>          
-          </section>
-          
-          <!-- Right: Overview Section Grid (NARROWER: 45%) -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-[55%]">
-            <!-- Product Overview (wider) -->
-            <section class="content-section md:col-span-2 product-overview-box">
-              <h2 class="section-title text-3xl">Electric Tricycle</h2>
-              <ul class="features-list flex-1">
-                <li>Travel within the city, carry goods such as vegetables, milk, newspapers</li>
-                <li>Lithium battery 20 AMPH, range 40 km per charge, 2 year warranty</li>
-                <li>Customizable arrangement for carrier space, excellent aesthetic and color scheme</li>
-                <li>BLDC hub motor (36 V) and 2 Kg weight with 1 year replace warranty</li>
-                <li>Front and rear suspension for smooth ride</li>
-                <li>Proper braking system with front and rear disc brakes</li>
-                <li>Excellent combination of headlight, indicators, horn, display and wire harnessing</li>
-                <li>High-quality cushion for seat, excellent aesthetic and color scheme on demand</li>
-                <li>Affordable price with 1 year free service</li>
-              </ul>
-            </section>
-
-            <!-- Price (narrower) -->
-            <section class="content-section price-box product-overview-box flex flex-col items-center justify-center gap-2 py-2">
-              <h2 class="section-title mb-0.5">PRICE</h2>
-              <div class="text-lg text-gray-400 line-through mb-0.5">₹ 65,000</div>
-              <div class="text-2xl font-bold text-blue-700 mb-0.5">₹ 55,000</div>
-              <a href="contacts.html" class="mt-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded flex items-center justify-center text-center">Enquire</a>
-              <div class="w-full border-t border-gray-200 my-1.5"></div>
-              <div class="flex flex-col items-center w-full">
-                <button onclick="generateBrochure()" class="bg-white text-blue-600 hover:bg-blue-100 font-bold py-1 px-4 rounded shadow border border-blue-600 flex items-center justify-center gap-2">
-                  <i class="fas fa-download"></i>Download Brochure</button>
-              </div>
-            </section>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <div id="footer-placeholder" class="w-full"></div>
-  <script>
-    fetch("footer.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("footer-placeholder").innerHTML = data;
-      });
-    
-    // Brochure Generation Function
-    function generateBrochure() {
-      // 1. Open the brochure image directly in a new window for printing
-      const printWindow = window.open('images/E-Tricycle/E-Tricycle-Brochure.jpg', '_blank');
-      if (printWindow) {
-        printWindow.onload = function() {
-          setTimeout(function() {
-            printWindow.print();
-          }, 1000); // Wait 1 second for image to load
-        };
-      }
-
-      // 2. Trigger download of the image
-      const link = document.createElement('a');
-      link.href = 'images/E-Tricycle/E-Tricycle-Brochure.jpg';
-      link.download = 'E-Tricycle-Brochure.jpg';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-
-    function showMedia(id) {
-      // Hide all and pause video
-      document.querySelectorAll('.main-media').forEach(el => {
-        el.classList.add('hidden');
-        // If it's a video element, pause it
-        if (el.tagName === 'VIDEO') {
-          el.pause();
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jago Motion Technologies - Disability & Healthcare Products</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        if (
+            /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+            && window.location.hostname === "jagomotion.com"
+        ) {
+            window.location.href = "https://jagopreprod.netlify.app" + window.location.pathname;
         }
-      });
-      document.querySelectorAll('[id^="thumb-"]').forEach(el => el.classList.remove('border-blue-500'));
-      
-      // Show selected
-      if (id === 'img1') {
-        document.getElementById('main-img1').classList.remove('hidden');
-        document.getElementById('thumb-img1').classList.add('border-blue-500');
-      } else if (id === 'img2') {
-        document.getElementById('main-img2').classList.remove('hidden');
-        document.getElementById('thumb-img2').classList.add('border-blue-500');
-      } else if (id === 'img3') {
-        document.getElementById('main-img3').classList.remove('hidden');
-        document.getElementById('thumb-img3').classList.add('border-blue-500');
-      } else if (id === 'img4') {
-        document.getElementById('main-img4').classList.remove('hidden');
-        document.getElementById('thumb-img4').classList.add('border-blue-500');
-      } else if (id === 'img5') {
-        document.getElementById('main-img5').classList.remove('hidden');
-        document.getElementById('thumb-img5').classList.add('border-blue-500');
-      } else if (id === 'vid1') {
-        document.getElementById('main-vid1').classList.remove('hidden');
-        document.getElementById('thumb-vid1').classList.add('border-blue-500');
-      }
-    }
-  </script>
+    </script>
+    <style>
+        .carousel-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            padding-bottom: 1rem;
+            will-change: transform;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+        }
+        .carousel-slide {
+            flex: 0 0 100%;
+            display: flex;
+            gap: 1.5rem;
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+        .product-card {
+            flex: 0 0 calc(45% - 0.75rem);
+        }
+
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            .carousel-slide {
+                gap: 0.5rem;
+                padding: 0 0.5rem;
+            }
+            .product-card {
+                flex: 0 0 100%;
+                margin-bottom: 1rem;
+            }
+        }
+        /* Tablet styles */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .product-card {
+                flex: 0 0 calc(45% - 1rem);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans flex flex-col min-h-screen">
+    <!-- Navbar from external file -->
+    <div id="navbar-placeholder"></div>
+    <script>
+        fetch("navbar.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("navbar-placeholder").innerHTML = data;
+            });
+    </script>
+
+    <!-- Hero Section -->
+    <section class="bg-white text-gray-800 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-4xl font-bold text-[#001C71]">Mobility for Disability</h3>
+        </div>
+    </section>
+
+
+    <!-- Products Carousel Section -->
+    <section class="pb-8 bg-white">
+        <div class="px-4 ml-[380px]" style="width: 1000px;">
+            <div class="flex items-center relative">
+                <!-- Previous button moved outside -->
+                <button id="prevBtn" class="absolute left-[-50px] md:left-[-80px] -mt-6 bg-white px-3 py-3 rounded-full shadow hover:bg-gray-100">
+                    <i class="fas fa-chevron-left text-gray-700"></i>
+                </button>
+                <div class="carousel-container relative overflow-hidden flex-1">
+                    <div class="carousel-track" id="carousel">
+                        <!-- Slide 1 (2 products) -->
+                        <div class="carousel-slide">
+                            <!-- Product 1 -->
+                            <div class="pt-6 product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px] flex flex-col justify-between items-center">
+                                <div class="h-[300px] w-[300px] md:h-64 bg-gray-200 flex items-center justify-center ">
+                                    <img src="images/E-Tricycle/E-Tricycle-0.jpg" alt="Electric Tricycle" class="h-full w-full">
+                                </div>
+                                <div class="flex flex-col items-center justify-center flex-1 w-full p-3 md:p-4">
+                                    <h3 class="text-xl font-bold text-center mb-1">Electric Tricycle</h3>
+                                    <a href="E_Tricycle_Page.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">Enquire</a>
+                                </div>
+                            </div>
+
+                            <!-- Product 2 -->
+                            <div class="pt-6 product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px] flex flex-col justify-between items-center">
+                                <div class="h-[300px] w-[300px] md:h-64 bg-gray-200 flex items-center justify-center">
+                                    <img src="images/E-Trike/E-Trike-0.jpg" alt="Electric Trike" class="h-full w-full">
+                                </div>
+                                <div class="flex flex-col items-center justify-center flex-1 w-full p-3 md:p-4">
+                                    <h3 class="text-xl font-bold text-center mb-1">Electric Trike</h3>
+                                    <a href="E_Trike_Page.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">Enquire</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 (2 products) -->
+                        <div class="carousel-slide">
+                            <!-- Product 1 -->
+                            <div class="pt-6 product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px] flex flex-col justify-between items-center">
+                                <div class="h-[300px] w-[300px] md:h-64 bg-gray-200 flex items-center justify-center">
+                                    <img src="images/CPWalker/CPWalker-0.jpg" alt="Cerebral Palsy Walker" class="h-full w-full">
+                                </div>
+                                <div class="flex flex-col items-center justify-center flex-1 w-full p-3 md:p-4">
+                                    <h3 class="text-xl font-bold text-center mb-1">Cerebral Palsy Walker</h3>
+                                    <a href="CPWalker_Page.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">Enquire</a>
+                                </div>
+                            </div>
+
+                            <!-- Product 2 -->
+                            <div class="pt-6 product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px] flex flex-col justify-between items-center">
+                                <div class="h-[300px] w-[300px] w md:h-64 bg-gray-200 flex items-center justify-center">
+                                    <img src="images/WAP/WAP-0.jpg" alt="Walker Assisted Prosthetics" class="h-full w-full">
+                                </div>
+                                <div class="flex flex-col items-center justify-center flex-1 w-full p-3 md:p-4">
+                                    <h3 class="text-xl font-bold text-center mb-1">Walker Assisted Prosthetics</h3>
+                                    <a href="WAP_Page.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">Enquire</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Clone of Slide 1 for seamless looping -->
+                        <div class="carousel-slide">
+                            <!-- Product 1 Clone -->
+                            <div class="pt-6 product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px] flex flex-col justify-between items-center">
+                                <div class="h-[300px] w-[300px] md:h-64 bg-gray-200 flex items-center justify-center">
+                                    <img src="images/E-Tricycle/E-Tricycle-0.jpg" alt="Electric Tricycle" class="h-full w-full">
+                                </div>
+                                <div class="flex flex-col items-center justify-center flex-1 w-full p-3 md:p-4">
+                                    <h3 class="text-xl font-bold text-center mb-1">Electric Tricycle</h3>
+                                    <a href="E_Tricycle_Page.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">Enquire</a>
+                                </div>
+                            </div>
+
+                            <!-- Product 2 Clone -->
+                            <div class="pt-6 product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 h-[400px] flex flex-col justify-between items-center">
+                                <div class="h-[300px] w-[300px] md:h-64 bg-gray-200 flex items-center justify-center">
+                                    <img src="images/E-Trike/E-Trike-0.jpg" alt="Electric Trike" class="h-full w-full">
+                                </div>
+                                <div class="flex flex-col items-center justify-center flex-1 w-full p-3 md:p-4">
+                                    <h3 class="text-xl font-bold text-center mb-1">Electric Trike</h3>
+                                    <a href="E_Trike_Page.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">Enquire</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Next button moved outside -->
+                <button id="nextBtn" class="absolute right-0 md:right-0 -mt-6 bg-white px-3 py-3 rounded-full shadow hover:bg-gray-100">
+                    <i class="fas fa-chevron-right text-gray-700"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carousel Script -->
+    <script>
+        const track = document.getElementById("carousel");
+        const nextBtn = document.getElementById("nextBtn");
+        const prevBtn = document.getElementById("prevBtn");
+        let currentSlide = 0;
+        const slideCount = document.querySelectorAll(".carousel-slide").length;
+        const realSlideCount = slideCount - 1; // Because we added a clone
+
+        function updateCarousel() {
+            const slideWidth = document.querySelector(".carousel-slide").offsetWidth;
+            track.style.transition = "transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+            track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+            
+            // When we reach the clone (last slide), seamlessly reset to first slide
+            if (currentSlide >= realSlideCount) {
+                setTimeout(() => {
+                    track.style.transition = "none";
+                    currentSlide = 0;
+                    track.style.transform = `translateX(0)`;
+                }, 800);
+            }
+            
+            // When we go backwards from first slide, seamlessly jump to the clone
+            if (currentSlide < 0) {
+                setTimeout(() => {
+                    track.style.transition = "none";
+                    currentSlide = realSlideCount - 1;
+                    track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+                }, 800);
+            }
+        }
+
+        function goToNextSlide() {
+            currentSlide++;
+            updateCarousel();
+        }
+
+        function goToPrevSlide() {
+            if (currentSlide === 0) {
+                // Instantly jump to the clone (last) slide
+                const slideWidth = document.querySelector('.carousel-slide').offsetWidth;
+                track.style.transition = 'none';
+                currentSlide = realSlideCount;
+                track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+                // Force reflow to apply the transform instantly
+                void track.offsetWidth;
+                // Then animate to the real last slide
+                setTimeout(() => {
+                    track.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                    currentSlide = realSlideCount - 1;
+                    track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+                }, 20);
+            } else {
+                currentSlide--;
+                updateCarousel();
+            }
+        }
+
+        // Auto-play every 8 seconds
+        let autoplay = setInterval(goToNextSlide, 8000);
+
+        // Pause autoplay on hover
+        const carouselContainer = document.querySelector(".carousel-container");
+        carouselContainer.addEventListener("mouseenter", () => {
+            clearInterval(autoplay);
+        });
+        carouselContainer.addEventListener("mouseleave", () => {
+            autoplay = setInterval(goToNextSlide, 8000);
+        });
+
+        // Manual navigation
+        nextBtn.addEventListener("click", () => {
+            clearInterval(autoplay);
+            goToNextSlide();
+            autoplay = setInterval(goToNextSlide, 8000);
+        });
+        prevBtn.addEventListener("click", () => {
+            clearInterval(autoplay);
+            goToPrevSlide();
+            autoplay = setInterval(goToNextSlide, 8000);
+        });
+
+        // Initialize
+        updateCarousel();
+    </script>
+
+    <!-- Footer -->
+    <footer class="bg-[#001C71] text-white pt-4">
+        <div class="w-5/6 mx-auto">
+            <div class="flex flex-col md:flex-row justify-between">
+                <!-- Left: Company Info -->
+                <div class="pl-8">
+                    <h3 class="text-2xl font-bold mb-4">Jago Motion Technologies</h3>
+                    <ul class="space-y-2">
+                    <li class="flex items-center">
+                        <i class="fas fa-map-marker-alt mr-2"></i>
+                        <span>Sangli, Maharashtra, India. PIN: 416416</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-phone mr-2"></i>
+                        <span>+91 7083861174</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-envelope mr-2"></i>
+                        <span>info.jagomotion@gmail.com</span>
+                    </li>
+                    </ul>
+                </div>
+
+                <!-- Right: Social Media Icons -->
+                <div class="flex space-x-4 text-3xl mt-6 pr-8 md:mt-0 md:items-end">
+                    <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://wa.me/917083861174" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="pt-6">
+                <hr class="border-t border-white opacity-30">
+            </div>
+
+            <!-- Copyright -->
+            <div class="py-2 flex justify-center">
+                <p class="text-white text-center">&copy; 2025 Jago Motion Technologies. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
