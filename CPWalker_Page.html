@@ -339,7 +339,7 @@
                 <img src="images/CPWalker/CPWalker-2.jpg" alt="CP Walker" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img2')" id="thumb-img2">
                 <img src="images/CPWalker/CPWalker-3.jpg" alt="CP Walker" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img3')" id="thumb-img3">
                 <img src="images/CPWalker/CPWalker-4.jpg" alt="CP Walker" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img4')" id="thumb-img4">
-                <img src="images/CPWalker/CPWalker-0.jpg" alt="CP Walker" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img5')" id="thumb-img5">
+                <img src="images/CPWalker/CPWalker-5.jpg" alt="CP Walker" class="w-16 h-16 object-cover rounded cursor-pointer border-2 border-transparent" onclick="showMedia('img5')" id="thumb-img5">
               </div>
               <!-- Main Media + Left Side Thumbnails -->
               <div class="flex flex-row items-start gap-6 w-full justify-center">
@@ -368,7 +368,7 @@
                   <img src="images/CPWalker/CPWalker-2.jpg" alt="CP Walker" id="main-img2" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
                   <img src="images/CPWalker/CPWalker-3.jpg" alt="CP Walker" id="main-img3" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
                   <img src="images/CPWalker/CPWalker-4.jpg" alt="CP Walker" id="main-img4" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
-                  <img src="images/CPWalker/CPWalker-0.jpg" alt="CP Walker" id="main-img5" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
+                  <img src="images/CPWalker/CPWalker-5.jpg" alt="CP Walker" id="main-img5" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
                   <video controls playsinline id="main-vid1" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
                     <source src="images/CPWalker/CPWalker-V-1.mp4" type="video/mp4">Your browser does not support the video tag.</video>
                   <video controls playsinline id="main-vid2" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
@@ -482,7 +482,7 @@
         document.getElementById('main-vid1').classList.remove('hidden');
         document.getElementById('thumb-vid1').classList.add('border-blue-500');
         const v = document.getElementById('main-vid1');
-        v.muted = true;
+        v.muted = false;
         try { v.load(); } catch (e) {}
         try { v.currentTime = 0; } catch (e) {}
         const p = v.play();
@@ -491,7 +491,7 @@
         document.getElementById('main-vid2').classList.remove('hidden');
         document.getElementById('thumb-vid2').classList.add('border-blue-500');
         const v = document.getElementById('main-vid2');
-        v.muted = true;
+        v.muted = false;
         try { v.load(); } catch (e) {}
         try { v.currentTime = 0; } catch (e) {}
         const p = v.play();
@@ -500,7 +500,7 @@
         document.getElementById('main-vid3').classList.remove('hidden');
         document.getElementById('thumb-vid3').classList.add('border-blue-500');
         const v = document.getElementById('main-vid3');
-        v.muted = true;
+        v.muted = false;
         try { v.load(); } catch (e) {}
         try { v.currentTime = 0; } catch (e) {}
         const p = v.play();
@@ -509,7 +509,7 @@
         document.getElementById('main-vid4').classList.remove('hidden');
         document.getElementById('thumb-vid4').classList.add('border-blue-500');
         const v = document.getElementById('main-vid4');
-        v.muted = true;
+        v.muted = false;
         try { v.load(); } catch (e) {}
         try { v.currentTime = 0; } catch (e) {}
         const p = v.play();
@@ -518,7 +518,7 @@
         document.getElementById('main-vid5').classList.remove('hidden');
         document.getElementById('thumb-vid5').classList.add('border-blue-500');
         const v = document.getElementById('main-vid5');
-        v.muted = true;
+        v.muted = false;
         try { v.load(); } catch (e) {}
         try { v.currentTime = 0; } catch (e) {}
         const p = v.play();
