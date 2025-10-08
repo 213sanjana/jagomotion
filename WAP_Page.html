@@ -345,20 +345,20 @@
               <div class="flex flex-row items-start gap-6 w-full justify-center">
                 <!-- Left Vertical Thumbnails -->
                 <div class="flex flex-col space-y-4">
-                  <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid1')" id="thumb-vid1-side">
+                  <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid1')" id="thumb-vid1">
                     <video src="images/WAP/E-WAP-V-1.mp4" class="w-full h-full object-cover" muted preload="metadata" playsinline></video>
                   </div>
-                  <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid1')" id="thumb-vid1-side">
-                    <video src="images/WAP/E-WAP-V-1.mp4" class="w-full h-full object-cover" muted preload="metadata" playsinline></video>
+                  <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid2')" id="thumb-vid2">
+                    <video src="images/WAP/E-WAP-V-2.mp4" class="w-full h-full object-cover" muted preload="metadata" playsinline></video>
                   </div>
-                  <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid1')" id="thumb-vid1-side">
-                    <video src="images/WAP/E-WAP-V-1.mp4" class="w-full h-full object-cover" muted preload="metadata" playsinline></video>
+                  <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid3')" id="thumb-vid3">
+                    <video src="images/WAP/E-WAP-V-3.mp4" class="w-full h-full object-cover" muted preload="metadata" playsinline></video>
                   </div>
-                  <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid1')" id="thumb-vid1-side">
-                    <video src="images/WAP/E-WAP-V-1.mp4" class="w-full h-full object-cover" muted preload="metadata" playsinline></video>
+                  <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid4')" id="thumb-vid4">
+                    <video src="images/WAP/E-WAP-V-4.mp4" class="w-full h-full object-cover" muted preload="metadata" playsinline></video>
                   </div>
-                  <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid1')" id="thumb-vid1-side">
-                    <video src="images/WAP/E-WAP-V-1.mp4" class="w-full h-full object-cover" muted preload="metadata" playsinline></video>
+                  <div class="w-16 h-16 rounded overflow-hidden border-2 border-transparent cursor-pointer flex items-center justify-center bg-gray-200" onclick="showMedia('vid5')" id="thumb-vid5">
+                    <video src="images/WAP/E-WAP-V-5.mp4" class="w-full h-full object-cover" muted preload="metadata" playsinline></video>
                   </div>
                 </div>
 
@@ -369,8 +369,16 @@
                   <img src="images/WAP/E-WAP-3.jpg" alt="Walker Assisted Prosthetics" id="main-img3" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
                   <img src="images/WAP/E-WAP-4.jpg" alt="Walker Assisted Prosthetics" id="main-img4" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
                   <img src="images/WAP/WAP-0.jpg" alt="Walker Assisted Prosthetics" id="main-img5" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
-                  <video controls id="main-vid1" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
+                  <video controls playsinline id="main-vid1" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
                     <source src="images/WAP/E-WAP-V-1.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+                  <video controls playsinline id="main-vid2" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
+                    <source src="images/WAP/E-WAP-V-2.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+                  <video controls playsinline id="main-vid3" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
+                    <source src="images/WAP/E-WAP-V-3.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+                  <video controls playsinline id="main-vid4" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
+                    <source src="images/WAP/E-WAP-V-4.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+                  <video controls playsinline id="main-vid5" class="main-media rounded-lg shadow-lg w-[25rem] h-[25rem] object-contain hidden">
+                    <source src="images/WAP/E-WAP-V-5.mp4" type="video/mp4">Your browser does not support the video tag.</video>
                 </div>
               </div>
             </div>          
@@ -449,6 +457,7 @@
         // If it's a video element, pause it
         if (el.tagName === 'VIDEO') {
           el.pause();
+          try { el.currentTime = 0; } catch (e) {}
         }
       });
       document.querySelectorAll('[id^="thumb-"]').forEach(el => el.classList.remove('border-blue-500'));
@@ -472,6 +481,48 @@
       } else if (id === 'vid1') {
         document.getElementById('main-vid1').classList.remove('hidden');
         document.getElementById('thumb-vid1').classList.add('border-blue-500');
+        const v = document.getElementById('main-vid1');
+        v.muted = true;
+        try { v.load(); } catch (e) {}
+        try { v.currentTime = 0; } catch (e) {}
+        const p = v.play();
+        if (p && p.catch) p.catch(() => {});
+      } else if (id === 'vid2') {
+        document.getElementById('main-vid2').classList.remove('hidden');
+        document.getElementById('thumb-vid2').classList.add('border-blue-500');
+        const v = document.getElementById('main-vid2');
+        v.muted = true;
+        try { v.load(); } catch (e) {}
+        try { v.currentTime = 0; } catch (e) {}
+        const p = v.play();
+        if (p && p.catch) p.catch(() => {});
+      } else if (id === 'vid3') {
+        document.getElementById('main-vid3').classList.remove('hidden');
+        document.getElementById('thumb-vid3').classList.add('border-blue-500');
+        const v = document.getElementById('main-vid3');
+        v.muted = true;
+        try { v.load(); } catch (e) {}
+        try { v.currentTime = 0; } catch (e) {}
+        const p = v.play();
+        if (p && p.catch) p.catch(() => {});
+      } else if (id === 'vid4') {
+        document.getElementById('main-vid4').classList.remove('hidden');
+        document.getElementById('thumb-vid4').classList.add('border-blue-500');
+        const v = document.getElementById('main-vid4');
+        v.muted = true;
+        try { v.load(); } catch (e) {}
+        try { v.currentTime = 0; } catch (e) {}
+        const p = v.play();
+        if (p && p.catch) p.catch(() => {});
+      } else if (id === 'vid5') {
+        document.getElementById('main-vid5').classList.remove('hidden');
+        document.getElementById('thumb-vid5').classList.add('border-blue-500');
+        const v = document.getElementById('main-vid5');
+        v.muted = true;
+        try { v.load(); } catch (e) {}
+        try { v.currentTime = 0; } catch (e) {}
+        const p = v.play();
+        if (p && p.catch) p.catch(() => {});
       }
     }
   </script>
