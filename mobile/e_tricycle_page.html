@@ -188,7 +188,7 @@
     ];
     let currentTricycleIndex = 0;
     let currentVideoIndex = 0;
-    let isVideoMode = true;
+    let isVideoMode = false;
 
     const carouselMainContainer = document.getElementById('carousel-main-container');
     const indicatorsContainer = document.getElementById('carousel-indicators');
@@ -202,7 +202,7 @@
         const videoSrc = `${tricycleVideos[currentVideoIndex]}?v=${currentVideoIndex}`;
         carouselMainContainer.innerHTML = `
           <div class='relative w-full h-full flex justify-center items-center'>
-            <video id="carousel-video" src="${videoSrc}" controls autoplay muted playsinline class="max-w-full max-h-full rounded"></video>
+            <video id="carousel-video" src="${videoSrc}" controls autoplay playsinline class="max-w-full max-h-full rounded"></video>
           </div>
         `;
         // Attach autoplay-next behavior
