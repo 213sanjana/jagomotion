@@ -199,9 +199,10 @@
     function renderMainCarousel() {
       if (isVideoMode) {
         // Video carousel
+        const videoSrc = `${tricycleVideos[currentVideoIndex]}?v=${currentVideoIndex}`;
         carouselMainContainer.innerHTML = `
           <div class='relative w-full h-full flex justify-center items-center'>
-            <video id="carousel-video" src="${tricycleVideos[currentVideoIndex]}" controls autoplay muted playsinline class="max-w-full max-h-full rounded"></video>
+            <video id="carousel-video" src="${videoSrc}" controls autoplay muted playsinline class="max-w-full max-h-full rounded"></video>
           </div>
         `;
         // Attach autoplay-next behavior
@@ -209,6 +210,7 @@
         if (videoEl) {
           // Ensure playback starts (some browsers block unless muted)
           const tryPlay = () => {
+            try { videoEl.load(); } catch (e) {}
             const p = videoEl.play();
             if (p && typeof p.then === 'function') {
               p.catch(() => {/* ignore autoplay rejection */});
