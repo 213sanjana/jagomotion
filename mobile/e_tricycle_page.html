@@ -188,7 +188,7 @@
     ];
     let currentTricycleIndex = 0;
     let currentVideoIndex = 0;
-    let isVideoMode = false;
+    let isVideoMode = true;
 
     const carouselMainContainer = document.getElementById('carousel-main-container');
     const indicatorsContainer = document.getElementById('carousel-indicators');
@@ -201,9 +201,26 @@
         // Video carousel
         carouselMainContainer.innerHTML = `
           <div class='relative w-full h-full flex justify-center items-center'>
-            <video id="carousel-video" src="${tricycleVideos[currentVideoIndex]}" controls autoplay class="max-w-full max-h-full rounded"></video>
+            <video id="carousel-video" src="${tricycleVideos[currentVideoIndex]}" controls autoplay muted playsinline class="max-w-full max-h-full rounded"></video>
           </div>
         `;
+        // Attach autoplay-next behavior
+        const videoEl = document.getElementById('carousel-video');
+        if (videoEl) {
+          // Ensure playback starts (some browsers block unless muted)
+          const tryPlay = () => {
+            const p = videoEl.play();
+            if (p && typeof p.then === 'function') {
+              p.catch(() => {/* ignore autoplay rejection */});
+            }
+          };
+          videoEl.addEventListener('loadedmetadata', tryPlay, { once: true });
+          videoEl.addEventListener('ended', () => {
+            currentVideoIndex = (currentVideoIndex + 1) % tricycleVideos.length;
+            renderMainCarousel();
+          });
+          tryPlay();
+        }
         renderIndicators(tricycleVideos.length, currentVideoIndex);
       } else {
         // Image carousel
